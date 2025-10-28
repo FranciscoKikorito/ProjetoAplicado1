@@ -116,18 +116,16 @@ public class PlayerSelfController : MonoBehaviour
     {
         if (currentTimingPoint == null)
         {
-            Debug.Log("❌ Nenhum ponto de timing detectado!");
             return;
         }
 
         if (isWhiteActive && currentTimingPoint.actionType == TimingPoint.ActionType.Build)
         {
-            Debug.Log("🏗️ Construindo ponte!");
+            
             BuildBridge(currentTimingPoint);
         }
         else if (!isWhiteActive && currentTimingPoint.actionType == TimingPoint.ActionType.Destroy)
         {
-            Debug.Log("💥 Destruindo parede!");
             DestroyWall(currentTimingPoint);
         }
         else
@@ -144,26 +142,19 @@ public class PlayerSelfController : MonoBehaviour
         if (tp.associatedObject != null)
         {
             tp.associatedObject.SetActive(true);
-            Debug.Log("✅ Ponte ativada!");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ Nenhuma ponte associada neste TimingPoint!");
+            StartCoroutine(tp.AnimateBridgeRise(tp.associatedObject));
         }
     }
 
-    // ✅ Destrói a parede associada (não o próprio ponto)
     private void DestroyWall(TimingPoint tp)
     {
-        if (tp.associatedObject != null)
+        if (tp.associatedObject == null) return;
+
+        StartCoroutine(tp.AnimateWallFall(tp.associatedObject, () =>
         {
+            tp.SpawnDestroyParticles(tp.associatedObject.transform.position);
             Destroy(tp.associatedObject);
-            Debug.Log("✅ Parede destruída!");
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ Nenhuma parede associada neste TimingPoint!");
-        }
+        }));
     }
 
     public void StopMovement()
@@ -178,7 +169,6 @@ public class PlayerSelfController : MonoBehaviour
         if (tp != null)
         {
             currentTimingPoint = tp;
-            Debug.Log($"⏱️ Entrou no ponto de timing: {tp.actionType}");
         }
     }
 
@@ -186,7 +176,6 @@ public class PlayerSelfController : MonoBehaviour
     {
         if (other.GetComponent<TimingPoint>() == currentTimingPoint)
         {
-            Debug.Log("⏱️ Saiu do ponto de timing");
             currentTimingPoint = null;
         }
     }

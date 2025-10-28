@@ -1218,6 +1218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimingPoint
   actionType: 1
   associatedObject: {fileID: 7038123787704877671}
+  bridgeRiseHeight: 2
+  bridgeRiseTime: 0.6
+  destroyParticlePrefab: {fileID: 1555150518375593683, guid: f5eac46e1d07c944697bb73add72facd, type: 3}
   gizmoSize: {x: 2, y: 0.1, z: 6}
 --- !u!1001 &1487497382
 PrefabInstance:
@@ -1344,6 +1347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimingPoint
   actionType: 0
   associatedObject: {fileID: 5719240250854803430}
+  bridgeRiseHeight: 2
+  bridgeRiseTime: 0.6
+  destroyParticlePrefab: {fileID: 0}
   gizmoSize: {x: 2, y: 0.1, z: 6}
 --- !u!4 &1653110035 stripped
 Transform:
@@ -2332,9 +2338,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 6754888893148996079, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7279298514667158368, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.96
+      value: 7.885
       objectReference: {fileID: 0}
     - target: {fileID: 7279298514667158368, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2370,6 +2380,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7279298514667158368, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117220147437813619, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117220147437813619, guid: ba10423d01edad5409c0dca85aa6ec01, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
