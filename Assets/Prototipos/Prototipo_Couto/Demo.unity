@@ -892,7 +892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineSplineDolly
   m_SplineSettings:
     Spline: {fileID: 1401383384}
-    Position: 0.342761
+    Position: 0.342751
     Units: 2
   SplineOffset: {x: 0, y: 0, z: 0}
   CameraRotation: 0
