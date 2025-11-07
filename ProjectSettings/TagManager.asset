@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - PlayerFront
+  - Bridge
+  - Wall
+  - Vault
   layers:
   - Default
   - TransparentFX
@@ -12,8 +16,8 @@ TagManager:
   - PostProcess
   - Water
   - UI
-  - 
-  - 
+  - VaultLayer
+  - whatIsGround
   - 
   - 
   - 
