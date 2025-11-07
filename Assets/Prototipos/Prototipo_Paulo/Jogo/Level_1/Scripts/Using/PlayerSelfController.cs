@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerSelfController : MonoBehaviour
+public class PlayerSelfController1 : MonoBehaviour
 {
     public GameObject white;
     public GameObject black;
