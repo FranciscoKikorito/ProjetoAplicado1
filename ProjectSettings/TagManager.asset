@@ -9,6 +9,9 @@ TagManager:
   - Bridge
   - Wall
   - Vault
+  - Orb
+  - Trigger
+  - DestroyTrigger
   layers:
   - Default
   - TransparentFX
