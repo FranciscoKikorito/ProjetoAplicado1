@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerOrbTrigger : MonoBehaviour
+public class PlayerOrbTrigger2 : MonoBehaviour
 {
     public enum OrbType { Verde, Castanha }
     public OrbType orbType;
@@ -12,9 +12,9 @@ public class PlayerOrbTrigger : MonoBehaviour
         if (collected) return;
 
         Debug.Log($"Orb '{gameObject.name}' tocada por '{other.name}'");
-        
-        PlayerSelfController player = other.GetComponentInParent<PlayerSelfController>();
-        if (player == null) return;
+
+        //PlayerSelfController player = other.GetComponentInParent<PlayerSelfController>();
+        //if (player == null) return;
 
         var colorManager = Object.FindFirstObjectByType<ColorChangeManager>();
         if (colorManager == null)
@@ -23,7 +23,7 @@ public class PlayerOrbTrigger : MonoBehaviour
             return;
         }
 
-       // if (orbType == OrbType.Verde && player.IsWhiteActive())
+        // if (orbType == OrbType.Verde && player.IsWhiteActive())
         {
             Debug.Log("✅ White player apanhou orb verde → pintar folhas 🌿");
             colorManager.StartLeafColorChange();

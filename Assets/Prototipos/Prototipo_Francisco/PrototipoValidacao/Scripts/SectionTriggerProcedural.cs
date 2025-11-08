@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SectionTrigger : MonoBehaviour
+public class SectionTriggerProcedural : MonoBehaviour
 {
     [SerializeField] private GameObject[] pathSections;
 
-    [SerializeField] private Vector3 spawnPosition = new Vector3(-1.163f, 0, 38);
+    private Vector3 spawnPosition = new Vector3(-1.163f, 0, 58.50f);
 
     private void OnTriggerExit(Collider other)
     {
