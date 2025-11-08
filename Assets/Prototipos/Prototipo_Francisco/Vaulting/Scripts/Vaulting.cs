@@ -29,7 +29,7 @@ public class Vaulting : MonoBehaviour
             {
                 print("vaultable in front");
                 //Vector3.down + 1 (+ if half player height else just .down)
-                if (Physics.Raycast(firstHit.point + (cam.transform.forward * playerRadius) + (Vector3.up * 0.6f * playerHeight), Vector3.down, out var secondHit, playerHeight))
+                if (Physics.Raycast(firstHit.point + (cam.transform.forward * playerRadius) + (Vector3.up * 0.6f * playerHeight), Vector3.down/4, out var secondHit, playerHeight))
                 {
                     print("found place to land");
                     StartCoroutine(LerpVault(secondHit.point, 0.5f));

@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class SectionTrigger : MonoBehaviour
 {
+    [SerializeField] private GameObject[] pathSections;
 
-    public GameObject pathSection;
+    [SerializeField] private Vector3 spawnPosition = new Vector3(-1.163f, 0, 38);
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Trigger"))
         {
-            Instantiate(pathSection, new Vector3(0,0, 54), Quaternion.identity);
+            int randomIndex = Random.Range(0, pathSections.Length);
+            Instantiate(pathSections[randomIndex], spawnPosition, Quaternion.identity);
         }
     }
-
 }
