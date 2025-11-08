@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LevelGen : MonoBehaviour
 {
-    [SerializeField] private GameObject[] pathSections;
-    [SerializeField] private GameObject startSpawnPlatform;
-    //private Vector3 spawnPosition = GameObject.Find("PathLineEmpty").transform.position;
+    [SerializeField] public GameObject[] pathSections;
+    [SerializeField] private GameObject furthestPlatform;
 
+    private Transform pathList;
     void Start()
     {
-        //Vector3 spawnPosition = GameObject.Find("PathLineEmpty").transform.position;
+        pathList = GameObject.Find("PathList").transform;
     }
 
     private void OnTriggerExit(Collider other)
@@ -19,8 +19,9 @@ public class LevelGen : MonoBehaviour
         if (other.gameObject.CompareTag("Trigger"))
         {
             int randomIndex = Random.Range(0, pathSections.Length);
-            Vector3 spawnPosition = GameObject.Find("PathLineEmpty").transform.position;
-            Instantiate(pathSections[randomIndex], spawnPosition, Quaternion.identity);
+            Vector3 spawnPosition = furthestPlatform.transform.Find("NextSectionPoint").position;
+            GameObject newPlatform = Instantiate(pathSections[randomIndex], spawnPosition, Quaternion.identity, pathList);
+            furthestPlatform = newPlatform;
         }
     }
 }
