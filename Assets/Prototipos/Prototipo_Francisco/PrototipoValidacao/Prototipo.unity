@@ -2411,11 +2411,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &719718874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6747802466002032290, guid: 0d28dec645cb88e489d24216aab04533, type: 3}
-  m_PrefabInstance: {fileID: 224009461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &750383849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,10 +2808,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1046644150}
   - component: {fileID: 1046644153}
-  - component: {fileID: 1046644152}
   - component: {fileID: 1046644151}
   - component: {fileID: 1046644154}
   - component: {fileID: 1046644155}
+  - component: {fileID: 1046644156}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2853,21 +2848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vaulting
   cam: {fileID: 1775116439}
---- !u!114 &1046644152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046644149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e7f99a72143d7479171d4b81d804ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SectionTrigger
-  pathSections:
-  - {fileID: 6747802466002032290, guid: 0d28dec645cb88e489d24216aab04533, type: 3}
-  startSpawnPlatform: {fileID: 719718874}
 --- !u!54 &1046644153
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2927,6 +2907,21 @@ MonoBehaviour:
   enemyTriggerLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1046644156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046644149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b92965ccda4f8429b2a79e78417d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelGen
+  pathSections:
+  - {fileID: 0}
+  startSpawnPlatform: {fileID: 0}
 --- !u!43 &1059082392
 Mesh:
   m_ObjectHideFlags: 0
