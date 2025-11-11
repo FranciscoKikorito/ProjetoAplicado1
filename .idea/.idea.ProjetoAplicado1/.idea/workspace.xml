@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Francisco/PrototipoValidacao/Prefabs/PathLasers.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Francisco/PrototipoValidacao/Prefabs/PathLasers.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Jogo/Level_1/Scripts/PlayerShield.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Jogo/Level_1/Scripts/PlayerShield.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/LookAtPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/LookAtPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Robot_Invader.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Robot_Invader.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,8 @@
       <updated>1762353551955</updated>
       <workItem from="1762353553889" duration="595000" />
       <workItem from="1762354560610" duration="10252000" />
-      <workItem from="1762611236440" duration="2883000" />
+      <workItem from="1762611236440" duration="5496000" />
+      <workItem from="1762872795965" duration="6268000" />
     </task>
     <servers />
   </component>
