@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 7494311601443691583}
   - component: {fileID: 5163529301246226766}
   - component: {fileID: 4336364440255276410}
-  - component: {fileID: 3511495814060183852}
+  - component: {fileID: 6988506157002188016}
   m_Layer: 0
   m_Name: PathLineEmpty
   m_TagString: Untagged
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea63fea36a91c1d45bcef9879fad0865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovePlatform
---- !u!114 &3511495814060183852
+--- !u!114 &6988506157002188016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,11 +577,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6747802466002032290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11b92965ccda4f8429b2a79e78417d8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 064e676a4f5962b49b62d8f2c08d8a10, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelGen
-  pathSections:
-  - {fileID: 6747802466002032290}
+  m_EditorClassIdentifier: Assembly-CSharp::ProceduralHouseSpawner
+  spawnPrefabs:
+  - {fileID: 8430521957302443147, guid: 5291036f3cd91d34eb2ff3c68b21a802, type: 3}
+  - {fileID: 1073928756716431494, guid: 040c51487a6d55047aa730e8de73232d, type: 3}
+  - {fileID: 7231286715515726229, guid: ba0092e2b59d89c48a0aa8375b1edc02, type: 3}
+  - {fileID: 323394441813254100, guid: e949566b11b692d47ad612a3a56b10df, type: 3}
+  - {fileID: 8143532144484163343, guid: 71b408dfd77acdf43bafdce127f68398, type: 3}
+  - {fileID: 1395086938376830843, guid: 64ff30178c622a84db625b95be1f105d, type: 3}
+  leftPointsList:
+  - {fileID: 5240880837328208163}
+  - {fileID: 374034555835211630}
+  - {fileID: 1479523068323611572}
+  rightPointsList:
+  - {fileID: 1853479965273525675}
+  - {fileID: 3899742528827128726}
+  - {fileID: 2087150398875574777}
 --- !u!1 &6989069862524981059
 GameObject:
   m_ObjectHideFlags: 0
