@@ -18,48 +18,73 @@ public class ProceduralHouseSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnAtPoints(leftPointsList, 180f);
-        SpawnAtPoints(rightPointsList, 0f);
+        SpawnAtPoints(leftPointsList, 180f, true);
+        SpawnAtPoints(rightPointsList, 0f, false);
     }
 
-
-    void SpawnAtPoints(List<Transform> points, float yRotationOffset)
+    void SpawnAtPoints(List<Transform> points, float yRotationOffset, bool reverse)
     {
-        int i = 0;
+        if (points == null || points.Count == 0) return;
 
-        while (i < points.Count)
+        if (!reverse)
         {
-            
-            int size = PickPrefabSize();
-            if (size == 3 && i > points.Count - 3) size = 1;
-            if (size == 2 && i > points.Count - 2) size = 1;
-
-            GameObject prefab = GetRandomPrefabBySize(size);
-
-            if (prefab == null)
+            int i = 0;
+            while (i < points.Count)
             {
-                prefab = GetRandomPrefabBySize(1);
-                size = 1;
+                int size = PickPrefabSize();
+                if (size == 3 && i > points.Count - 3) size = 1;
+                if (size == 2 && i > points.Count - 2) size = 1;
+
+                GameObject prefab = GetRandomPrefabBySize(size);
+                if (prefab == null)
+                {
+                    prefab = GetRandomPrefabBySize(1);
+                    size = 1;
+                }
+
+                Transform point = points[i];
+                Quaternion finalRot = point.rotation * Quaternion.Euler(0, yRotationOffset, 0);
+                GameObject instance = Instantiate(prefab, point.position, finalRot, point);
+
+                float randomY = Random.Range(0.8f, 1.2f);
+                Vector3 originalScale = instance.transform.localScale;
+                instance.transform.localScale = new Vector3(originalScale.x, randomY, originalScale.z);
+
+                i += size;
             }
+        }
+        else
+        {
+            int index = points.Count - 1;
+            while (index >= 0)
+            {
+                int size = PickPrefabSize();
+                if (size == 3 && index < 2) size = 1;
+                if (size == 2 && index < 1) size = 1;
 
-            Transform point = points[i];
-            Quaternion finalRot = point.rotation * Quaternion.Euler(0, yRotationOffset, 0);
+                GameObject prefab = GetRandomPrefabBySize(size);
+                if (prefab == null)
+                {
+                    prefab = GetRandomPrefabBySize(1);
+                    size = 1;
+                }
 
-            GameObject instance = Instantiate(prefab, point.position, finalRot, point);
+                Transform point = points[index];
+                Quaternion finalRot = point.rotation * Quaternion.Euler(0, yRotationOffset, 0);
+                GameObject instance = Instantiate(prefab, point.position, finalRot, point);
 
-            // random scale Y
-            float randomY = Random.Range(0.8f, 1.2f);
-            Vector3 originalScale = instance.transform.localScale;
-            instance.transform.localScale = new Vector3(originalScale.x, randomY, originalScale.z);
+                float randomY = Random.Range(0.8f, 1.2f);
+                Vector3 originalScale = instance.transform.localScale;
+                instance.transform.localScale = new Vector3(originalScale.x, randomY, originalScale.z);
 
-            i += size;
+                index -= size;
+            }
         }
     }
 
     int PickPrefabSize()
     {
         int roll = Random.Range(0, 100);
-
         if (roll < 33) return 1;
         if (roll < 66) return 2;
         return 3;
@@ -73,12 +98,10 @@ public class ProceduralHouseSpawner : MonoBehaviour
                 if (spawnPrefabs1x1.Count > 0)
                     return spawnPrefabs1x1[Random.Range(0, spawnPrefabs1x1.Count)];
                 break;
-
             case 2:
                 if (spawnPrefabs1x2.Count > 0)
                     return spawnPrefabs1x2[Random.Range(0, spawnPrefabs1x2.Count)];
                 break;
-
             case 3:
                 if (spawnPrefabs1x3.Count > 0)
                     return spawnPrefabs1x3[Random.Range(0, spawnPrefabs1x3.Count)];
