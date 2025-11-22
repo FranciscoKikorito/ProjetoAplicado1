@@ -11,9 +11,9 @@ TagManager:
   - Vault
   - Orb
   - Trigger
-  - DestroyTrigger
   - Shield
   - LaserStop
+  - RightTurnTrigger
   layers:
   - Default
   - TransparentFX

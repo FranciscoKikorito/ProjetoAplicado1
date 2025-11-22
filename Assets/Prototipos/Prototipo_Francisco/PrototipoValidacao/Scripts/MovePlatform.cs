@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private Vector3 moveDirection = new Vector3(0, 0, -10);
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0, 0, -10) * Time.deltaTime;
+        transform.position += moveDirection * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetMoveDirection(Vector3 direction)
     {
-        if (other.gameObject.CompareTag("DestroyTrigger"))
-        {
-            Destroy(gameObject);
-        }
+        moveDirection = direction;
     }
+    /*private void OnTriggerEnter(Collider other)
+      {
+          if (other.CompareTag("PlayerFront"))
+          {
+              Debug.Log("RightTurnTrigger activated");
+              moveDirection = new Vector3(-10, 0, 0);
+          }
+      }*/
 }
