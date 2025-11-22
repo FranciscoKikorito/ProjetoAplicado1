@@ -1,43 +1,40 @@
 using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LookAtPlayer : MonoBehaviour
 {
     public Transform lookAtTarget;
     public Transform firePoint;
-    private Quaternion rotate;
+    public Transform aimPoint;
+    public GameObject hitEffectPrefab;
 
-    [Header("Configurações de Rotação")]
-    public float rotationDamp = 5.0f;
+    [Header("Configurações")]
+    public float rotationSpeed = 180f;
     public float maxRotationAngle = 45f;
-
-    [Header("Distâncias")]
-    public float detectionRange = 25.0f;
-    public float laserRange = 40.0f;
-
-    [Header("Delay e Partículas")]
-    public float aimDelay = 2f; // Tempo de preparação antes de atirar
-    public ParticleSystem chargingParticles; // Sistema de partículas de aviso
-
-    private RaycastHit hit;
-    private LineRenderer laserLine;
-    private bool canShoot = false;
+    public float detectionRange = 25f;
+    public float laserRange = 40f;
+    public float aimDelay = 1.5f;  
+    public float maxLaserDuration = 1.2f;
+    public ParticleSystem chargingParticles;
+    
+    private LineRenderer laser;
     private bool isAiming = false;
-
+    private bool hasShot = false;
+    private float aimTimer = 0f;
+    private float laserTimer = 0f;
+ 
     void Awake()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
+        {
             lookAtTarget = player.transform;
+            aimPoint = player.transform.Find("AimPoint");
+        }
 
-        laserLine = GetComponent<LineRenderer>();
-        laserLine.enabled = false;
-        laserLine.positionCount = 2;
-        laserLine.startWidth = 0.05f;
-        laserLine.endWidth = 0.05f;
-        laserLine.startColor = Color.red;
-        laserLine.endColor = Color.red;
+        laser = GetComponent<LineRenderer>();
+        laser.startColor = Color.orangeRed;
+        laser.enabled = false;
 
         if (firePoint == null)
             firePoint = transform;
@@ -45,104 +42,91 @@ public class LookAtPlayer : MonoBehaviour
 
     void Update()
     {
-        if (lookAtTarget == null)
-            return;
-
-        Vector3 forward = transform.forward;
-        Vector3 toPlayer = lookAtTarget.position - transform.position;
-        float distanceToPlayer = toPlayer.magnitude;
-
-        Vector3 flatToPlayer = new Vector3(toPlayer.x, 0, toPlayer.z);
-        if (flatToPlayer.sqrMagnitude < 0.01f)
-            return;
-
-        float angle = Vector3.Angle(forward, flatToPlayer);
-
-        if (distanceToPlayer <= detectionRange && angle <= maxRotationAngle)
+        if (hasShot || lookAtTarget == null)
         {
-            // Rotação horizontal suave
-            Quaternion targetRotation = Quaternion.LookRotation(flatToPlayer.normalized, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationDamp);
+            laser.enabled = false;
+            return;
+        }
 
-            // Inicia a corrotina de aiming se ainda não começou
-            if (!isAiming)
-            {
-                StartCoroutine(AimBeforeShooting());
-            }
+        Vector3 dir = (aimPoint.position - transform.position);
+        float dist = dir.magnitude;
+        Vector3 flatDir = new Vector3(dir.x, 0, dir.z);
+        float angle = Vector3.Angle(transform.forward, flatDir);
 
-            // 🔴 Só dispara quando o aiming terminar
-            if (canShoot)
-            {
-                FireLaser();
-            }
+        if (dist > detectionRange || angle > maxRotationAngle)
+        {
+            StopCharge();
+            return;
+        }
+
+        // ROTACIONA
+        Quaternion targetRot = Quaternion.LookRotation(flatDir, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+        
+        if (!isAiming)
+        {
+            isAiming = true;
+            aimTimer = 0f;
+
+            if (chargingParticles != null)
+                chargingParticles.Play();
+        }
+        
+        if (aimTimer < aimDelay)
+        {
+            aimTimer += Time.deltaTime;
+            return;
+        }
+        
+        StopCharge();
+        
+        if (laserTimer < maxLaserDuration)
+        {
+            laserTimer += Time.deltaTime;
+            FireLaser();
         }
         else
         {
-            StopAllCoroutines();
-            isAiming = false;
-            canShoot = false;
-            if (chargingParticles != null)
-                chargingParticles.Stop();
-            laserLine.enabled = false;
+            ShootOnce();
         }
     }
 
-    IEnumerator AimBeforeShooting()
+    void StopCharge()
     {
-        isAiming = true;
-
-        // Ativa partículas de aviso
-        if (chargingParticles != null)
-            chargingParticles.Play();
-
-        // Espera o delay
-        yield return new WaitForSeconds(aimDelay);
-
-        // Pode atirar
-        canShoot = true;
-
-        // Para partículas quando o laser dispara
         if (chargingParticles != null)
             chargingParticles.Stop();
     }
 
     void FireLaser()
     {
-        Vector3 forwardDir = transform.TransformDirection(Vector3.forward);
+        laser.enabled = true;
 
-        if (Physics.Raycast(firePoint.position, forwardDir, out hit, laserRange))
+        Vector3 dir = (aimPoint.position - firePoint.position).normalized;
+
+        if (Physics.Raycast(firePoint.position, dir, out RaycastHit hit, laserRange))
         {
-            laserLine.enabled = true;
-            laserLine.SetPosition(0, firePoint.position);
-            laserLine.SetPosition(1, hit.point);
+            
+            GameObject fx = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(fx, 1f);
+            
+            laser.SetPosition(0, firePoint.position);
+            laser.SetPosition(1, hit.point);
 
-            if (hit.collider.CompareTag("Player"))
-            {
-                Shoot();
-            }
+            if (hit.transform == aimPoint)
+                ShootOnce();
         }
         else
         {
-            // Caso não acerte nada, desce até o chão
-            RaycastHit groundHit;
-            Vector3 downStart = firePoint.position + forwardDir * laserRange;
-            if (Physics.Raycast(downStart, Vector3.down, out groundHit, 100f))
-            {
-                laserLine.enabled = true;
-                laserLine.SetPosition(0, firePoint.position);
-                laserLine.SetPosition(1, groundHit.point);
-            }
-            else
-            {
-                laserLine.enabled = true;
-                laserLine.SetPosition(0, firePoint.position);
-                laserLine.SetPosition(1, firePoint.position + forwardDir * laserRange);
-            }
+            laser.SetPosition(0, firePoint.position);
+            laser.SetPosition(1, firePoint.position + dir * laserRange);
         }
     }
 
-    void Shoot()
+    void ShootOnce()
     {
-        Debug.Log("Shoot at player at " + Time.time);
+        if (hasShot) return;
+
+        hasShot = true;
+        laser.enabled = false;
     }
 }

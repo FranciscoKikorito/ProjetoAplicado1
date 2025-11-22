@@ -5,10 +5,10 @@ public class PlayerShield : MonoBehaviour
     [Header("Referências")]
     public GameObject shieldObject;     // Objeto visual do escudo (filho do capsule)
     public Collider shieldCollider;     // Collider do escudo (no filho)
-
+    
     [Header("Configuração")]
     public float holdThreshold = 0.25f; // Tempo mínimo de segurar o botão antes de ativar
-
+    
     private bool shieldActive = false;
     private float lmbDownTime;
     private bool isHolding = false;
@@ -65,7 +65,7 @@ public class PlayerShield : MonoBehaviour
         }
     }
 
-    void ToggleShield(bool state)
+    public void ToggleShield(bool state)
     {
         shieldActive = state;
 
@@ -76,5 +76,9 @@ public class PlayerShield : MonoBehaviour
     public bool IsShieldActive()
     {
         return shieldActive;
+    }
+    public bool IsHoldingForShield()
+    {
+        return isHolding && !shieldActive && (Time.time - lmbDownTime < holdThreshold);
     }
 }
