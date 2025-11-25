@@ -15,13 +15,13 @@ GameObject:
   - component: {fileID: 5707101359141878053}
   - component: {fileID: 6409881112288836626}
   - component: {fileID: 5513740256882352360}
-  m_Layer: 0
-  m_Name: Shield 1
+  m_Layer: 9
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1197962576147425335
 Transform:
   m_ObjectHideFlags: 0
