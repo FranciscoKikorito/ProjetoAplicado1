@@ -23,7 +23,6 @@ public class LookAtPlayerBackup : MonoBehaviour
     private bool hasShot = false;
     private float aimTimer = 0f;
     private float laserTimer = 0f;
- 
     void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("PlayerFront");
@@ -111,8 +110,8 @@ public class LookAtPlayerBackup : MonoBehaviour
             
             laser.SetPosition(0, firePoint.position);
             laser.SetPosition(1, hit.point);
-
-            if (hit.transform == aimPoint)
+            
+            if (hit.collider.CompareTag("PlayerFront"))
                 ShootOnce();
         }
         else

@@ -10764,9 +10764,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6240615d2c6f65d40a54fe0e90e98479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShield
-  shieldObject: {fileID: 1517911390453104427}
+  shieldObject: {fileID: 7971365319545618096}
   shieldCollider: {fileID: 2057608246103202088}
   holdThreshold: 0.25
+  shieldOffset: {x: 0, y: 1, z: 1}
 --- !u!114 &5302452238692137627
 MonoBehaviour:
   m_ObjectHideFlags: 0
