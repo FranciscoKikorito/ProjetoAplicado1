@@ -18,12 +18,14 @@ public class JumpObstacles : MonoBehaviour
     public LayerMask groundLayer;
 
     private CharacterController controller;
+    //private Animator anim;
     private float verticalVelocity = 0f;
     private float clickStartTime = 0f;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        //anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -71,7 +73,9 @@ public class JumpObstacles : MonoBehaviour
     {
         isDashing = true;
         canDash = false;
-
+        
+        //anim.SetTrigger("JumpKick");
+        
         // Apanha todas as plataformas existentes
         PlatformMove[] platforms = Object.FindObjectsByType<PlatformMove>(FindObjectsSortMode.None);
 
@@ -104,4 +108,11 @@ public class JumpObstacles : MonoBehaviour
     {
         controller.Move(new Vector3(0, verticalVelocity, 0) * Time.deltaTime);
     }
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+      // if (isDashing && hit.collider.CompareTag("Wall"))
+       //{
+        // Destroy(hit.collider.gameObject);
+       //}
+   //}
 }

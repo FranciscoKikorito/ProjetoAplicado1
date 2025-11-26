@@ -12,8 +12,8 @@ public class LookAtPlayerBackup : MonoBehaviour
     [Header("Configurações")]
     public float rotationSpeed = 180f;
     public float maxRotationAngle = 45f;
-    public float detectionRange = 25f;
-    public float laserRange = 40f;
+    public float detectionRange = 40f;
+    public float laserRange = 17f;
     public float aimDelay = 1.5f;  
     public float maxLaserDuration = 1.2f;
     public ParticleSystem chargingParticles;
@@ -26,7 +26,7 @@ public class LookAtPlayerBackup : MonoBehaviour
  
     void Awake()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
+        var player = GameObject.FindGameObjectWithTag("PlayerFront");
         if (player != null)
         {
             lookAtTarget = player.transform;
@@ -59,8 +59,7 @@ public class LookAtPlayerBackup : MonoBehaviour
             StopCharge();
             return;
         }
-
-        // ROTACIONA
+        
         Quaternion targetRot = Quaternion.LookRotation(flatDir, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
         
@@ -126,7 +125,6 @@ public class LookAtPlayerBackup : MonoBehaviour
     void ShootOnce()
     {
         if (hasShot) return;
-
         hasShot = true;
         laser.enabled = false;
     }
