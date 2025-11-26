@@ -16,7 +16,7 @@ public class Jump : MonoBehaviour
     void Update()
     {
         
-        Vector3 rayOrigin = transform.position + Vector3.up * 0.1f;
+        Vector3 rayOrigin = transform.position + Vector3.up * 0.5f;
         bool isGrounded = Physics.Raycast(rayOrigin, Vector3.down, groundCheckDistance, groundLayer);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
