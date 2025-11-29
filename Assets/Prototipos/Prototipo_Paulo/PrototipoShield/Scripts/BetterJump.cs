@@ -3,7 +3,10 @@ using System.Collections;
 
 public class BetterJump : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Transform player;
+    [SerializeField] private PlayerShield playerShield; // <<< ARRASTA O SCRIPT DO PLAYER SHIELD PARA AQUI
+
     [Header("Jump Settings")]
     [SerializeField] private float jumpSpeed;
 
@@ -13,7 +16,7 @@ public class BetterJump : MonoBehaviour
 
     [Header("Dash Settings")]
     [SerializeField] public float dashDuration;
-    [SerializeField] public float clickThreshold;
+    [SerializeField] public float clickThreshold; // Deve ser menor que o holdThreshold do Shield (ex: 0.2s)
 
     private Rigidbody rb;
 
@@ -21,71 +24,109 @@ public class BetterJump : MonoBehaviour
     private bool canDash = false;
     private bool isDashing = false;
 
-    private float clickStartTime;
+    private float lastClickTime = -1f;
+    private bool waitingForSecondClick = false;
+
+    private bool pendingSingleClick = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
+        if (playerShield == null)
+            playerShield = GetComponent<PlayerShield>();
     }
 
     void Update()
     {
         CheckGround();
-        Jump();
-        Dash();
+        Clicks();
     }
+
     void CheckGround()
     {
         Vector3 origin = transform.position + Vector3.up * 0.5f;
+        
+        
 
         isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer);
 
         if (!isGrounded)
             canDash = true;
-
-        Debug.DrawRay(origin, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
     }
 
-    void Jump()
+    void Clicks()
     {
-        if (isGrounded && Input.GetMouseButtonDown(0))
-        {
-            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-
-            canDash = true;
-        }
-    }
-
-    void Dash()
-    {
-        if (isDashing) return;
-        
         if (Input.GetMouseButtonDown(0))
         {
-            if (Time.time - clickStartTime <= clickThreshold)
+            if (playerShield != null && playerShield.IsShieldActive()) return;
+
+            if (!waitingForSecondClick)
             {
-                if (!isGrounded && canDash)
-                    StartCoroutine(DoDash());
+                lastClickTime = Time.time;
+                waitingForSecondClick = true;
+                pendingSingleClick = true;  
+
+                StartCoroutine(ClickDelay());
             }
-            clickStartTime = Time.time;
+            else
+            {
+                if (Time.time - lastClickTime <= clickThreshold)
+                {
+                    waitingForSecondClick = false;
+                    pendingSingleClick = false;   // Cancela salto simples
+                    DoDoubleClickAction();        // Executa Dash
+                }
+            }
         }
     }
+
+    IEnumerator ClickDelay()
+    {
+        yield return new WaitForSeconds(clickThreshold);
+
+        if (waitingForSecondClick)
+        {
+            waitingForSecondClick = false;
+            
+            bool isHoldingButton = Input.GetMouseButton(0); 
+
+            if (pendingSingleClick && !isHoldingButton)
+            {
+                DoSingleClickAction();
+            }
+
+            pendingSingleClick = false;
+        }
+    }
+
+    void DoSingleClickAction()
+    {
+        
+        if (isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+        }
+    }
+
+    void DoDoubleClickAction()
+    {
+        if (!isGrounded && canDash && !isDashing)
+            StartCoroutine(DoDash());
+    }
+
     IEnumerator DoDash()
     {
-
         isDashing = true;
         canDash = false;
 
-        // Obtém todas as plataformas em cena
         MovePlatform[] platforms = Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
 
-        // Acelera
         foreach (var p in platforms)
             p.SetMoveDirection(player.transform.forward * -30f);
 
         yield return new WaitForSeconds(dashDuration);
 
-        // Volta ao normal
         foreach (var p in platforms)
             p.SetMoveDirection(player.transform.forward * -10f);
 

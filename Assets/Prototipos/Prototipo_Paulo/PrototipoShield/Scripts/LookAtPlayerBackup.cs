@@ -10,12 +10,12 @@ public class LookAtPlayerBackup : MonoBehaviour
     public GameObject hitEffectPrefab;
 
     [Header("Configurações")]
-    public float rotationSpeed = 180f;
-    public float maxRotationAngle = 45f;
-    public float detectionRange = 40f;
-    public float laserRange = 17f;
-    public float aimDelay = 1.5f;  
-    public float maxLaserDuration = 1.2f;
+    public float rotationSpeed;
+    public float maxRotationAngle ;
+    public float detectionRange;
+    public float laserRange;
+    public float aimDelay;  
+    public float maxLaserDuration;
     public ParticleSystem chargingParticles;
     
     private LineRenderer laser;
@@ -35,7 +35,7 @@ public class LookAtPlayerBackup : MonoBehaviour
         laser = GetComponent<LineRenderer>();
         laser.startColor = Color.orangeRed;
         laser.enabled = false;
-
+        
         if (firePoint == null)
             firePoint = transform;
     }
@@ -99,18 +99,18 @@ public class LookAtPlayerBackup : MonoBehaviour
     void FireLaser()
     {
         laser.enabled = true;
+        laser.positionCount = 2;
 
         Vector3 dir = (aimPoint.position - firePoint.position).normalized;
 
         if (Physics.Raycast(firePoint.position, dir, out RaycastHit hit, laserRange))
         {
-            
-            GameObject fx = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(fx, 1f);
-            
             laser.SetPosition(0, firePoint.position);
             laser.SetPosition(1, hit.point);
-            
+
+            GameObject fx = Instantiate(hitEffectPrefab, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(fx, 1f);
+
             if (hit.collider.CompareTag("PlayerFront"))
                 ShootOnce();
         }
