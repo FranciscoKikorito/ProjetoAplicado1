@@ -51,8 +51,10 @@ public class BetterJump : MonoBehaviour
 
         isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer);
 
-        if (!isGrounded)
+        if (isGrounded)
+        {
             canDash = true;
+        }
     }
 
     void Clicks()
