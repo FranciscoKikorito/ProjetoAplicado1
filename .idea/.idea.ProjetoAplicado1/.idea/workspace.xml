@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" afterDir="false" />
-    </list>
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +125,7 @@
       <workItem from="1764085945436" duration="11711000" />
       <workItem from="1764169360857" duration="10395000" />
       <workItem from="1764181619738" duration="1310000" />
-      <workItem from="1764413942209" duration="7128000" />
+      <workItem from="1764413942209" duration="7669000" />
     </task>
     <servers />
   </component>
