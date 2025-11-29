@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3f50f1ad90226e14c9f30e77d51cc0b9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255dc3114e7d1ac44af8fd765e3532e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathDestroy
-  maxPlatforms: 10
+  maxPlatforms: 15
 --- !u!114 &42264113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BetterJump
   player: {fileID: 46660347}
+  playerShield: {fileID: 0}
   jumpSpeed: 6
   groundCheckDistance: 0.65
   groundLayer:
@@ -1636,7 +1637,7 @@ GameObject:
   - component: {fileID: 365129428}
   - component: {fileID: 365129427}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: CameraTesting
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,8 +1651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365129425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.026636338, y: -0.37619647, z: 0.0125574, w: -0.9260719}
-  m_LocalPosition: {x: -2.5364952, y: 1.1394336, z: -0.43492508}
+  m_LocalRotation: {x: 0.021535523, y: 0.2449188, z: -0.0054231775, w: 0.96928924}
+  m_LocalPosition: {x: -1.7179508, y: 0.80189073, z: -0.23298645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1742,7 +1743,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 130
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2950,7 +2951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &824439418
 MonoBehaviour:
   m_ObjectHideFlags: 0
