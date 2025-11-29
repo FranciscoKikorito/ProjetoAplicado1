@@ -3,17 +3,17 @@ using System.Collections;
 
 public class BetterJump : MonoBehaviour
 {
-    [SerializeField] private Transform player; 
+    [SerializeField] private Transform player;
     [Header("Jump Settings")]
-    [SerializeField] private float jumpSpeed = 10f;
-    
+    [SerializeField] private float jumpSpeed;
+
     [Header("Ground Check")]
-    [SerializeField] private float groundCheckDistance = 0.4f;
+    [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Dash Settings")]
-    public float dashDuration = 0.15f;
-    public float clickThreshold = 0.2f;
+    [SerializeField] public float dashDuration;
+    [SerializeField] public float clickThreshold;
 
     private Rigidbody rb;
 
@@ -36,30 +36,30 @@ public class BetterJump : MonoBehaviour
     }
     void CheckGround()
     {
-        Vector3 origin = transform.position + Vector3.up * 0.1f;
+        Vector3 origin = transform.position + Vector3.up * 0.5f;
 
-        isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance,groundLayer);
+        isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer);
 
-        if (isGrounded)
-           canDash = true; 
+        if (!isGrounded)
+            canDash = true;
 
         Debug.DrawRay(origin, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
     }
-    
+
     void Jump()
     {
         if (isGrounded && Input.GetMouseButtonDown(0))
         {
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
-            
+
             canDash = true;
         }
     }
-    
+
     void Dash()
     {
         if (isDashing) return;
-        
+
         if (Input.GetMouseButtonDown(0))
             clickStartTime = Time.time;
 
@@ -75,16 +75,16 @@ public class BetterJump : MonoBehaviour
     }
     IEnumerator DoDash()
     {
-        
-       isDashing = true;
-       canDash = false;
+
+        isDashing = true;
+        canDash = false;
 
         // Obtém todas as plataformas em cena
         MovePlatform[] platforms = Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
 
         // Acelera
         foreach (var p in platforms)
-            p.SetMoveDirection(player.transform.forward * -30f); 
+            p.SetMoveDirection(player.transform.forward * -30f);
 
         yield return new WaitForSeconds(dashDuration);
 

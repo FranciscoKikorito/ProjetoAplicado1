@@ -73,7 +73,7 @@ public class ProceduralHouseSpawner : MonoBehaviour
                 Quaternion finalRot = point.rotation * Quaternion.Euler(0, yRotationOffset, 0);
                 GameObject instance = Instantiate(prefab, point.position, finalRot, point);
 
-                float randomY = Random.Range(0.8f, 1.2f);
+                float randomY = Random.Range(1f, 1.4f);
                 Vector3 originalScale = instance.transform.localScale;
                 instance.transform.localScale = new Vector3(originalScale.x, randomY, originalScale.z);
 

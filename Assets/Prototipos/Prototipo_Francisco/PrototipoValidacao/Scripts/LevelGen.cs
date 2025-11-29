@@ -6,10 +6,11 @@ public class LevelGen : MonoBehaviour
 {
     [SerializeField] public GameObject[] pathSections;
     [SerializeField] private GameObject turnRightSection;
+    [SerializeField] private GameObject turnLeftSection;
 
     [SerializeField] private GameObject furthestPlatform;
 
-    [SerializeField] private int platformIntervalRightTurn;
+    [SerializeField] private int platformIntervalTurn;
 
     private Transform pathList;
     private int sectionCount = 0;
@@ -27,10 +28,10 @@ public class LevelGen : MonoBehaviour
 
             GameObject prefabToSpawn;
 
-            bool isRightTurn = sectionCount % platformIntervalRightTurn == 0;
+            bool isTurn = sectionCount % platformIntervalTurn == 0;
 
-            if (isRightTurn)
-                prefabToSpawn = turnRightSection;
+            if (isTurn)
+                prefabToSpawn = Random.value < 0.5f ? turnLeftSection : turnRightSection;
             else
                 prefabToSpawn = pathSections[Random.Range(0, pathSections.Length)];
 

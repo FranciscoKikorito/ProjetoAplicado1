@@ -12,11 +12,13 @@ public class ProceduralHouseSpawnerTurn : MonoBehaviour
     [Header("Procedural Points")]
     public List<Transform> leftPointsList;
     public List<Transform> blockPointsList;
+    public List<Transform> outsidePointsList;
 
     void Start()
     {
         SpawnAtPoints(leftPointsList, 180f, true);
         SpawnAtPoints(blockPointsList, -90f, false);
+        SpawnAtPoints(outsidePointsList, -90f, false);
     }
 
     void SpawnAtPoints(List<Transform> points, float yRotationOffset, bool reverse)
@@ -43,7 +45,7 @@ public class ProceduralHouseSpawnerTurn : MonoBehaviour
                 Quaternion finalRot = point.rotation * Quaternion.Euler(0, yRotationOffset, 0);
                 GameObject instance = Instantiate(prefab, point.position, finalRot, point);
 
-                float randomY = Random.Range(0.8f, 1.2f);
+                float randomY = Random.Range(1f, 1.4f);
                 Vector3 originalScale = instance.transform.localScale;
                 instance.transform.localScale = new Vector3(originalScale.x, randomY, originalScale.z);
 
