@@ -120,7 +120,6 @@ public class LookAtPlayerBackup : MonoBehaviour
             laser.SetPosition(1, firePoint.position + dir * laserRange);
         }
     }
-
     void ShootOnce()
     {
         if (hasShot) return;
