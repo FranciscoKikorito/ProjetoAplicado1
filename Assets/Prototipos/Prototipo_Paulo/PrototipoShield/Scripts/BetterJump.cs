@@ -59,18 +59,15 @@ public class BetterJump : MonoBehaviour
     void Dash()
     {
         if (isDashing) return;
-
+        
         if (Input.GetMouseButtonDown(0))
-            clickStartTime = Time.time;
-
-        if (Input.GetMouseButtonUp(0))
         {
-            float clickDuration = Time.time - clickStartTime;
-
-            if (!isGrounded && canDash && clickDuration <= clickThreshold)
+            if (Time.time - clickStartTime <= clickThreshold)
             {
-                StartCoroutine(DoDash());
+                if (!isGrounded && canDash)
+                    StartCoroutine(DoDash());
             }
+            clickStartTime = Time.time;
         }
     }
     IEnumerator DoDash()
