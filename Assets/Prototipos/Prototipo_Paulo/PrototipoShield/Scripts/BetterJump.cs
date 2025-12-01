@@ -117,7 +117,12 @@ public class BetterJump : MonoBehaviour
     void DoDoubleClickAction()
     {
         if (!isGrounded && canDash && !isDashing)
+        {
+            if (animator != null)
+                animator.SetTrigger("Slash");
+
             StartCoroutine(DoDash());
+        }
     }
 
     IEnumerator DoDash()

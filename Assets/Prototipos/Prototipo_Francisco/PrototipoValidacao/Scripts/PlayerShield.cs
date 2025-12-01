@@ -13,9 +13,12 @@ public class PlayerShield : MonoBehaviour
     private bool shieldActive = false;
     private float lmbDownTime;
     private bool isHolding = false;
-
+    private Animator animator;
+    
     void Start()
     {
+        animator = GetComponent<Animator>();
+        
         if (shieldObject != null)
             shieldObject.gameObject.SetActive(false);
 
@@ -81,6 +84,8 @@ public class PlayerShield : MonoBehaviour
 
         if (shieldObject != null)
             shieldObject.gameObject.SetActive(state);
+        if (animator != null)
+            animator.SetBool("isShielding", state);
     }
 
     public bool IsShieldActive() => shieldActive;

@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Boy.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Boy.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/New_Boy.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/New_Boy.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Francisco/PrototipoValidacao/Scripts/PlayerShield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Francisco/PrototipoValidacao/Scripts/PlayerShield.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/New_Boy_1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/New_Boy_1.fbx.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +133,7 @@
       <workItem from="1764181619738" duration="1310000" />
       <workItem from="1764413942209" duration="9663000" />
       <workItem from="1764540268222" duration="10074000" />
+      <workItem from="1764610160396" duration="4506000" />
     </task>
     <servers />
   </component>
