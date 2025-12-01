@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Boy.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Boy.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/New_Boy.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/New_Boy.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prototipo Final.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +24,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/ObstacleDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.formats.fbx@86d1698ebb13/Editor/FbxExporter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -125,7 +134,8 @@
       <workItem from="1764085945436" duration="11711000" />
       <workItem from="1764169360857" duration="10395000" />
       <workItem from="1764181619738" duration="1310000" />
-      <workItem from="1764413942209" duration="8053000" />
+      <workItem from="1764413942209" duration="9663000" />
+      <workItem from="1764540268222" duration="10074000" />
     </task>
     <servers />
   </component>

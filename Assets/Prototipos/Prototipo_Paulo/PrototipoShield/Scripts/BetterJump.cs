@@ -5,7 +5,7 @@ public class BetterJump : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform player;
-    [SerializeField] private PlayerShield playerShield; // <<< ARRASTA O SCRIPT DO PLAYER SHIELD PARA AQUI
+    [SerializeField] private PlayerShield playerShield; 
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpSpeed;
@@ -16,10 +16,10 @@ public class BetterJump : MonoBehaviour
 
     [Header("Dash Settings")]
     [SerializeField] public float dashDuration;
-    [SerializeField] public float clickThreshold; // Deve ser menor que o holdThreshold do Shield (ex: 0.2s)
-
+    [SerializeField] public float clickThreshold; 
     private Rigidbody rb;
-
+    private Animator animator;
+    
     private bool isGrounded;
     private bool canDash = false;
     private bool isDashing = false;
@@ -32,7 +32,7 @@ public class BetterJump : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+        animator = GetComponent<Animator>();
         if (playerShield == null)
             playerShield = GetComponent<PlayerShield>();
     }
@@ -40,6 +40,9 @@ public class BetterJump : MonoBehaviour
     void Update()
     {
         CheckGround();
+        if (animator != null)
+            animator.SetBool("isGrounded", isGrounded);
+            animator.SetBool("isRunning", isGrounded);
         Clicks();
     }
 
@@ -47,8 +50,6 @@ public class BetterJump : MonoBehaviour
     {
         Vector3 origin = transform.position + Vector3.up * 0.5f;
         
-        
-
         isGrounded = Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundLayer);
 
         if (isGrounded)
@@ -76,8 +77,8 @@ public class BetterJump : MonoBehaviour
                 if (Time.time - lastClickTime <= clickThreshold)
                 {
                     waitingForSecondClick = false;
-                    pendingSingleClick = false;   // Cancela salto simples
-                    DoDoubleClickAction();        // Executa Dash
+                    pendingSingleClick = false;   
+                    DoDoubleClickAction();      
                 }
             }
         }
@@ -108,6 +109,8 @@ public class BetterJump : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+            if (animator != null)
+                animator.SetTrigger("Jump");
         }
     }
 

@@ -112,7 +112,13 @@ public class LookAtPlayerBackup : MonoBehaviour
             Destroy(fx, 1f);
 
             if (hit.collider.CompareTag("PlayerFront"))
+            {
+                PlayerLives health = hit.collider.GetComponentInParent<PlayerLives>();
+
+                if (health != null)
+                    health.ApplyDamage(1);
                 ShootOnce();
+            }
         }
         else
         {
