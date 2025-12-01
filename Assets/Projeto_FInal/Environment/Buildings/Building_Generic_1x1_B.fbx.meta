@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MAT_Houses
+    second: {fileID: 2100000, guid: 59ce32af08375ab4c81244f4221b5727, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: TD_Checker
     second: {fileID: 2100000, guid: 47c0a65798644224b81ce37453a4d0f7, type: 2}
   materials:
