@@ -13,10 +13,8 @@ public class TurnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("RightTurnTrigger"))
+        if (other.CompareTag("TurnTrigger"))
         {
-            //Debug.Log("RightTurnTrigger activated");
-            //-10f Porque da a seta azul ao contrario?
             Vector3 newDirection = other.transform.forward * 10f;
             parentMover.SetMoveDirection(-newDirection);
 

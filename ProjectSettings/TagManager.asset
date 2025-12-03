@@ -13,9 +13,11 @@ TagManager:
   - Trigger
   - Shield
   - LaserStop
-  - RightTurnTrigger
   - DestroyTrigger
   - Obstacle
+  - TurnTrigger
+  - RightTurnTrigger
+  - RotationTrigger
   layers:
   - Default
   - TransparentFX
