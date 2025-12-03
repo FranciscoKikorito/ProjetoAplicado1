@@ -1566,8 +1566,6 @@ MonoBehaviour:
   spawnPrefabs1x2:
   - {fileID: 4116506216292982476, guid: cc94752a2a9d1684ba06c2f1c5baba53, type: 3}
   - {fileID: 4925709454952428941, guid: 8ad3bd311bef23d44908c1d38e41f128, type: 3}
-  - {fileID: 2647762915253665789, guid: dd4093cef1927a544ab951aee1e546df, type: 3}
-  - {fileID: 9124727383619217467, guid: df80e433827eb8240b543e3c47824508, type: 3}
   spawnPrefabs1x3:
   - {fileID: 4477924452522372769, guid: 3152cd360be97324f95a60aca846f8d9, type: 3}
   - {fileID: 5682119655151673017, guid: 0ec00e58d54b3c945bce4e1a0bbae6d3, type: 3}
