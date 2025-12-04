@@ -33,10 +33,10 @@ Material:
   - DIFFUSE_PER_PIXEL
   - EMISSIVE_MAP
   - FOG
-  - HEIGHT_COLORS
   - MATCAP_PERSPECTIVE
   - MIXED_LIGHTING
   - OUTLINE_PASS_DISABLED
+  - RIM_DIRECTION
   - SHADOWS_ENABLED
   - _DETAILBLEND_MULTIPLY
   - _DETAILUV_UV1
@@ -228,8 +228,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HeightColors: 1
-    - _HeightColorsAlpha: 0.1
+    - _HeightColors: 0
+    - _HeightColorsAlpha: 0
     - _HeightColorsBlend: 0
     - _HeightColorsEdgeThickness: 0.9
     - _HeightColorsHeight: 0
@@ -269,7 +269,7 @@ Material:
     - _OutlineComp: 8
     - _OutlineGroup: 0
     - _OutlinePass: 0
-    - _OutlineWidth: 0.002
+    - _OutlineWidth: 0
     - _OutlineWidthIndependent: 0
     - _OutlineZPos: 0
     - _Parallax: 0.005
@@ -288,7 +288,7 @@ Material:
     - _ReflectionRim: 0
     - _ReflectionSpecular: 0
     - _Rim: 0
-    - _RimAmount: 1
+    - _RimAmount: 18.1
     - _RimBlend: 1
     - _RimContrast: 0
     - _RimInverse: 0
@@ -347,7 +347,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.5029666, g: 0.91732216, b: 0.9245283, a: 1}
-    - _Emissive: {r: 0.5029666, g: 0.91732216, b: 0.9245283, a: 1}
+    - _Emissive: {r: 0.27014354, g: 0.5420397, b: 0.5471698, a: 1}
     - _HeightColorsColor: {r: 0.576955, g: 0.8301887, b: 0.8109176, a: 1}
     - _Layer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _Layer2Color: {r: 1, g: 1, b: 1, a: 1}
@@ -358,9 +358,9 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _RimDirection: {r: 8.65, g: 4.78, b: 61.11, a: -7.51}
     - _ShadowColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.47339892, g: 0.8050314, b: 0.7794402, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
