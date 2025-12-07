@@ -581,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RightTurnTrigger
   player: {fileID: 46660339}
+  rotationSpeed: 8
 --- !u!114 &46660342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19773,6 +19774,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1055481438894053424, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: visualModel
+      value: 
+      objectReference: {fileID: 272499461}
+    - target: {fileID: 1055481438894053424, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: rotationSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2265115806253518347, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: field of view
       value: 60.000004
@@ -19821,6 +19830,10 @@ PrefabInstance:
       propertyPath: furthestPlatform
       value: 
       objectReference: {fileID: 639896152}
+    - target: {fileID: 3330701531451866108, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: 'pathSections.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6747802466002032290, guid: 9585e214c33b1244392fe2f4e1ac09f3, type: 3}
     - target: {fileID: 3362056363014415361, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: shieldObject
       value: 
