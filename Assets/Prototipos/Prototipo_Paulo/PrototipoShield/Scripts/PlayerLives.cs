@@ -16,8 +16,7 @@ public class PlayerLives: MonoBehaviour
     
     [Header("SFX")]
     public AudioSource audioSource;
-    public AudioClip playerHitSFX;
-    
+    public AudioClip hitByLaserSFX;
     void Awake()
     {
         renderers = playerModel.GetComponentsInChildren<Renderer>();
@@ -31,6 +30,8 @@ public class PlayerLives: MonoBehaviour
     {
         lives -= amount;
         Debug.Log("Player levou dano. Vidas restantes: " + lives);
+        if (audioSource && hitByLaserSFX)
+            audioSource.PlayOneShot(hitByLaserSFX);
 
         StartCoroutine(FlashEffect());
 

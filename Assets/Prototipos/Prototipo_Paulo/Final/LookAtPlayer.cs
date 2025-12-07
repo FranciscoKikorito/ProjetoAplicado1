@@ -22,11 +22,12 @@ public class LookAtPlayer : MonoBehaviour
     private bool hasShot = false;
     private float aimTimer = 0f;
     private float laserTimer = 0f;
+    private bool laserSoundPlayed = false;
     
     [Header("SFX")]
     public AudioSource audioSource;
+    public AudioClip laserShotSFX;  
     public AudioClip hitShieldSFX;
-    public AudioClip hitPlayerSFX;
     void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -37,6 +38,7 @@ public class LookAtPlayer : MonoBehaviour
         }
 
         laser = GetComponent<LineRenderer>();
+        laser.positionCount = 2;
         laser.startColor = Color.orangeRed;
         laser.enabled = false;
 
@@ -104,7 +106,16 @@ public class LookAtPlayer : MonoBehaviour
     void FireLaser()
     {
         laser.enabled = true;
+        
+        // SFX do disparo do laser (toca só uma vez)
+        if (!laserSoundPlayed)
+        {
+            laserSoundPlayed = true;
 
+            if (audioSource && laserShotSFX)
+                audioSource.PlayOneShot(laserShotSFX);
+        }
+        
         Vector3 dir = (aimPoint.position - firePoint.position).normalized;
 
         // Pegamos todos os hits
@@ -165,10 +176,7 @@ public class LookAtPlayer : MonoBehaviour
         PlayerLives hp = lookAtTarget.GetComponent<PlayerLives>();
         if (hp != null)
         {
-            if (audioSource && hitPlayerSFX)
-                audioSource.PlayOneShot(hitPlayerSFX);
             hp.ApplyDamage(1);
-            
         }
 
         hasShot = true;
