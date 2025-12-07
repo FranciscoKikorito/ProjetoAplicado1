@@ -14,8 +14,10 @@ public class PlayerShield : MonoBehaviour
     public Vector3 shieldOffset = new Vector3(0, 1.0f, 1.0f);
     
     [Header("SFX Shield")]
-    public AudioSource audioSource;
-    public AudioClip shieldSFX;
+    public AudioSource shieldLoopSource;
+    public AudioSource shieldOneShotSource;
+    public AudioClip shieldOnSFX;
+    public AudioClip shieldOffSFX; 
     
     private bool shieldActive = false;
     private float lmbDownTime;
@@ -100,18 +102,26 @@ public class PlayerShield : MonoBehaviour
         if (animator != null)
             animator.SetBool("isShielding", state);
 
-        if (audioSource != null && shieldSFX != null)
+        if (state) 
         {
-            if (state) // ativar shield → toca o som
+            shieldOneShotSource.Stop();
+
+            if (shieldOnSFX != null)
             {
-                audioSource.clip = shieldSFX;
-                audioSource.loop = true; // se quiser som contínuo enquanto segura
-                audioSource.Play();
+                shieldLoopSource.clip = shieldOnSFX;
+                shieldLoopSource.loop = true;
+                shieldLoopSource.volume = 0.05f;
+                shieldLoopSource.Play();
             }
-            else // desativar shield → parar som
+        }
+        else 
+        {
+            shieldLoopSource.Stop();
+
+            if (shieldOffSFX != null)
             {
-                audioSource.Stop();
-                audioSource.clip = null;
+                shieldOneShotSource.volume = 0.02f;
+                shieldOneShotSource.PlayOneShot(shieldOffSFX);
             }
         }
     }
