@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+    
 [RequireComponent(typeof(LineRenderer))]
 public class LookAtPlayer : MonoBehaviour
 {
@@ -107,13 +108,11 @@ public class LookAtPlayer : MonoBehaviour
     {
         laser.enabled = true;
         
-        // SFX do disparo do laser (toca só uma vez)
+        // SFX do disparo do laser
         if (!laserSoundPlayed)
         {
             laserSoundPlayed = true;
-
-            if (audioSource && laserShotSFX)
-                audioSource.PlayOneShot(laserShotSFX);
+            StartCoroutine(PlayLaserShotSFXDelayed(0.5f)); 
         }
         
         Vector3 dir = (aimPoint.position - firePoint.position).normalized;
@@ -181,6 +180,13 @@ public class LookAtPlayer : MonoBehaviour
 
         hasShot = true;
         laser.enabled = false;
+    }
+    IEnumerator PlayLaserShotSFXDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (audioSource && laserShotSFX)
+            audioSource.PlayOneShot(laserShotSFX);
     }
     void OnDrawGizmos()
     {
