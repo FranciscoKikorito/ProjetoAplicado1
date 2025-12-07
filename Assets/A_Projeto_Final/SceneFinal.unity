@@ -570,6 +570,9 @@ MonoBehaviour:
   shieldOneShotSource: {fileID: 0}
   shieldOnSFX: {fileID: 0}
   shieldOffSFX: {fileID: 0}
+  blockedAnimations:
+  - StandUp
+  - Idle_Start
 --- !u!114 &46660341
 MonoBehaviour:
   m_ObjectHideFlags: 0
