@@ -6,8 +6,10 @@ public class ObstacleSpawner : MonoBehaviour
     [Header("Obstacle Prefab")]
     public GameObject tube;
 
-    [Header("Tube Spawn Points (some may contain child points)")]
+    [Header("Tube Spawn Points")]
     public List<Transform> tubePossibleSpawnsList;
+
+    private int lastChosenIndex = -1;
 
     void Start()
     {
@@ -28,7 +30,15 @@ public class ObstacleSpawner : MonoBehaviour
             return;
         }
 
-        int randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
+        int randomIndex;
+
+        do
+        {
+            randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
+        } while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastChosenIndex);
+
+        lastChosenIndex = randomIndex;
+
         Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
 
         if (chosenPoint.childCount > 0)

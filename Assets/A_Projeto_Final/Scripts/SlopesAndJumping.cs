@@ -41,6 +41,7 @@ public class SlopesAndJumping : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip jumpSFX;
     public AudioClip slashSFX;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,6 +63,7 @@ public class SlopesAndJumping : MonoBehaviour
             animator.SetBool("isGrounded", isGrounded);
             animator.SetBool("isRunning", isGrounded);
         }
+        //Debug.Log($"isJumping: {isJumping}, isGrounded: {isGrounded}, airborneTimer: {airborneTimer:F3}, rb.velocity.y: {rb.linearVelocity.y:F3}");
     }
 
     private void FixedUpdate()
@@ -83,11 +85,13 @@ public class SlopesAndJumping : MonoBehaviour
 
         // Track air time
         if (!isGrounded)
+        {
             airborneTimer += Time.fixedDeltaTime;
-
+        }
         else
         {
-            if (isJumping && rb.linearVelocity.y <= 0.05f && airborneTimer >= minAirTime)
+            // –– OPTION A: Reset isJumping safely when touching ground
+            if (isJumping && airborneTimer >= minAirTime)
             {
                 isJumping = false;
                 airborneTimer = 0f;
@@ -98,10 +102,11 @@ public class SlopesAndJumping : MonoBehaviour
             }
         }
 
-        // DO NOT apply ground sticking while jumping
-        if (isJumping)
+        // –– OPTION B: Skip ground snapping while jumping or dashing
+        if (isJumping || isDashing)
             return;
 
+        // Ground snapping
         if (isGrounded)
         {
             float targetY = hitInfo.point.y + desiredHeight;
@@ -166,6 +171,13 @@ public class SlopesAndJumping : MonoBehaviour
 
     void DoSingleClickAction()
     {
+        // –– OPTION C: Fix stuck state if both flags true
+        if (isJumping && isGrounded)
+        {
+            isJumping = false;
+            airborneTimer = 0f;
+        }
+
         if (isGrounded && !isJumping)
         {
             isJumping = true;
