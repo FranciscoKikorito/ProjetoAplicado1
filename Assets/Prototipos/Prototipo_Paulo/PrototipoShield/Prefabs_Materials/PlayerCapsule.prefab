@@ -268,9 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6240615d2c6f65d40a54fe0e90e98479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShield
-  shieldObject: {fileID: 7481104695589461116}
+  shieldObject: {fileID: 1200391893286664637}
   shieldCollider: {fileID: 9020136477461685914}
   holdThreshold: 0.25
+  shieldOffset: {x: 0, y: 1, z: 1}
 --- !u!114 &9030334683570685589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JumpObstacles
   jumpForce: 12
   gravity: -20
-  dashForce: 18
   dashDuration: 0.15
   clickThreshold: 0.2
   groundLayer:

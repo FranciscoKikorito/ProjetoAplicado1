@@ -13,11 +13,15 @@ public class PlayerLives: MonoBehaviour
 
     private Material[] originalMaterials;
     private Renderer[] renderers;
-
+    
+    [Header("SFX")]
+    public AudioSource audioSource;
+    public AudioClip playerHitSFX;
+    
     void Awake()
     {
         renderers = playerModel.GetComponentsInChildren<Renderer>();
-
+        
         originalMaterials = new Material[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
             originalMaterials[i] = renderers[i].material;

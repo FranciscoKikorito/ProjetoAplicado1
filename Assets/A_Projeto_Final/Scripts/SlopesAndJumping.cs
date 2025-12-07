@@ -19,7 +19,7 @@ public class SlopesAndJumping : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpForce = 7f;
     public float minAirTime = 0.08f;
-
+   
     private Rigidbody rb;
     private RaycastHit hitInfo;
     private bool isGrounded = false;
@@ -36,7 +36,11 @@ public class SlopesAndJumping : MonoBehaviour
     private float lastClickTime = -1f;
     private bool waitingForSecondClick = false;
     private bool pendingSingleClick = false;
-
+    
+    [Header("SFX Mecanicas")]
+    public AudioSource audioSource;
+    public AudioClip jumpSFX;
+    public AudioClip slashSFX;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -116,10 +120,10 @@ public class SlopesAndJumping : MonoBehaviour
 
     void Clicks()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameStartController.canJump && Input.GetMouseButtonDown(0))
         {
             if (playerShield != null && playerShield.IsShieldActive()) return;
-
+           
             if (!waitingForSecondClick)
             {
                 lastClickTime = Time.time;
@@ -168,7 +172,10 @@ public class SlopesAndJumping : MonoBehaviour
             airborneTimer = 0f;
 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
+            // play jump SFX
+            if (audioSource != null && jumpSFX != null)
+                audioSource.PlayOneShot(jumpSFX);
+            
             if (animator != null)
                 animator.SetTrigger("Jump");
         }
@@ -180,6 +187,9 @@ public class SlopesAndJumping : MonoBehaviour
     {
         if (!isGrounded && canDash && !isDashing)
         {
+            // SFX do dash
+            if (audioSource != null && slashSFX != null)
+                audioSource.PlayOneShot(slashSFX);
             if (animator != null)
                 animator.SetTrigger("Slash");
 

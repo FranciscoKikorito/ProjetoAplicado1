@@ -112,7 +112,47 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: EN_Tube_Jump(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: EN_Tube_Jump(Clone)
+      position: {x: -1.021481, y: -0.034209557, z: -0.1076919}
+      rotation: {x: -0.5063538, y: 0.49356452, z: -0.49356443, w: 0.50635374}
+      scale: {x: 196.34401, y: 196.34402, z: 196.34401}
+    - name: Bone
+      parentName: Armature
+      position: {x: -0.004137731, y: 0.0000000020861626, z: -0.037236813}
+      rotation: {x: 0.6033701, y: -0.36870664, z: 0.3687066, w: 0.6033701}
+      scale: {x: 0.9999998, y: 0.9999998, z: 0.99999994}
+    - name: Bone.001
+      parentName: Bone
+      position: {x: -3.352769e-10, y: 0.020568715, z: -7.81597e-16}
+      rotation: {x: -0.0000008940697, y: 0.0000054836273, z: -0.024087474, w: 0.9997099}
+      scale: {x: 0.99999976, y: 1, z: 0.99999976}
+    - name: Bone.002
+      parentName: Bone.001
+      position: {x: -4.2788312e-10, y: 0.019665986, z: -1.4210854e-15}
+      rotation: {x: -0.0000032555868, y: -0.000014300226, z: 0.024356551, w: 0.99970335}
+      scale: {x: 1, y: 1.0000001, z: 0.9999999}
+    - name: Bone.003
+      parentName: Bone.002
+      position: {x: -3.75632e-10, y: 0.014223744, z: -3.1832315e-14}
+      rotation: {x: 0.0005899389, y: 0.0013497241, z: -0.40346515, w: 0.9149939}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Bone.003_end
+      parentName: Bone.003
+      position: {x: -0, y: 0.010552706, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cable
+      parentName: EN_Tube_Jump(Clone)
+      position: {x: 0.00000014084817, y: 0.0000000026645033, z: 0.000000016288984}
+      rotation: {x: 1.4099832e-14, y: 7.382983e-15, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999976}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

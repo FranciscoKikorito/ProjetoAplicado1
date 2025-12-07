@@ -4,12 +4,19 @@ public class PlayerShield : MonoBehaviour
 {
     [Header("Referências")]
     public Transform shieldObject; 
-    public Collider shieldCollider;
-
+    public Collider shieldCollider; 
+    
+    [Header("Rotação do Shield")]
+    public Vector3 shieldRotationOffset = new Vector3(-90f, 0f, 0f);
+    
     [Header("Configuração")]
     public float holdThreshold = 0.25f;
     public Vector3 shieldOffset = new Vector3(0, 1.0f, 1.0f);
-
+    
+    [Header("SFX Shield")]
+    public AudioSource audioSource;
+    public AudioClip shieldSFX;
+    
     private bool shieldActive = false;
     private float lmbDownTime;
     private bool isHolding = false;
@@ -74,20 +81,40 @@ public class PlayerShield : MonoBehaviour
     {
         if (shieldObject == null) return;
 
-        shieldObject.position = transform.position + transform.TransformDirection(shieldOffset);
-        shieldObject.rotation = transform.rotation;
+        shieldObject.position =
+            transform.position + transform.TransformDirection(shieldOffset);
+
+        shieldObject.rotation =
+            transform.rotation * Quaternion.Euler(shieldRotationOffset);
     }
 
     public void ToggleShield(bool state)
     {
+        if (shieldActive == state) return;
+
         shieldActive = state;
 
         if (shieldObject != null)
             shieldObject.gameObject.SetActive(state);
+
         if (animator != null)
             animator.SetBool("isShielding", state);
-    }
 
+        if (audioSource != null && shieldSFX != null)
+        {
+            if (state) // ativar shield → toca o som
+            {
+                audioSource.clip = shieldSFX;
+                audioSource.loop = true; // se quiser som contínuo enquanto segura
+                audioSource.Play();
+            }
+            else // desativar shield → parar som
+            {
+                audioSource.Stop();
+                audioSource.clip = null;
+            }
+        }
+    }
     public bool IsShieldActive() => shieldActive;
 
     public bool IsHoldingForShield()

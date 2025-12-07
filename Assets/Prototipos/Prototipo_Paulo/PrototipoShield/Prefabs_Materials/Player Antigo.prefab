@@ -181,9 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6240615d2c6f65d40a54fe0e90e98479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShield
-  shieldObject: {fileID: 4802227831256646952}
+  shieldObject: {fileID: 7580017589096259984}
   shieldCollider: {fileID: 2406573266409305525}
   holdThreshold: 0.25
+  shieldOffset: {x: 0, y: 1, z: 1}
 --- !u!114 &8926151555685724007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4307,11 +4308,6 @@ PrefabInstance:
 --- !u!64 &2406573266409305525 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 6409881112288836626, guid: 7b4f375d66f0c5c4fb2ceb1914fd06fd, type: 3}
-  m_PrefabInstance: {fileID: 8759964493904152999}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4802227831256646952 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4266410296496426127, guid: 7b4f375d66f0c5c4fb2ceb1914fd06fd, type: 3}
   m_PrefabInstance: {fileID: 8759964493904152999}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7580017589096259984 stripped
