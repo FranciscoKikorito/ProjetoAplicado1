@@ -1,0 +1,189 @@
+using UnityEngine;
+
+[RequireComponent(typeof(LineRenderer))]
+public class LookAtPlayer : MonoBehaviour
+{
+    public Transform lookAtTarget;
+    public Transform firePoint;
+    public Transform aimPoint;
+    public GameObject hitEffectPrefab;
+
+    [Header("Configurações")]
+    public float rotationSpeed = 180f;
+    public float maxRotationAngle = 45f;
+    public float detectionRange = 25f;
+    public float laserRange = 40f;
+    public float aimDelay = 1.5f;  
+    public float maxLaserDuration = 1.2f;
+    public ParticleSystem chargingParticles;
+    
+    private LineRenderer laser;
+    private bool isAiming = false;
+    private bool hasShot = false;
+    private float aimTimer = 0f;
+    private float laserTimer = 0f;
+    
+    [Header("SFX")]
+    public AudioSource audioSource;
+    public AudioClip hitShieldSFX;
+    public AudioClip hitPlayerSFX;
+    void Awake()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            lookAtTarget = player.transform;
+            aimPoint = player.transform.Find("AimPoint");
+        }
+
+        laser = GetComponent<LineRenderer>();
+        laser.startColor = Color.orangeRed;
+        laser.enabled = false;
+
+        if (firePoint == null)
+            firePoint = transform;
+    }
+
+    void Update()
+    {
+        if (hasShot || lookAtTarget == null)
+        {
+            laser.enabled = false;
+            return;
+        }
+
+        Vector3 dir = (aimPoint.position - transform.position);
+        float dist = dir.magnitude;
+        Vector3 flatDir = new Vector3(dir.x, 0, dir.z);
+        float angle = Vector3.Angle(transform.forward, flatDir);
+
+        if (dist > detectionRange || angle > maxRotationAngle)
+        {
+            StopCharge();
+            return;
+        }
+
+        // ROTACIONA
+        Quaternion targetRot = Quaternion.LookRotation(flatDir, Vector3.up);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+        
+        if (!isAiming)
+        {
+            isAiming = true;
+            aimTimer = 0f;
+
+            if (chargingParticles != null)
+                chargingParticles.Play();
+        }
+        
+        if (aimTimer < aimDelay)
+        {
+            aimTimer += Time.deltaTime;
+            return;
+        }
+        
+        StopCharge();
+        
+        if (laserTimer < maxLaserDuration)
+        {
+            laserTimer += Time.deltaTime;
+            FireLaser();
+        }
+        else
+        {
+            ShootOnce();
+        }
+    }
+
+    void StopCharge()
+    {
+        if (chargingParticles != null)
+            chargingParticles.Stop();
+    }
+
+    void FireLaser()
+    {
+        laser.enabled = true;
+
+        Vector3 dir = (aimPoint.position - firePoint.position).normalized;
+
+        // Pegamos todos os hits
+        RaycastHit[] hits = Physics.RaycastAll(firePoint.position, dir, laserRange);
+
+        // Hit válido final
+        RaycastHit validHit = new RaycastHit();
+        bool found = false;
+
+        foreach (var h in hits)
+        {
+            // ignorar triggers invisíveis do mapa
+            if (h.collider.CompareTag("Trigger") || h.collider.CompareTag("RotationTrigger"))
+                continue;
+
+            // prioridade máxima → SHIELD
+            if (h.collider.CompareTag("Shield"))
+            {
+                validHit = h;
+                found = true;
+                break;
+            }
+
+            // qualquer outro objeto válido
+            validHit = h;
+            found = true;
+            break;
+        }
+
+        if (found)
+        {
+            // efeitos
+            GameObject fx = Instantiate(hitEffectPrefab, validHit.point, Quaternion.LookRotation(validHit.normal));
+            Destroy(fx, 1f);
+
+            laser.SetPosition(0, firePoint.position);
+            laser.SetPosition(1, validHit.point);
+
+            // SE ATINGIU SHIELD → PARA
+            if (validHit.collider.CompareTag("Shield"))
+            {
+                hasShot = true;
+                if (audioSource && hitShieldSFX)
+                    audioSource.PlayOneShot(hitShieldSFX);
+                return;
+            }
+
+            // SE ATINGIU AIMPOINT → DANO
+            if (validHit.transform == aimPoint)
+                ShootOnce();
+        }
+    }
+
+    void ShootOnce()
+    {
+        if (hasShot) return;
+
+        PlayerLives hp = lookAtTarget.GetComponent<PlayerLives>();
+        if (hp != null)
+        {
+            if (audioSource && hitPlayerSFX)
+                audioSource.PlayOneShot(hitPlayerSFX);
+            hp.ApplyDamage(1);
+            
+        }
+
+        hasShot = true;
+        laser.enabled = false;
+    }
+    void OnDrawGizmos()
+    {
+        if (firePoint == null || aimPoint == null) return;
+
+        // Linha do laser
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(firePoint.position, aimPoint.position);
+
+        // Seta apontando para o AimPoint
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(firePoint.position, (aimPoint.position - firePoint.position).normalized * 1f);
+    }
+}
