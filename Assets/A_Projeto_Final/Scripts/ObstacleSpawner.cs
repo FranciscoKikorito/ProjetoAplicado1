@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-
-    [Header("Obstacles")]
+    [Header("Obstacle Prefab")]
     public GameObject tube;
 
-    [Header("Tube Spawn Points")]
+    [Header("Tube Spawn Points (some may contain child points)")]
     public List<Transform> tubePossibleSpawnsList;
 
     void Start()
@@ -17,35 +16,41 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void SpawnTubes()
     {
-        if (tubePossibleSpawnsList.Count == 0)
+        if (tube == null)
         {
-            Debug.LogWarning("RoadSpawner: No road prefabs assigned!");
+            Debug.LogWarning("ObstacleSpawner: Tube prefab not assigned!");
             return;
         }
 
         if (tubePossibleSpawnsList.Count == 0)
         {
-            Debug.LogWarning("RoadSpawner: No spawn points assigned!");
+            Debug.LogWarning("ObstacleSpawner: No spawn points assigned!");
             return;
         }
 
-        /*
-        foreach (Transform point in tubePossibleSpawnsList)
+        // Pick a random spawn point
+        int randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
+        Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
+
+        // Check if the chosen point has children
+        if (chosenPoint.childCount > 0)
         {
-            if (point == null) continue;
-
-            SpawnRandomRoad(point);
+            // Spawn on ALL children (paired spawn)
+            for (int i = 0; i < chosenPoint.childCount; i++)
+            {
+                Transform child = chosenPoint.GetChild(i);
+                SpawnTube(child);
+            }
         }
-        */
-        SpawnRandomTube(tubePossibleSpawnsList[0]);
-
+        else
+        {
+            // Normal single-point spawn
+            SpawnTube(chosenPoint);
+        }
     }
 
-    private void SpawnRandomTube(Transform parentPoint)
+    private void SpawnTube(Transform spawnPoint)
     {
-        //int index = Random.Range(0, roadPrefabs.Count);
-        GameObject prefab = tube;
-
-        Instantiate(prefab, parentPoint.position, parentPoint.rotation, parentPoint);
+        Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 }
