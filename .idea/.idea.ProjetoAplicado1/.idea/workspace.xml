@@ -6,33 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/SlopesAndJumping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/SlopesAndJumping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Characters/Enemies/EN_Tube_Jump.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Mirza Beig/Volumetric Fog (Lite)/Materials/Fog/Composite.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Mirza Beig/Volumetric Fog (Lite)/Materials/Fog/Composite.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Shaders/Cloud_Shadows/Clouds_CustomRenderTexture.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Shaders/Cloud_Shadows/Clouds_CustomRenderTexture.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/bezier.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/bezier.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/helix.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/helix.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/polygonLine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/polygonLine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/sinusWaves.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/prefabs/sinusWaves.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/trailtexture/lightningSeamless.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/VFX/magicEnergyLineGeneratorLite/trailtexture/lightningSeamless.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Jogo/Level_1/Materials/LaserRed.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Jogo/Level_1/Materials/LaserRed.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Lightning Hit 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Lightning Hit 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Player  (1).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Player  (1).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Player Antigo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/Player Antigo.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/PlayerCapsule.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Prefabs_Materials/PlayerCapsule.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/Not Using/LookAtPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/Not Using/LookAtPlayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Flat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Flat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Height Colors + Shadow Overlay.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Height Colors + Shadow Overlay.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/MatCap + Rim.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/MatCap + Rim.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Normal Map.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Normal Map.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Specular Hair.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Specular Hair.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Three Layers.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Three Layers.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SceneFinal 1 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SceneFinal 1 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/New Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/New Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material 2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material 2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Material/Plain_Material.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Materials/HexagonTexture 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Materials/HexagonTexture 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Models/Shield/Model/Shield_3.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Models/Shield/Model/Shield_3.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Textures/HexagonTexture 1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Resources/3D_Game_Assets_Market/Textures/HexagonTexture 1.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +156,7 @@
       <workItem from="1764861206077" duration="28075000" />
       <workItem from="1764949474283" duration="3353000" />
       <workItem from="1765033566078" duration="2309000" />
+      <workItem from="1765120640853" duration="5711000" />
     </task>
     <servers />
   </component>
