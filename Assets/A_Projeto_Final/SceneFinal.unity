@@ -4075,8 +4075,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365129425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0047630914, y: 0.31689617, z: 0.020347966, w: 0.94823}
-  m_LocalPosition: {x: -1.1154757, y: 0.48772973, z: -0.9671414}
+  m_LocalRotation: {x: 0.031430043, y: 0.9822871, z: -0.105429605, w: 0.15168682}
+  m_LocalPosition: {x: -2.2873862, y: 2.7798412, z: 6.8872547}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4167,7 +4167,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 74.9
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4596,6 +4596,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateSkyEffect
   rotationSpeed: 15
+--- !u!1 &437931400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+  m_PrefabInstance: {fileID: 2072438325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &503424565
 Mesh:
   m_ObjectHideFlags: 0
@@ -19773,6 +19778,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1055481438894053424, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 437931400}
     - target: {fileID: 2265115806253518347, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: field of view
       value: 60.000004
@@ -19821,6 +19830,10 @@ PrefabInstance:
       propertyPath: furthestPlatform
       value: 
       objectReference: {fileID: 639896152}
+    - target: {fileID: 3330701531451866108, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: 'pathSections.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6747802466002032290, guid: 9585e214c33b1244392fe2f4e1ac09f3, type: 3}
     - target: {fileID: 3362056363014415361, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: shieldObject
       value: 
@@ -19860,6 +19873,10 @@ PrefabInstance:
     - target: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: m_Name
       value: 'PlayerLast '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -28,14 +28,11 @@ public class ObstacleSpawner : MonoBehaviour
             return;
         }
 
-        // Pick a random spawn point
         int randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
         Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
 
-        // Check if the chosen point has children
         if (chosenPoint.childCount > 0)
         {
-            // Spawn on ALL children (paired spawn)
             for (int i = 0; i < chosenPoint.childCount; i++)
             {
                 Transform child = chosenPoint.GetChild(i);
@@ -44,7 +41,6 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else
         {
-            // Normal single-point spawn
             SpawnTube(chosenPoint);
         }
     }
