@@ -40,7 +40,9 @@ public class LookAtPlayer : MonoBehaviour
 
         laser = GetComponent<LineRenderer>();
         laser.positionCount = 2;
-        laser.startColor = Color.orangeRed;
+        laser.material = new Material(Shader.Find("Unlit/Color"));
+        laser.material.color = Color.red;
+        laser.startColor = Color.red;
         laser.enabled = false;
 
         if (firePoint == null)
@@ -106,6 +108,8 @@ public class LookAtPlayer : MonoBehaviour
 
     void FireLaser()
     {
+        laser.SetPosition(0, firePoint.position);
+        laser.SetPosition(1, firePoint.position); 
         laser.enabled = true;
         
         // SFX do disparo do laser
@@ -152,6 +156,7 @@ public class LookAtPlayer : MonoBehaviour
 
             laser.SetPosition(0, firePoint.position);
             laser.SetPosition(1, validHit.point);
+
 
             // SE ATINGIU SHIELD → PARA
             if (validHit.collider.CompareTag("Shield"))
