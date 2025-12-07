@@ -67,7 +67,7 @@ public class PlayerShield : MonoBehaviour
 
         if (isHolding && Input.GetMouseButton(0))
         {
-            if (!shieldActive && Time.time - lmbDownTime > holdThreshold)
+            if (!shieldActive && Time.time - lmbDownTime > holdThreshold && !IsInStandupAnimation())
                 ToggleShield(true);
         }
 
@@ -126,9 +126,11 @@ public class PlayerShield : MonoBehaviour
         }
     }
     public bool IsShieldActive() => shieldActive;
-
-    public bool IsHoldingForShield()
+    private bool IsInStandupAnimation()
     {
-        return isHolding && !shieldActive && (Time.time - lmbDownTime < holdThreshold);
+        if (animator == null) return false;
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        return stateInfo.IsName("StandUp"); 
     }
 }
