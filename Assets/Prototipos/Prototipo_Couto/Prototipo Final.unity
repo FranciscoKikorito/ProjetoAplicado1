@@ -8845,6 +8845,9 @@ MonoBehaviour:
   aimDelay: 2
   maxLaserDuration: 1
   chargingParticles: {fileID: 588186583}
+  audioSource: {fileID: 0}
+  laserShotSFX: {fileID: 0}
+  hitShieldSFX: {fileID: 0}
 --- !u!120 &1667550187
 LineRenderer:
   serializedVersion: 2
@@ -17587,6 +17590,9 @@ MonoBehaviour:
   aimDelay: 2
   maxLaserDuration: 1
   chargingParticles: {fileID: 4205402244567740572}
+  audioSource: {fileID: 0}
+  laserShotSFX: {fileID: 0}
+  hitShieldSFX: {fileID: 0}
 --- !u!114 &6300788058875220664
 MonoBehaviour:
   m_ObjectHideFlags: 0
