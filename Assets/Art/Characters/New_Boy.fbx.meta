@@ -47,10 +47,10 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Rig|Jump
-      takeName: Rig|Jump
+      takeName: Rig|Rig|Jump
       internalID: -8790922266539588141
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -76,7 +76,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Rig|Run
-      takeName: Rig|Run
+      takeName: Rig|Rig|Rig|Run
       internalID: -5181486892397411127
       firstFrame: 0
       lastFrame: 37
@@ -105,7 +105,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Rig|Shield
-      takeName: Rig|Shield
+      takeName: Rig|Rig|Rig|Shield
       internalID: -5232776158508445744
       firstFrame: 0
       lastFrame: 37
@@ -133,11 +133,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Rig|Slash
-      takeName: Rig|Slash
+      name: Rig|Rig|Rig|Jump
+      takeName: Rig|Rig|Rig|Jump
       internalID: 5229957257799156847
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -163,7 +163,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Rig|Intro
-      takeName: Rig|Intro
+      takeName: Rig|Rig|Rig|Intro
       internalID: 6589650684592873276
       firstFrame: 0
       lastFrame: 149
@@ -192,7 +192,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Rig|Run_Turn
-      takeName: Rig|Run_Turn
+      takeName: Rig|Rig|Rig|Run_Turn
       internalID: -8101319956479894152
       firstFrame: 0
       lastFrame: 36
@@ -221,10 +221,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Rig|Sleep
-      takeName: Rig|Intro
+      takeName: Rig|Rig|Rig|Intro
       internalID: 1430952550668678715
       firstFrame: 0
-      lastFrame: 4
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
