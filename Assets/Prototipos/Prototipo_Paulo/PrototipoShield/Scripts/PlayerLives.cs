@@ -76,22 +76,19 @@ public class PlayerLives: MonoBehaviour
         Debug.Log("Player morreu!");
 
         // Para as plataformas
-        foreach (var p in allPlatforms)
-            p.SetMoveDirection(Vector3.zero);
-
-        // Toca animação de Sleep
+        foreach (var p in allPlatforms) 
+            p.enabled = false;
+        
         if (animator != null)
             animator.SetTrigger("Die");
-
-        // Inicia coroutine que fará o StandUp depois
+        
         StartCoroutine(StandUpAndResumePlatforms());
     }
     IEnumerator StandUpAndResumePlatforms()
     {
-        // Pequeno delay antes de levantar, se quiser (opcional)
+        // Pequeno delay antes de levantar
         yield return new WaitForSeconds(0.5f);
-
-        // Toca animação de StandUp
+        
         if (animator != null)
             animator.Play("StandUp");
 
@@ -114,9 +111,9 @@ public class PlayerLives: MonoBehaviour
 
         // Reativa movimento das plataformas
         foreach (var p in allPlatforms)
-            p.SetMoveDirection(Vector3.forward * platformStartSpeed);
-
-        // Resetar vidas se quiser
+            p.enabled = true;
+        
+        // Resetar vidas 
         lives = Mathf.Max(lives, 2);
         isDead = false;
     }

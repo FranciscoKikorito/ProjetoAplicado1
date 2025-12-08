@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/LookAtPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/LookAtPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast  (1).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast  (1).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/Robot_Invader1 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/Robot_Invader1 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/DroneInimigo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/DroneInimigo.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
