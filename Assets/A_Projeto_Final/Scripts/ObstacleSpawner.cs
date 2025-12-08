@@ -3,20 +3,40 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("Obstacle Prefab")]
+    [Header("Obstacle Prefabs")]
     public GameObject tube;
+    public GameObject robot;
 
     [Header("Tube Spawn Points")]
     public List<Transform> tubePossibleSpawnsList;
 
-    private int lastChosenIndex = -1;
+    [Header("Robot Spawn Points")]
+    public List<Transform> robotPossibleSpawnsList;
+
+    private int lastTubeIndex = -1;
+    private int lastRobotIndex = -1;
 
     void Start()
     {
-        SpawnTubes();
+        SpawnObstacle();
     }
 
-    private void SpawnTubes()
+    private void SpawnObstacle()
+    {
+        bool spawnTube = (Random.value < 0.5f);
+
+        if (spawnTube)
+        {
+            SpawnTubeObstacle();
+        }
+        else
+        {
+            SpawnRobotObstacle();
+        }
+    }
+
+    //  TUBE LOGIC  //
+    private void SpawnTubeObstacle()
     {
         if (tube == null)
         {
@@ -26,28 +46,25 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (tubePossibleSpawnsList.Count == 0)
         {
-            Debug.LogWarning("ObstacleSpawner: No spawn points assigned!");
+            Debug.LogWarning("ObstacleSpawner: No tube spawn points assigned!");
             return;
         }
 
         int randomIndex;
 
+        // not spawn the same position twice
         do
         {
             randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
-        } while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastChosenIndex);
+        } while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
 
-        lastChosenIndex = randomIndex;
-
+        lastTubeIndex = randomIndex;
         Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
 
         if (chosenPoint.childCount > 0)
         {
             for (int i = 0; i < chosenPoint.childCount; i++)
-            {
-                Transform child = chosenPoint.GetChild(i);
-                SpawnTube(child);
-            }
+                SpawnTube(chosenPoint.GetChild(i));
         }
         else
         {
@@ -58,5 +75,47 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnTube(Transform spawnPoint)
     {
         Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
+    }
+
+    //  ROBOT LOGIC //
+    private void SpawnRobotObstacle()
+    {
+        if (robot == null)
+        {
+            Debug.LogWarning("ObstacleSpawner: Robot prefab not assigned!");
+            return;
+        }
+
+        if (robotPossibleSpawnsList.Count == 0)
+        {
+            Debug.LogWarning("ObstacleSpawner: No robot spawn points assigned!");
+            return;
+        }
+
+        int randomIndex;
+
+        // not spawn the same position twice
+        do
+        {
+            randomIndex = Random.Range(0, robotPossibleSpawnsList.Count);
+        } while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
+
+        lastRobotIndex = randomIndex;
+        Transform chosenPoint = robotPossibleSpawnsList[randomIndex];
+
+        if (chosenPoint.childCount > 0)
+        {
+            for (int i = 0; i < chosenPoint.childCount; i++)
+                SpawnRobot(chosenPoint.GetChild(i));
+        }
+        else
+        {
+            SpawnRobot(chosenPoint);
+        }
+    }
+
+    private void SpawnRobot(Transform spawnPoint)
+    {
+        Instantiate(robot, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 }

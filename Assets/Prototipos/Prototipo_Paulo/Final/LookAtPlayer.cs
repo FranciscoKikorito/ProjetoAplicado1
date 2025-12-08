@@ -31,7 +31,7 @@ public class LookAtPlayer : MonoBehaviour
     public AudioClip hitShieldSFX;
     void Awake()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
+        var player = GameObject.FindGameObjectWithTag("PlayerFront");
         if (player != null)
         {
             lookAtTarget = player.transform;
