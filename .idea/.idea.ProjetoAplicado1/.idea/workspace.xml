@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,7 @@
       <workItem from="1765033566078" duration="2309000" />
       <workItem from="1765120640853" duration="27803000" />
       <workItem from="1765231777585" duration="9000" />
-      <workItem from="1765232176661" duration="302000" />
+      <workItem from="1765232176661" duration="4027000" />
     </task>
     <servers />
   </component>
