@@ -19905,6 +19905,14 @@ PrefabInstance:
       propertyPath: dashDuration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2397824643952447897, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397824643952447897, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.63
+      objectReference: {fileID: 0}
     - target: {fileID: 3160371878118858932, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -20013,6 +20021,18 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.105429605
       objectReference: {fileID: 0}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 272499459}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: allPlatforms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: 'allPlatforms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 42264113}
     - target: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: m_Name
       value: 'PlayerLast '

@@ -156,9 +156,7 @@ public class LookAtPlayer : MonoBehaviour
 
             laser.SetPosition(0, firePoint.position);
             laser.SetPosition(1, validHit.point);
-
-
-            // SE ATINGIU SHIELD → PARA
+            
             if (validHit.collider.CompareTag("Shield"))
             {
                 hasShot = true;
@@ -166,8 +164,7 @@ public class LookAtPlayer : MonoBehaviour
                     audioSource.PlayOneShot(hitShieldSFX);
                 return;
             }
-
-            // SE ATINGIU AIMPOINT → DANO
+            
             if (validHit.transform == aimPoint)
                 ShootOnce();
         }

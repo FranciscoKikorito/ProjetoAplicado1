@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-
 public class PlayerLives: MonoBehaviour
 {
     public int lives ;
@@ -10,9 +9,17 @@ public class PlayerLives: MonoBehaviour
     public int flashCount;
     public Material flashMaterial; 
     public Transform playerModel;
-
     private Material[] originalMaterials;
     private Renderer[] renderers;
+    
+    [Header("Animator")]
+    public Animator animator;
+    private bool isDead = false;
+    
+    [Header("Plataformas")]
+    public MovePlatform[] allPlatforms;
+    public float platformStartSpeed = -10f;
+    [SerializeField] private float reviveDelay = 0.5f;
     
     [Header("SFX")]
     public AudioSource audioSource;
@@ -24,8 +31,10 @@ public class PlayerLives: MonoBehaviour
         originalMaterials = new Material[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
             originalMaterials[i] = renderers[i].material;
+        
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
-
     public void ApplyDamage(int amount)
     {
         lives -= amount;
@@ -49,25 +58,68 @@ public class PlayerLives: MonoBehaviour
             yield return new WaitForSeconds(flashDuration);
         }
     }
-
     void SetAllMaterials(Material m)
     {
         foreach (Renderer r in renderers)
             r.material = m;
     }
-
     void RestoreMaterials()
     {
         for (int i = 0; i < renderers.Length; i++)
             renderers[i].material = originalMaterials[i];
     }
-
     void Die()
     {
-        Debug.Log("Player morreu!");
-        gameObject.SetActive(false);
-    }
+        if (isDead) return;
 
+        isDead = true;
+        Debug.Log("Player morreu!");
+
+        // Para as plataformas
+        foreach (var p in allPlatforms)
+            p.SetMoveDirection(Vector3.zero);
+
+        // Toca animação de Sleep
+        if (animator != null)
+            animator.SetTrigger("Die");
+
+        // Inicia coroutine que fará o StandUp depois
+        StartCoroutine(StandUpAndResumePlatforms());
+    }
+    IEnumerator StandUpAndResumePlatforms()
+    {
+        // Pequeno delay antes de levantar, se quiser (opcional)
+        yield return new WaitForSeconds(0.5f);
+
+        // Toca animação de StandUp
+        if (animator != null)
+            animator.Play("StandUp");
+
+        // Espera até que a animação termine
+        if (animator != null)
+        {
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            float duration = state.length;
+
+            // Se quiser garantir que a transição foi para StandUp
+            while (!state.IsName("StandUp"))
+            {
+                yield return null;
+                state = animator.GetCurrentAnimatorStateInfo(0);
+            }
+
+            // Espera a duração completa da animação
+            yield return new WaitForSeconds(state.length);
+        }
+
+        // Reativa movimento das plataformas
+        foreach (var p in allPlatforms)
+            p.SetMoveDirection(Vector3.forward * platformStartSpeed);
+
+        // Resetar vidas se quiser
+        lives = Mathf.Max(lives, 2);
+        isDead = false;
+    }
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("Wall") && !other.collider.CompareTag("Shield"))
