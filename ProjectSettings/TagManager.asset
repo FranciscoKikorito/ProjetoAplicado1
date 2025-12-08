@@ -18,6 +18,7 @@ TagManager:
   - TurnTrigger
   - RightTurnTrigger
   - RotationTrigger
+  - TubeTrigger
   layers:
   - Default
   - TransparentFX
