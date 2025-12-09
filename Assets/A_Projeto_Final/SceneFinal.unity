@@ -7491,7 +7491,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 272499461}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -7527,7 +7527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 272499461}
   m_LocalEulerAnglesHint: {x: -1.257, y: 36.937, z: 2.039}
 --- !u!114 &1113748654
 MonoBehaviour:
@@ -7599,7 +7599,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113748651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e979fa681fe599b44a07e0844b22c208, type: 3}
   m_Name: 
@@ -13143,6 +13143,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3160371878118858932, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1688162661}
+    - targetCorrespondingSourceObject: {fileID: 3160371878118858932, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1113748653}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       insertIndex: -1
@@ -13340,7 +13343,6 @@ SceneRoots:
   - {fileID: 42264111}
   - {fileID: 2072438325}
   - {fileID: 179069155}
-  - {fileID: 1113748653}
   - {fileID: 1217818337}
   - {fileID: 2018302628}
   - {fileID: 650733888}
