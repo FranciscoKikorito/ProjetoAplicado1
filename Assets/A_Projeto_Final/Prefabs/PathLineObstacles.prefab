@@ -831,6 +831,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3997963299085183996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4205897234697896833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8467203857478435123}
+  m_Layer: 0
+  m_Name: PossibleFanSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8467203857478435123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205897234697896833}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7361749696767167726}
+  m_Father: {fileID: 3645502947715658784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4484797850268117837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1293,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7573093403487441161}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &5801261569415236425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7361749696767167726}
+  m_Layer: 0
+  m_Name: FanMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7361749696767167726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801261569415236425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 1.43, y: 0, z: 7.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8467203857478435123}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1 &6424791098538832742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1385,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2048176551688110444}
+  - {fileID: 8467203857478435123}
   - {fileID: 1127655755123346458}
   m_Father: {fileID: 7494311601443691583}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1458,6 +1522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
   tube: {fileID: 7916793836536980085, guid: a4462e6dbce7d9e448946f641c835b92, type: 3}
   robot: {fileID: 3958484776978345117, guid: e57868fcd0b449e40a7f52fe8ddcd618, type: 3}
+  fan: {fileID: 5157419407736821503, guid: ef8e24ebb81f65e4c97251c59b23bb9d, type: 3}
   tubePossibleSpawnsList:
   - {fileID: 1328565389208578635}
   - {fileID: 3108086816768293709}
@@ -1467,6 +1532,8 @@ MonoBehaviour:
   - {fileID: 7923168437071563889}
   - {fileID: 1125696579241490862}
   - {fileID: 7573093403487441161}
+  fanPossibleSpawnsList:
+  - {fileID: 7361749696767167726}
 --- !u!1 &6989069862524981059
 GameObject:
   m_ObjectHideFlags: 0

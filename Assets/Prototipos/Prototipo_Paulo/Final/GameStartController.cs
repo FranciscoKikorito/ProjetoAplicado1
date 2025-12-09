@@ -17,6 +17,9 @@ public class GameStartController : MonoBehaviour
     [Header("UI")]
     public GameObject pressStartUI;
     
+    [Header("Audio")]
+    public MusicManager musicManager;
+    
     private bool gameStarted = false;
     private bool animationPlayed = false;
 
@@ -33,6 +36,9 @@ public class GameStartController : MonoBehaviour
         introCAM.SetActive(true);
         gameplayCAM.SetActive(false);
         pressStartUI.SetActive(true);
+        
+        if (musicManager != null)
+            musicManager.PlayIntroMusic();
     }
 
     void Update()
@@ -65,6 +71,9 @@ public class GameStartController : MonoBehaviour
             
             foreach (var p in allPlatforms)
                 p.SetMoveDirection(Vector3.forward * platformStartSpeed);
+            
+            if (musicManager != null)
+                musicManager.PlayGameplayMusic();
         }
     }
 }

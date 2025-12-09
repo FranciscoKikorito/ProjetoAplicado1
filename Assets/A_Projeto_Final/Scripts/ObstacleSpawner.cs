@@ -3,60 +3,52 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("Obstacle Prefabs")]
     public GameObject tube;
     public GameObject robot;
+    public GameObject fan;
 
-    [Header("Tube Spawn Points")]
     public List<Transform> tubePossibleSpawnsList;
-
-    [Header("Robot Spawn Points")]
     public List<Transform> robotPossibleSpawnsList;
+    public List<Transform> fanPossibleSpawnsList;
 
     private int lastTubeIndex = -1;
     private int lastRobotIndex = -1;
+    private int lastFanIndex = -1;
 
     void Start()
     {
         SpawnObstacle();
     }
-
+    
     private void SpawnObstacle()
     {
-        bool spawnTube = (Random.value < 0.5f);
+        float rand = Random.value;
 
-        if (spawnTube)
+        if (rand < 0.60f)
         {
             SpawnTubeObstacle();
         }
-        else
+        else if (rand < 0.75f)
         {
             SpawnRobotObstacle();
         }
+        else
+        {
+            SpawnFanObstacle();
+        }
     }
 
-    //  TUBE LOGIC  //
+    // LOGICA TUBOS //
     private void SpawnTubeObstacle()
     {
-        if (tube == null)
-        {
-            Debug.LogWarning("ObstacleSpawner: Tube prefab not assigned!");
-            return;
-        }
-
-        if (tubePossibleSpawnsList.Count == 0)
-        {
-            Debug.LogWarning("ObstacleSpawner: No tube spawn points assigned!");
-            return;
-        }
+        if (tube == null || tubePossibleSpawnsList.Count == 0) return;
 
         int randomIndex;
-
-        // not spawn the same position twice
         do
         {
             randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
-        } while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
+        } 
+        while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
 
         lastTubeIndex = randomIndex;
         Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
@@ -77,28 +69,18 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
-    //  ROBOT LOGIC //
+
+    // LOGICA ROBOS //
     private void SpawnRobotObstacle()
     {
-        if (robot == null)
-        {
-            Debug.LogWarning("ObstacleSpawner: Robot prefab not assigned!");
-            return;
-        }
-
-        if (robotPossibleSpawnsList.Count == 0)
-        {
-            Debug.LogWarning("ObstacleSpawner: No robot spawn points assigned!");
-            return;
-        }
+        if (robot == null || robotPossibleSpawnsList.Count == 0) return;
 
         int randomIndex;
-
-        // not spawn the same position twice
         do
         {
             randomIndex = Random.Range(0, robotPossibleSpawnsList.Count);
-        } while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
+        } 
+        while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
 
         lastRobotIndex = randomIndex;
         Transform chosenPoint = robotPossibleSpawnsList[randomIndex];
@@ -117,5 +99,38 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnRobot(Transform spawnPoint)
     {
         Instantiate(robot, spawnPoint.position, spawnPoint.rotation, spawnPoint);
+    }
+
+
+
+    // LOGICA FANS //
+    private void SpawnFanObstacle()
+    {
+        if (fan == null || fanPossibleSpawnsList.Count == 0) return;
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, fanPossibleSpawnsList.Count);
+        } 
+        while (fanPossibleSpawnsList.Count > 1 && randomIndex == lastFanIndex);
+
+        lastFanIndex = randomIndex;
+        Transform chosenPoint = fanPossibleSpawnsList[randomIndex];
+
+        if (chosenPoint.childCount > 0)
+        {
+            for (int i = 0; i < chosenPoint.childCount; i++)
+                SpawnFan(chosenPoint.GetChild(i));
+        }
+        else
+        {
+            SpawnFan(chosenPoint);
+        }
+    }
+
+    private void SpawnFan(Transform spawnPoint)
+    {
+        Instantiate(fan, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 }

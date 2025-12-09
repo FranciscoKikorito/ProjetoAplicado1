@@ -1,42 +1,43 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerShield : MonoBehaviour
 {
-    [Header("Referências")]
-    public Transform shieldObject; 
-    public Collider shieldCollider; 
-    
-    [Header("Rotação do Shield")]
-    public Vector3 shieldRotationOffset = new Vector3(-90f, 0f, 0f);
-    
-    [Header("Configuração")]
-    public float holdThreshold = 0.25f;
+    [Header("Referências")] public Transform shieldObject;
+    public Collider shieldCollider;
+
+    [Header("Rotação do Shield")] public Vector3 shieldRotationOffset = new Vector3(-90f, 0f, 0f);
+
+    [Header("Configuração")] public float holdThreshold = 0.25f;
     public Vector3 shieldOffset = new Vector3(0, 1.0f, 1.0f);
-    
-    [Header("SFX Shield")]
-    public AudioSource shieldLoopSource;
+
+    [Header("SFX Shield")] public AudioSource shieldLoopSource;
     public AudioSource shieldOneShotSource;
     public AudioClip shieldOnSFX;
-    public AudioClip shieldOffSFX; 
-    
-    [Header("Animações Bloqueantes")]
-    public string[] blockedAnimations = { "StandUp", "Idle_Start" };
-    
+    public AudioClip shieldOffSFX;
+    [SerializeField] private float shieldFadeOutTime = 0.2f;
+    [SerializeField] private float shieldFadeInTime = 0.1f;
+
+    private Coroutine shieldFadeCoroutine;
+    private float shieldBaseVolume;
+    [Header("Animações Bloqueantes")] public string[] blockedAnimations = { "StandUp", "Idle_Start" };
+
     private bool shieldActive = false;
     private float lmbDownTime;
     private bool isHolding = false;
     private Animator animator;
-    
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        
+
+        shieldBaseVolume = shieldLoopSource.volume;
+
         if (shieldObject != null)
             shieldObject.gameObject.SetActive(false);
 
         if (shieldCollider == null && shieldObject != null)
             shieldCollider = shieldObject.GetComponent<Collider>();
-        
+
         if (shieldCollider != null)
         {
             Collider[] playerColliders = GetComponentsInChildren<Collider>(true);
@@ -105,27 +106,32 @@ public class PlayerShield : MonoBehaviour
         if (animator != null)
             animator.SetBool("isShielding", state);
 
-        if (state) 
+        if (state)
         {
-            shieldOneShotSource.Stop();
+            if (shieldFadeCoroutine != null)
+                StopCoroutine(shieldFadeCoroutine);
 
-            if (shieldOnSFX != null)
-            {
-                shieldLoopSource.clip = shieldOnSFX;
-                shieldLoopSource.loop = true;
-                shieldLoopSource.volume = 0.05f;
-                shieldLoopSource.Play();
-            }
+            shieldLoopSource.clip = shieldOnSFX;
+            shieldLoopSource.loop = true;
+
+            // 🎲 random start
+            shieldLoopSource.time = Random.Range(0f, shieldOnSFX.length);
+            shieldLoopSource.volume = 0f;
+
+            shieldLoopSource.Play();
+
+            shieldFadeCoroutine = StartCoroutine(FadeAudio(
+                shieldLoopSource, 0f, shieldBaseVolume, shieldFadeInTime));
         }
-        else 
+        else
         {
-            shieldLoopSource.Stop();
+            if (shieldFadeCoroutine != null)
+                StopCoroutine(shieldFadeCoroutine);
+
+            shieldFadeCoroutine = StartCoroutine(FadeOutAndStop(shieldLoopSource, shieldFadeOutTime));
 
             if (shieldOffSFX != null)
-            {
-                shieldOneShotSource.volume = 0.02f;
                 shieldOneShotSource.PlayOneShot(shieldOffSFX);
-            }
         }
     }
     public bool IsShieldActive() => shieldActive;
@@ -141,5 +147,35 @@ public class PlayerShield : MonoBehaviour
                 return true;
         }
         return false;
+    }
+    
+    IEnumerator FadeAudio(AudioSource source, float from, float to, float duration)
+    {
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            source.volume = Mathf.Lerp(from, to, t / duration);
+            yield return null;
+        }
+
+        source.volume = to;
+    }
+
+    IEnumerator FadeOutAndStop(AudioSource source, float duration)
+    {
+        float startVolume = source.volume;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
+            yield return null;
+        }
+
+        source.Stop();
+        source.volume = startVolume; // prepara para próxima ativação
     }
 }

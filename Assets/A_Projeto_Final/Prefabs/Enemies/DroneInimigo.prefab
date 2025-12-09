@@ -5114,7 +5114,7 @@ MonoBehaviour:
   rotationSpeed: 100
   maxRotationAngle: 25
   detectionRange: 40
-  laserRange: 13
+  laserRange: 20
   aimDelay: 2
   maxLaserDuration: 1
   chargingParticles: {fileID: 7570410452359250737}
