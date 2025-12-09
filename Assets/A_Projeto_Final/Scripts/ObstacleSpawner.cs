@@ -3,38 +3,40 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [Header("Obstacle Prefabs")]
     public GameObject tube;
     public GameObject robot;
+    public GameObject fan;
 
-    [Header("Tube Spawn Points")]
     public List<Transform> tubePossibleSpawnsList;
-
-    [Header("Robot Spawn Points")]
     public List<Transform> robotPossibleSpawnsList;
+    public List<Transform> fanPossibleSpawnsList;
 
     private int lastTubeIndex = -1;
     private int lastRobotIndex = -1;
+    private int lastFanIndex = -1;
 
     void Start()
     {
         SpawnObstacle();
     }
-
+    
     private void SpawnObstacle()
     {
         float rand = Random.value;
 
-        if (rand < 0.85f)
+        if (rand < 0.60f)
         {
             SpawnTubeObstacle();
         }
-        else
+        else if (rand < 0.75f)
         {
             SpawnRobotObstacle();
         }
+        else
+        {
+            SpawnFanObstacle();
+        }
     }
-
 
     // LOGICA TUBOS //
     private void SpawnTubeObstacle()
@@ -45,7 +47,8 @@ public class ObstacleSpawner : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
-        } while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
+        } 
+        while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
 
         lastTubeIndex = randomIndex;
         Transform chosenPoint = tubePossibleSpawnsList[randomIndex];
@@ -66,6 +69,7 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
+
     // LOGICA ROBOS //
     private void SpawnRobotObstacle()
     {
@@ -75,7 +79,8 @@ public class ObstacleSpawner : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, robotPossibleSpawnsList.Count);
-        } while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
+        } 
+        while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
 
         lastRobotIndex = randomIndex;
         Transform chosenPoint = robotPossibleSpawnsList[randomIndex];
@@ -94,5 +99,38 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnRobot(Transform spawnPoint)
     {
         Instantiate(robot, spawnPoint.position, spawnPoint.rotation, spawnPoint);
+    }
+
+
+
+    // LOGICA FANS //
+    private void SpawnFanObstacle()
+    {
+        if (fan == null || fanPossibleSpawnsList.Count == 0) return;
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, fanPossibleSpawnsList.Count);
+        } 
+        while (fanPossibleSpawnsList.Count > 1 && randomIndex == lastFanIndex);
+
+        lastFanIndex = randomIndex;
+        Transform chosenPoint = fanPossibleSpawnsList[randomIndex];
+
+        if (chosenPoint.childCount > 0)
+        {
+            for (int i = 0; i < chosenPoint.childCount; i++)
+                SpawnFan(chosenPoint.GetChild(i));
+        }
+        else
+        {
+            SpawnFan(chosenPoint);
+        }
+    }
+
+    private void SpawnFan(Transform spawnPoint)
+    {
+        Instantiate(fan, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 }
