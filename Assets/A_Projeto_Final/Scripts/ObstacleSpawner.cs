@@ -23,9 +23,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void SpawnObstacle()
     {
-        bool spawnTube = (Random.value < 0.5f);
+        float rand = Random.value;
 
-        if (spawnTube)
+        if (rand < 0.85f)
         {
             SpawnTubeObstacle();
         }
@@ -35,24 +35,13 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    //  TUBE LOGIC  //
+
+    // LOGICA TUBOS //
     private void SpawnTubeObstacle()
     {
-        if (tube == null)
-        {
-            Debug.LogWarning("ObstacleSpawner: Tube prefab not assigned!");
-            return;
-        }
-
-        if (tubePossibleSpawnsList.Count == 0)
-        {
-            Debug.LogWarning("ObstacleSpawner: No tube spawn points assigned!");
-            return;
-        }
+        if (tube == null || tubePossibleSpawnsList.Count == 0) return;
 
         int randomIndex;
-
-        // not spawn the same position twice
         do
         {
             randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
@@ -77,24 +66,12 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
-    //  ROBOT LOGIC //
+    // LOGICA ROBOS //
     private void SpawnRobotObstacle()
     {
-        if (robot == null)
-        {
-            Debug.LogWarning("ObstacleSpawner: Robot prefab not assigned!");
-            return;
-        }
-
-        if (robotPossibleSpawnsList.Count == 0)
-        {
-            Debug.LogWarning("ObstacleSpawner: No robot spawn points assigned!");
-            return;
-        }
+        if (robot == null || robotPossibleSpawnsList.Count == 0) return;
 
         int randomIndex;
-
-        // not spawn the same position twice
         do
         {
             randomIndex = Random.Range(0, robotPossibleSpawnsList.Count);
