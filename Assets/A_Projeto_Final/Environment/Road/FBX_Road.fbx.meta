@@ -7,7 +7,17 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Block
+    second: {fileID: 2100000, guid: 0a8c25e53168007499cf2947210113a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Lit.002
+    second: {fileID: 2100000, guid: 0a8c25e53168007499cf2947210113a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road
     second: {fileID: 2100000, guid: 0a8c25e53168007499cf2947210113a2, type: 2}
   materials:
     materialImportMode: 2
