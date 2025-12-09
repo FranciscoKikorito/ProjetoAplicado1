@@ -25,12 +25,23 @@ public class LevelGen : MonoBehaviour
     {
         pathList = GameObject.Find("PathList").transform;
         sectionCount = platformIntervalTurn - 1;
+
+        ForceSpawnOneSection();
+    }
+
+    private void ForceSpawnOneSection()
+    {
+        SpawnNextSection();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.gameObject.CompareTag("Trigger")) return;
+        SpawnNextSection();
+    }
 
+    private void SpawnNextSection()
+    {
         sectionCount++;
 
         GameObject prefabToSpawn;
@@ -62,10 +73,10 @@ public class LevelGen : MonoBehaviour
                 prefabToSpawn = pathLineObstacle;
             }
 
-            if (!nextIsTurn) 
+            if (!nextIsTurn)
             {
                 spawnSequenceIndex++;
-                if (spawnSequenceIndex > 2) 
+                if (spawnSequenceIndex > 2)
                     spawnSequenceIndex = 0;
             }
 
