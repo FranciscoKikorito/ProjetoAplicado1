@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using System.IO;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -15,11 +17,42 @@ public class ObstacleSpawner : MonoBehaviour
     private int lastRobotIndex = -1;
     private int lastFanIndex = -1;
 
+    public bool canSpawnFan = true;
+    public bool canSpawnRobot = true;
+
+
+    private MovePlatform pathList;
+
+
     void Start()
     {
+        Transform platform = transform.parent;
+        if (Mathf.Abs(platform.rotation.eulerAngles.x) > 0.01f)
+            canSpawnFan = false;
+
+        int myIndex = platform.GetSiblingIndex();
+
+        if (myIndex > 0)
+        {
+            Transform prevPlatform = platform.GetChild(myIndex - 1);
+            ObstacleSpawner prevSpawner = prevPlatform.GetComponentInChildren<ObstacleSpawner>();
+
+            if (prevSpawner != null)
+            {
+                canSpawnFan = prevSpawner.checkIfPreviousWasFan();
+            }
+
+        }
+
+        pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
+        PathDestroy checks = pathList.GetComponentInChildren<PathDestroy>();
+
+        canSpawnFan = checks.checkFans();
+        canSpawnRobot = checks.checkRobots();
+
         SpawnObstacle();
     }
-    
+
     private void SpawnObstacle()
     {
         float rand = Random.value;
@@ -30,15 +63,22 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else if (rand < 0.75f)
         {
-            SpawnRobotObstacle();
+            if (canSpawnRobot)
+                SpawnRobotObstacle();
+            else
+                SpawnTubeObstacle();
+
         }
         else
         {
-            SpawnFanObstacle();
+
+            if (canSpawnFan)
+                SpawnFanObstacle();
+            else
+                SpawnTubeObstacle();
         }
     }
 
-    // LOGICA TUBOS //
     private void SpawnTubeObstacle()
     {
         if (tube == null || tubePossibleSpawnsList.Count == 0) return;
@@ -47,7 +87,7 @@ public class ObstacleSpawner : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, tubePossibleSpawnsList.Count);
-        } 
+        }
         while (tubePossibleSpawnsList.Count > 1 && randomIndex == lastTubeIndex);
 
         lastTubeIndex = randomIndex;
@@ -69,8 +109,6 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(tube, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
-
-    // LOGICA ROBOS //
     private void SpawnRobotObstacle()
     {
         if (robot == null || robotPossibleSpawnsList.Count == 0) return;
@@ -79,7 +117,7 @@ public class ObstacleSpawner : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, robotPossibleSpawnsList.Count);
-        } 
+        }
         while (robotPossibleSpawnsList.Count > 1 && randomIndex == lastRobotIndex);
 
         lastRobotIndex = randomIndex;
@@ -101,9 +139,6 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(robot, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
-
-
-    // LOGICA FANS //
     private void SpawnFanObstacle()
     {
         if (fan == null || fanPossibleSpawnsList.Count == 0) return;
@@ -112,7 +147,7 @@ public class ObstacleSpawner : MonoBehaviour
         do
         {
             randomIndex = Random.Range(0, fanPossibleSpawnsList.Count);
-        } 
+        }
         while (fanPossibleSpawnsList.Count > 1 && randomIndex == lastFanIndex);
 
         lastFanIndex = randomIndex;
@@ -131,6 +166,13 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void SpawnFan(Transform spawnPoint)
     {
+        canSpawnFan = false;
         Instantiate(fan, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
+
+    public bool checkIfPreviousWasFan()
+    {
+        return canSpawnFan;
+    }
 }
+

@@ -3,6 +3,9 @@ using UnityEngine;
 public class PathDestroy : MonoBehaviour
 {
     [SerializeField] private int maxPlatforms;
+    private int counter = 0;
+    public bool startRobots = false;
+    public bool startFans = false;
 
     void Update()
     {
@@ -10,6 +13,29 @@ public class PathDestroy : MonoBehaviour
         {
             Transform firstChild = transform.GetChild(0);
             Destroy(firstChild.gameObject);
+            counter++;
+        }
+
+        if (counter > 8)
+        {
+            startRobots = true;
+        }
+        if (counter > 16)
+        {
+            startFans = true;
         }
     }
+
+
+    //this is called by obstacle spawner, with this we can define sections without certain obstacles by counting how many have been destroyed
+    public bool checkRobots()
+    {
+        return startRobots;
+    }
+
+    public bool checkFans()
+    {
+        return startFans;
+    }
+
 }
