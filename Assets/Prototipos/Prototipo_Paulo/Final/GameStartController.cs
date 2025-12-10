@@ -22,12 +22,15 @@ public class GameStartController : MonoBehaviour
     
     private bool gameStarted = false;
     private bool animationPlayed = false;
-
+    
     void Start()
     {
         // parar plataformas
         foreach (var p in allPlatforms)
+        {
+            Debug.Log(p);
             p.SetMoveDirection(Vector3.zero);
+        }
 
         // garantir idle inicial
         playerAnimator.Play("Idle_Start");
@@ -45,6 +48,7 @@ public class GameStartController : MonoBehaviour
     {
         if (!gameStarted)
         {
+           
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
@@ -68,10 +72,11 @@ public class GameStartController : MonoBehaviour
         {
             animationPlayed = true;
             canJump = true;
-            
             foreach (var p in allPlatforms)
+            {
                 p.SetMoveDirection(Vector3.forward * platformStartSpeed);
-            
+            }
+
             if (musicManager != null)
                 musicManager.PlayGameplayMusic();
         }

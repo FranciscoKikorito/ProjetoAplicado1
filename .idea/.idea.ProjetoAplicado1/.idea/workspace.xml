@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.formats.fbx@86d1698ebb13/Editor/FbxExporter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -47,6 +44,18 @@
   }
 }</component>
   <component name="RunManager" selected="Standalone Player.Start Unity">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Downloads/Builds\ProjetoApCopy.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Lenovo\Downloads\Builds" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Lenovo\Documents\GitHub\ProjetoAplicado1 -debugCodeOptimization" />
@@ -138,7 +147,11 @@
       <workItem from="1765120640853" duration="27803000" />
       <workItem from="1765231777585" duration="9000" />
       <workItem from="1765232176661" duration="6896000" />
-      <workItem from="1765240923744" duration="543000" />
+      <workItem from="1765240923744" duration="2005000" />
+      <workItem from="1765289159938" duration="1401000" />
+      <workItem from="1765317266396" duration="9611000" />
+      <workItem from="1765328087142" duration="70000" />
+      <workItem from="1765328392309" duration="1434000" />
     </task>
     <servers />
   </component>
