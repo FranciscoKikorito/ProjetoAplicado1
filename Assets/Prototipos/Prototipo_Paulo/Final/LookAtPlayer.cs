@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-    
+
 [RequireComponent(typeof(LineRenderer))]
 public class LookAtPlayer : MonoBehaviour
 {
@@ -14,33 +14,31 @@ public class LookAtPlayer : MonoBehaviour
     public float maxRotationAngle = 45f;
     public float detectionRange = 25f;
     public float laserRange = 40f;
-    public float aimDelay = 1.5f;  
+    public float aimDelay = 1.5f;
     public float maxLaserDuration = 1.2f;
     public ParticleSystem chargingParticles;
-    
+
     private LineRenderer laser;
     private bool isAiming = false;
     private bool hasShot = false;
     private float aimTimer = 0f;
     private float laserTimer = 0f;
     private bool laserSoundPlayed = false;
-    
+
     [Header("SFX")]
     public AudioSource audioSource;
-    public AudioClip laserShotSFX;  
+    public AudioClip laserShotSFX;
     public AudioClip hitShieldSFX;
+
     void Awake()
     {
-        var player = GameObject.FindGameObjectWithTag("PlayerFront");
-        if (player != null)
-        {
-            lookAtTarget = player.transform;
-            aimPoint = player.transform.Find("AimPoint");
-        }
-
+        // Inicialização de Componentes Internos fica no Awake
         laser = GetComponent<LineRenderer>();
         laser.positionCount = 2;
-        laser.material = new Material(Shader.Find("Unlit/Color"));
+        // Configuração segura do material
+        if(laser.material == null)
+             laser.material = new Material(Shader.Find("Unlit/Color"));
+             
         laser.material.color = Color.red;
         laser.startColor = Color.red;
         laser.enabled = false;
@@ -49,17 +47,53 @@ public class LookAtPlayer : MonoBehaviour
             firePoint = transform;
     }
 
+    void Start()
+    {
+        // Tentativa inicial de encontrar o player
+        FindTarget();
+    }
+
+    void FindTarget()
+    {
+        // Se já temos alvo, não fazemos nada
+        if (lookAtTarget != null && aimPoint != null) return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("PlayerFront");
+        if (player != null)
+        {
+            lookAtTarget = player.transform;
+            aimPoint = player.transform.Find("AimPoint");
+            
+            // Debug de segurança para saberes se encontrou
+            // Debug.Log("Drone encontrou o Player!"); 
+        }
+    }
+
     void Update()
     {
-        if (hasShot || lookAtTarget == null)
+        if (hasShot)
         {
             laser.enabled = false;
             return;
         }
 
+        // --- CORREÇÃO AQUI ---
+        // Se não tiver alvo, tenta encontrar. Se falhar, sai.
+        if (lookAtTarget == null || aimPoint == null)
+        {
+            laser.enabled = false;
+            FindTarget(); // Tenta encontrar novamente neste frame
+            return;       // Se não encontrou, volta no próximo frame
+        }
+        // ---------------------
+
         Vector3 dir = (aimPoint.position - transform.position);
         float dist = dir.magnitude;
         Vector3 flatDir = new Vector3(dir.x, 0, dir.z);
+        
+        // Proteção contra vetor zero (evita avisos na consola)
+        if (flatDir == Vector3.zero) return;
+
         float angle = Vector3.Angle(transform.forward, flatDir);
 
         if (dist > detectionRange || angle > maxRotationAngle)
@@ -71,7 +105,7 @@ public class LookAtPlayer : MonoBehaviour
         // ROTACIONA
         Quaternion targetRot = Quaternion.LookRotation(flatDir, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
-        
+
         if (!isAiming)
         {
             isAiming = true;
@@ -80,15 +114,15 @@ public class LookAtPlayer : MonoBehaviour
             if (chargingParticles != null)
                 chargingParticles.Play();
         }
-        
+
         if (aimTimer < aimDelay)
         {
             aimTimer += Time.deltaTime;
             return;
         }
-        
+
         StopCharge();
-        
+
         if (laserTimer < maxLaserDuration)
         {
             laserTimer += Time.deltaTime;
@@ -108,33 +142,31 @@ public class LookAtPlayer : MonoBehaviour
 
     void FireLaser()
     {
+        // Segurança extra caso o aimPoint desapareça a meio
+        if (aimPoint == null) return;
+
         laser.SetPosition(0, firePoint.position);
-        laser.SetPosition(1, firePoint.position); 
+        laser.SetPosition(1, firePoint.position);
         laser.enabled = true;
-        
-        // SFX do disparo do laser
+
         if (!laserSoundPlayed)
         {
             laserSoundPlayed = true;
-            StartCoroutine(PlayLaserShotSFXDelayed(0.5f)); 
+            StartCoroutine(PlayLaserShotSFXDelayed(0.5f));
         }
-        
+
         Vector3 dir = (aimPoint.position - firePoint.position).normalized;
 
-        // Pegamos todos os hits
         RaycastHit[] hits = Physics.RaycastAll(firePoint.position, dir, laserRange);
 
-        // Hit válido final
         RaycastHit validHit = new RaycastHit();
         bool found = false;
 
         foreach (var h in hits)
         {
-            // ignorar triggers invisíveis do mapa
             if (h.collider.CompareTag("Trigger") || h.collider.CompareTag("RotationTrigger"))
                 continue;
 
-            // prioridade máxima → SHIELD
             if (h.collider.CompareTag("Shield"))
             {
                 validHit = h;
@@ -142,7 +174,6 @@ public class LookAtPlayer : MonoBehaviour
                 break;
             }
 
-            // qualquer outro objeto válido
             validHit = h;
             found = true;
             break;
@@ -150,13 +181,12 @@ public class LookAtPlayer : MonoBehaviour
 
         if (found)
         {
-            // efeitos
             GameObject fx = Instantiate(hitEffectPrefab, validHit.point, Quaternion.LookRotation(validHit.normal));
             Destroy(fx, 1f);
 
             laser.SetPosition(0, firePoint.position);
             laser.SetPosition(1, validHit.point);
-            
+
             if (validHit.collider.CompareTag("Shield"))
             {
                 hasShot = true;
@@ -164,7 +194,7 @@ public class LookAtPlayer : MonoBehaviour
                     audioSource.PlayOneShot(hitShieldSFX);
                 return;
             }
-            
+
             if (validHit.transform == aimPoint)
                 ShootOnce();
         }
@@ -172,7 +202,7 @@ public class LookAtPlayer : MonoBehaviour
 
     void ShootOnce()
     {
-        if (hasShot) return;
+        if (hasShot || lookAtTarget == null) return;
 
         PlayerLives hp = lookAtTarget.GetComponent<PlayerLives>();
         if (hp != null)
@@ -183,6 +213,7 @@ public class LookAtPlayer : MonoBehaviour
         hasShot = true;
         laser.enabled = false;
     }
+
     IEnumerator PlayLaserShotSFXDelayed(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -190,15 +221,14 @@ public class LookAtPlayer : MonoBehaviour
         if (audioSource && laserShotSFX)
             audioSource.PlayOneShot(laserShotSFX);
     }
+
     void OnDrawGizmos()
     {
         if (firePoint == null || aimPoint == null) return;
 
-        // Linha do laser
         Gizmos.color = Color.black;
         Gizmos.DrawLine(firePoint.position, aimPoint.position);
 
-        // Seta apontando para o AimPoint
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(firePoint.position, (aimPoint.position - firePoint.position).normalized * 1f);
     }
