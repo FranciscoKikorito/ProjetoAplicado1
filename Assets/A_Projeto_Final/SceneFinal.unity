@@ -12994,12 +12994,16 @@ PrefabInstance:
       value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: 2324760310954878159, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: jumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324760310954878159, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: snapSpeed
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2324760310954878159, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: dashDuration
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2397824643952447897, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13117,14 +13121,38 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.105429605
       objectReference: {fileID: 0}
+    - target: {fileID: 6477972273185502362, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6477972273185502362, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 272499459}
     - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: flashCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: worldMover
       value: 
       objectReference: {fileID: 42264113}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: flashDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      propertyPath: flashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: fc8af1048efab6f45a43b483dbfd7f0c, type: 2}
     - target: {fileID: 7476619714042907153, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       propertyPath: allPlatforms.Array.size
       value: 1
@@ -13148,7 +13176,7 @@ PrefabInstance:
       addedObject: {fileID: 1113748653}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
-      insertIndex: -1
+      insertIndex: 10
       addedObject: {fileID: 837880137}
   m_SourcePrefab: {fileID: 100100000, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
 --- !u!43 &2107155832

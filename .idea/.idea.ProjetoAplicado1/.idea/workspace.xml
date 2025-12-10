@@ -6,6 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/EN_Tube_Jump.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/EN_Tube_Jump.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/Fan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/Fan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineLeftTurn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineLeftTurn.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineObstacles.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineObstacles.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineRightTurn.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineRightTurn.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/_Using/Lobby&amp;Env/musicafundo.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/_Using/Lobby&amp;Env/musicafundo.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/PlayerLives.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/BetterJump.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/PrototipoShield/Scripts/LookAtPlayerBackup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.formats.fbx@86d1698ebb13/Editor/FbxExporter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -138,7 +150,9 @@
       <workItem from="1765120640853" duration="27803000" />
       <workItem from="1765231777585" duration="9000" />
       <workItem from="1765232176661" duration="6896000" />
-      <workItem from="1765240923744" duration="543000" />
+      <workItem from="1765240923744" duration="2005000" />
+      <workItem from="1765289159938" duration="1401000" />
+      <workItem from="1765317266396" duration="8960000" />
     </task>
     <servers />
   </component>
