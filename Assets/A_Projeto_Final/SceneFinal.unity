@@ -2801,6 +2801,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!4 &379323207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3439679965919881797, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+  m_PrefabInstance: {fileID: 2072438325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &381280255
 Mesh:
   m_ObjectHideFlags: 0
@@ -5148,6 +5153,21 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6477972273185502362, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
   m_PrefabInstance: {fileID: 2072438325}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &837880147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837880136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b77862c1ecc1648a5b48b641c5b182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  footstepVFXPrefab: {fileID: 919132149155446097, guid: 8674ab384a63751489f9e8090f5f21c0, type: 3}
+  leftFootSpawnPoint: {fileID: 379323207}
+  rightFootSpawnPoint: {fileID: 1331371272}
 --- !u!43 &840773666
 Mesh:
   m_ObjectHideFlags: 0
@@ -9016,6 +9036,11 @@ Mesh:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7494311601443691583, guid: 0d28dec645cb88e489d24216aab04533, type: 3}
   m_PrefabInstance: {fileID: 870306454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1331371272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5252601301078524741, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+  m_PrefabInstance: {fileID: 2072438325}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1355818002
 Mesh:
@@ -13150,6 +13175,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 837880137}
+    - targetCorrespondingSourceObject: {fileID: 8291297770717100273, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 837880147}
   m_SourcePrefab: {fileID: 100100000, guid: bd6d45b077f6fc446bc11bb7e6850afb, type: 3}
 --- !u!43 &2107155832
 Mesh:
