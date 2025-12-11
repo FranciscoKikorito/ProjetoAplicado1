@@ -1,5 +1,7 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement; 
+using System.Collections;
+using UnityEngine.UI;
 public class GameStartController : MonoBehaviour
 {
     [Header("Player")]
@@ -17,6 +19,13 @@ public class GameStartController : MonoBehaviour
     [Header("UI")]
     public GameObject pressStartUI;
     
+    [Header("Game Over / Fade")]
+    public RectTransform gameOverUI;
+    public float gameOverDisplayTime = 2.0f;
+    public CanvasGroup fadeOverlay; 
+    public float fadeDuration = 1.5f;
+    public bool isGameOver = false; // Impede inputs durante o fade
+    
     [Header("Audio")]
     public MusicManager musicManager;
     
@@ -25,10 +34,18 @@ public class GameStartController : MonoBehaviour
     
     void Start()
     {
+        if (gameOverUI != null) gameOverUI.gameObject.SetActive(false);
+        
+        if (fadeOverlay != null) 
+        {
+            fadeOverlay.alpha = 0f;
+            fadeOverlay.blocksRaycasts = false;
+        }
+        
         // parar plataformas
         foreach (var p in allPlatforms)
         {
-            Debug.Log(p);
+            //Debug.Log(p);
             p.SetMoveDirection(Vector3.zero);
         }
 
@@ -40,12 +57,16 @@ public class GameStartController : MonoBehaviour
         gameplayCAM.SetActive(false);
         pressStartUI.SetActive(true);
         
+        isGameOver = false;
+        
         if (musicManager != null)
             musicManager.PlayIntroMusic();
     }
 
     void Update()
     {
+        if (isGameOver) return;
+        
         if (!gameStarted)
         {
            
@@ -61,11 +82,10 @@ public class GameStartController : MonoBehaviour
                 // start do player
                 playerAnimator.SetTrigger("StartGame");
             }
-
             return;
         }
 
-        // quando a animação StandUp acabar → começa o jogo
+        // quando a animação StandUp acabar , começa o jogo
         AnimatorStateInfo state = playerAnimator.GetCurrentAnimatorStateInfo(0);
 
         if (!animationPlayed && state.IsName("Rig|Run"))
@@ -80,5 +100,60 @@ public class GameStartController : MonoBehaviour
             if (musicManager != null)
                 musicManager.PlayGameplayMusic();
         }
+    }
+    // --- GAME OVER ---
+    public void TriggerGameOver()
+    {
+        if (isGameOver) return;
+        
+        isGameOver = true;
+        canJump = false;
+        
+        foreach (var p in allPlatforms)
+        {
+            p.SetMoveDirection(Vector3.zero);
+        }
+        StartCoroutine(GameOverSequence());
+    }
+
+    IEnumerator GameOverSequence()
+    {
+        if (gameOverUI != null)
+        {
+            gameOverUI.gameObject.SetActive(true);
+            
+            Vector2 startPos = new Vector2(1500f, 0f); 
+            Vector2 endPos = Vector2.zero; // Centro do ecrã (assumindo âncora no centro)
+
+            float slideDuration = 1f; 
+            float timer = 0f;
+
+            while (timer < slideDuration)
+            {
+                timer += Time.deltaTime;
+                float percentage = timer / slideDuration;
+                
+                float smooth = Mathf.SmoothStep(0f, 1f, percentage);
+                gameOverUI.anchoredPosition = Vector2.Lerp(startPos, endPos, smooth);
+                yield return null;
+            }
+            gameOverUI.anchoredPosition = endPos;
+        }
+        yield return new WaitForSeconds(gameOverDisplayTime);
+        
+        float fadeTimer = 0f;
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.blocksRaycasts = true;
+            while (fadeTimer < fadeDuration)
+            {
+                fadeTimer += Time.deltaTime;
+                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, fadeTimer / fadeDuration);
+                yield return null;
+            }
+            fadeOverlay.alpha = 1f;
+        }
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

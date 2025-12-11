@@ -3,15 +3,13 @@ using System.Collections;
 
 public class PlayerLives : MonoBehaviour
 {
-    public int lives;
+    public int lives = 3;
 
     [Header("Flash Effect")]
     public float flashDuration = 0.1f;
     public int flashCount = 5;
     public Material flashMaterial;
     public Transform playerModel;
-    
-    // Cache dos materiais originais para restaurar depois
     private Material[][] originalMaterials; 
     private Renderer[] renderers;
 
@@ -24,9 +22,12 @@ public class PlayerLives : MonoBehaviour
     public float platformStartSpeed = -10f;
     [SerializeField] private float reviveDelay = 0.5f;
 
+    [Header("GameOver References")]
+    public GameStartController gameController;
+    
     [Header("Invencibilidade")]
     public float invincibilityDuration = 3.0f;
-    // Tornei publico caso outros scripts precisem de saber se estás invencível
+   
     public bool isInvincible = false; 
 
     [Header("SFX")]
@@ -50,6 +51,8 @@ public class PlayerLives : MonoBehaviour
 
         if (animator == null)
             animator = GetComponent<Animator>();
+        if (gameController == null)
+            gameController = FindObjectOfType<GameStartController>();
     }
 
     public void ApplyDamage(int amount)
@@ -62,44 +65,51 @@ public class PlayerLives : MonoBehaviour
         if (audioSource && hitByLaserSFX)
             audioSource.PlayOneShot(hitByLaserSFX);
 
-        // Se tiveres um material de flash definido, faz o efeito
-        if (flashMaterial != null)
+        if (lives <= 0)
         {
-            StopCoroutine("FlashEffect"); // Garante que não acumula efeitos
-            StartCoroutine("FlashEffect");
+            Die();
         }
-
-        // Inicia invencibilidade
-        StartCoroutine(InvincibilityRoutine());
-
-        // if (lives <= 0) Die();
+        else
+        {
+            if (flashMaterial != null)
+            {
+                StopCoroutine("FlashEffect");
+                StartCoroutine("FlashEffect");
+            }
+            StartCoroutine(InvincibilityRoutine());
+        }
+        
     }
-
+    void Die()
+    {
+        isDead = true;
+        //se quisermos colocar animacao aqui.
+        //if(animator != null) animator.SetTrigger("Die"); 
+        Debug.Log("Game Over!");
+        
+        if (gameController != null)
+        {
+            gameController.TriggerGameOver();
+        }
+    }
     IEnumerator InvincibilityRoutine()
     {
         isInvincible = true;
-        // Debug.Log("Player Invencível!");
-
         yield return new WaitForSeconds(invincibilityDuration);
-
         isInvincible = false;
-        // Debug.Log("Player vulnerável novamente.");
     }
 
     IEnumerator FlashEffect()
     {
         for (int i = 0; i < flashCount; i++)
         {
-            // Troca para o material de Flash (Branco/Vermelho)
             SetFlashMaterial();
             yield return new WaitForSeconds(flashDuration);
             
-            // Restaura a cor original
             RestoreMaterials();
             yield return new WaitForSeconds(flashDuration);
         }
     }
-
     void SetFlashMaterial()
     {
         for (int i = 0; i < renderers.Length; i++)
@@ -107,7 +117,6 @@ public class PlayerLives : MonoBehaviour
             int matCount = renderers[i].sharedMaterials.Length;
             Material[] flashes = new Material[matCount];
             
-            // Preenche o array com o material de flash
             for (int k = 0; k < matCount; k++)
             {
                 flashes[k] = flashMaterial;
@@ -116,22 +125,13 @@ public class PlayerLives : MonoBehaviour
             renderers[i].materials = flashes;
         }
     }
-
     void RestoreMaterials()
     {
         for (int i = 0; i < renderers.Length; i++)
         {
-            // Restaura os materiais originais guardados no Awake
             renderers[i].materials = originalMaterials[i];
         }
     }
-
-    /*
-     * MÉTODOS DE COLISÃO
-     * Se o boneco parar de rodar ao bater na parede, 
-     * o problema é a fricção (Physics Material) da parede ou do player,
-     * não o script.
-     */
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("Wall") && !other.collider.CompareTag("Shield"))
