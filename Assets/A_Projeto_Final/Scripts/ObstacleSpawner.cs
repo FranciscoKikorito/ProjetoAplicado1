@@ -26,15 +26,17 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        Transform platform = transform.parent;
+        Transform platform = transform;
+        Debug.Log(platform);
         if (Mathf.Abs(platform.rotation.eulerAngles.x) > 0.01f)
             canSpawnFan = false;
 
-        int myIndex = platform.GetSiblingIndex();
+        Transform platformPathList = transform.parent;
+        int myIndex = platformPathList.GetSiblingIndex();
 
         if (myIndex > 0)
         {
-            Transform prevPlatform = platform.GetChild(myIndex - 1);
+            Transform prevPlatform = platformPathList.GetChild(myIndex - 1);
             ObstacleSpawner prevSpawner = prevPlatform.GetComponentInChildren<ObstacleSpawner>();
 
             if (prevSpawner != null)
