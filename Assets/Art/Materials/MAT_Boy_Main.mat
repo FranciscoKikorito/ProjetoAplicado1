@@ -20,18 +20,23 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Boy_Eyes
+  m_Name: MAT_Boy_Main
   m_Shader: {fileID: 4800000, guid: a2a06e22c08354d9699356710b69ca9c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - AMBIENT
+  - ANIME
   - ANIME_SOFT
-  - BASE_CONTRAST
+  - BASE_SATURATION
   - DIFFUSE
+  - DIFFUSE_PER_PIXEL
+  - EMISSIVE_MAP
   - FOG
   - MATCAP_PERSPECTIVE
+  - MIXED_LIGHTING
   - OUTLINE_PASS_DISABLED
+  - RIM_DIRECTION
   - SHADOWS_ENABLED
   - _DETAILBLEND_MULTIPLY
   - _DETAILUV_UV1
@@ -50,9 +55,10 @@ Material:
   - _RIMBLEND_ADDITIVE
   - _SHADOWOVERLAYANIMATION_SCROLL
   - _SPECULARUV_UV1
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_InvalidKeywords:
+  - _EMISSION
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -92,7 +98,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 038839b22e96e0146b25f3b6d9c92b37, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightColorsTex:
@@ -116,7 +122,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b7954745046b99348aab70fe33cd7882, type: 3}
+        m_Texture: {fileID: 2800000, guid: acd9271d80666014484b6b452692e802, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCapTex:
@@ -180,22 +186,22 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _AmbientBrightness: 1
-    - _Anime: 0
-    - _AnimeSoftness: 0.01
-    - _AnimeThreshold1: 0.45
-    - _AnimeThreshold2: 0.85
+    - _AmbientBrightness: 6.2
+    - _Anime: 1
+    - _AnimeSoftness: 0.027
+    - _AnimeThreshold1: 1.55
+    - _AnimeThreshold2: 1.44
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
-    - _Brightness: 7
+    - _Brightness: 0.4
     - _BumpScale: 1
     - _CameraFadeEnd: 0
     - _CameraFadeInvert: 0
     - _CameraFadeStart: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Contrast: 3.8
+    - _Contrast: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _Cutout: 0
@@ -210,10 +216,10 @@ Material:
     - _DetailUV: 0
     - _DetailVertexColors: 0
     - _Diffuse: 1
-    - _DiffuseBrightness: 1
-    - _DiffuseContrast: 1
-    - _DiffusePerPixel: 0
-    - _DiffuseWrap: 0
+    - _DiffuseBrightness: 12.8
+    - _DiffuseContrast: 2.7
+    - _DiffusePerPixel: 1
+    - _DiffuseWrap: 0.47
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -223,9 +229,9 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _HeightColors: 0
-    - _HeightColorsAlpha: 1
+    - _HeightColorsAlpha: 0
     - _HeightColorsBlend: 0
-    - _HeightColorsEdgeThickness: 1
+    - _HeightColorsEdgeThickness: 0.9
     - _HeightColorsHeight: 0
     - _HeightColorsSpace: 0
     - _HeightColorsThickness: 0
@@ -253,7 +259,7 @@ Material:
     - _MatCapPerspective: 1
     - _MatCapStatic: 0
     - _Metallic: 0
-    - _MixedLighting: 0
+    - _MixedLighting: 1
     - _Normal2Strength: 1
     - _NormalStrength: 1
     - _NormalUV: 0
@@ -263,7 +269,7 @@ Material:
     - _OutlineComp: 8
     - _OutlineGroup: 0
     - _OutlinePass: 0
-    - _OutlineWidth: 0.002
+    - _OutlineWidth: 0
     - _OutlineWidthIndependent: 0
     - _OutlineZPos: 0
     - _Parallax: 0.005
@@ -282,18 +288,18 @@ Material:
     - _ReflectionRim: 0
     - _ReflectionSpecular: 0
     - _Rim: 0
-    - _RimAmount: 1
+    - _RimAmount: 18.1
     - _RimBlend: 1
-    - _RimContrast: 5
+    - _RimContrast: 0
     - _RimInverse: 0
-    - _Saturation: 1
+    - _Saturation: 1.5
     - _ShadowOverlayAnimation: 0
-    - _ShadowOverlayBrightness: 1
+    - _ShadowOverlayBrightness: 0.98
     - _ShadowOverlaySpeedU: 0.1
     - _ShadowOverlaySpeedV: 0.03
     - _ShadowOverlaySwayAmount: 0.01
     - _ShadowsEnabled: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SourceBlend: 1
     - _Specular: 0
@@ -340,9 +346,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive: {r: 0, g: 0, b: 0, a: 0}
-    - _HeightColorsColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.5029666, g: 0.91732216, b: 0.9245283, a: 1}
+    - _Emissive: {r: 0.27014354, g: 0.5420397, b: 0.5471698, a: 1}
+    - _HeightColorsColor: {r: 0.576955, g: 0.8301887, b: 0.8109176, a: 1}
     - _Layer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _Layer2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Layer3Color: {r: 1, g: 1, b: 1, a: 1}
@@ -352,9 +358,9 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimDirection: {r: 0, g: 0, b: 0, a: 0}
+    - _RimDirection: {r: 8.65, g: 4.78, b: 61.11, a: -7.51}
     - _ShadowColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.47339892, g: 0.8050314, b: 0.7794402, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

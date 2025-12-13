@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Block
-    second: {fileID: 2100000, guid: 0a8c25e53168007499cf2947210113a2, type: 2}
+    second: {fileID: 2100000, guid: c4819541d6a882448a9f7de2c461980e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Road_Turn
-    second: {fileID: 2100000, guid: 0a8c25e53168007499cf2947210113a2, type: 2}
+    second: {fileID: 2100000, guid: 4f24df8bba663f740a1f4b0d4a02d4ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
