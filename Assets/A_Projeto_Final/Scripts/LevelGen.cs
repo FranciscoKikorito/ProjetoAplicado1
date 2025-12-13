@@ -93,6 +93,9 @@ public class LevelGen : MonoBehaviour
 
                 if (Random.value < 0.3f)
                 {
+                    nextPoint.position += nextPoint.forward * -0.1f;
+                    spawnPosition = nextPoint.position;
+
                     float proposedTilt = Random.value < 0.5f ? -15f : 15f;
 
                     if ((lastTilt == 15f && proposedTilt == -15f) ||

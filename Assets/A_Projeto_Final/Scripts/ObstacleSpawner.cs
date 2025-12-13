@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
     void Start()
     {
         Transform platform = transform;
-        Debug.Log(platform);
+        //Debug.Log(platform);
         if (Mathf.Abs(platform.rotation.eulerAngles.x) > 0.01f)
             canSpawnFan = false;
 
