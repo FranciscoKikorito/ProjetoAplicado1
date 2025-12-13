@@ -20,28 +20,33 @@ public class ObstacleSpawner : MonoBehaviour
     public bool canSpawnFan = true;
     public bool canSpawnRobot = true;
 
+    public bool iteratedEnough = false;
 
     private MovePlatform pathList;
 
 
     void Start()
     {
+
         Transform platform = transform;
         //Debug.Log(platform);
         if (Mathf.Abs(platform.rotation.eulerAngles.x) > 0.01f)
             canSpawnFan = false;
 
-        Transform platformPathList = transform.parent;
-        int myIndex = platformPathList.GetSiblingIndex();
+        int myIndex = platform.GetSiblingIndex();
+        pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
 
         if (myIndex > 0)
         {
-            Transform prevPlatform = platformPathList.GetChild(myIndex - 1);
-            ObstacleSpawner prevSpawner = prevPlatform.GetComponentInChildren<ObstacleSpawner>();
+            Transform prevPlatform = pathList.transform.GetChild(myIndex - 1);
+            ObstacleSpawner prevSpawner = prevPlatform.GetComponent<ObstacleSpawner>();
 
+            //Debug.Log("prevPlatform: " + prevPlatform);
+            //Debug.Log("prevSpwaner: " + prevSpawner);
             if (prevSpawner != null)
             {
                 canSpawnFan = prevSpawner.checkIfPreviousWasFan();
+                //Debug.Log("CAN SPAWN FAN?: " + canSpawnFan);
             }
 
         }
@@ -49,8 +54,10 @@ public class ObstacleSpawner : MonoBehaviour
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
         PathDestroy checks = pathList.GetComponentInChildren<PathDestroy>();
 
-        canSpawnFan = checks.checkFans();
+        iteratedEnough = checks.checkFans();
         canSpawnRobot = checks.checkRobots();
+        //Debug.Log("Spawn fan? : " + canSpawnFan);
+        //Debug.Log("Iterated enough? : " + iteratedEnough);
 
         SpawnObstacle();
     }
@@ -74,7 +81,7 @@ public class ObstacleSpawner : MonoBehaviour
         else
         {
 
-            if (canSpawnFan)
+            if (canSpawnFan && iteratedEnough)
                 SpawnFanObstacle();
             else
                 SpawnTubeObstacle();
