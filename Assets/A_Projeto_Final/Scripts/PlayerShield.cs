@@ -114,7 +114,7 @@ public class PlayerShield : MonoBehaviour
             shieldLoopSource.clip = shieldOnSFX;
             shieldLoopSource.loop = true;
 
-            // 🎲 random start
+            // random start
             shieldLoopSource.time = Random.Range(0f, shieldOnSFX.length);
             shieldLoopSource.volume = 0f;
 

@@ -2,46 +2,41 @@ using UnityEngine;
 using UnityEngine.SceneManagement; 
 using System.Collections;
 using UnityEngine.UI;
+
 public class GameStartController : MonoBehaviour
 {
-    [Header("Player")]
-    public Animator playerAnimator;
+    [Header("Player")] public Animator playerAnimator;
     public static bool canJump = false;
-    
-    [Header("Gameplay")]
-    public MovePlatform[] allPlatforms;  
+
+    [Header("Gameplay")] public MovePlatform[] allPlatforms;
     public float platformStartSpeed = -10f;
 
-    [Header("Cameras")]
-    public GameObject introCAM;        // câmera da intro (ativa no início)
-    public GameObject gameplayCAM;     // câmera da gameplay (ativa depois do clique)
-    
-    [Header("UI")]
-    public GameObject pressStartUI;
-    
-    [Header("Game Over / Fade")]
-    public RectTransform gameOverUI;
+    [Header("Cameras")] public GameObject introCAM; // câmera da intro (ativa no início)
+    public GameObject gameplayCAM; // câmera da gameplay (ativa depois do clique)
+
+    [Header("UI")] public GameObject pressStartUI;
+
+    [Header("Game Over / Fade")] public RectTransform gameOverUI;
     public float gameOverDisplayTime = 2.0f;
-    public CanvasGroup fadeOverlay; 
+    public CanvasGroup fadeOverlay;
     public float fadeDuration = 1.5f;
     public bool isGameOver = false; // Impede inputs durante o fade
-    
-    [Header("Audio")]
-    public MusicManager musicManager;
-    
+
+    [Header("Audio")] public MusicManager musicManager;
+
     private bool gameStarted = false;
     private bool animationPlayed = false;
-    
+
     void Start()
     {
         if (gameOverUI != null) gameOverUI.gameObject.SetActive(false);
-        
-        if (fadeOverlay != null) 
+
+        if (fadeOverlay != null)
         {
             fadeOverlay.alpha = 0f;
             fadeOverlay.blocksRaycasts = false;
         }
-        
+
         // parar plataformas
         foreach (var p in allPlatforms)
         {
@@ -56,9 +51,9 @@ public class GameStartController : MonoBehaviour
         introCAM.SetActive(true);
         gameplayCAM.SetActive(false);
         pressStartUI.SetActive(true);
-        
+
         isGameOver = false;
-        
+
         if (musicManager != null)
             musicManager.PlayIntroMusic();
     }
@@ -66,10 +61,10 @@ public class GameStartController : MonoBehaviour
     void Update()
     {
         if (isGameOver) return;
-        
+
         if (!gameStarted)
         {
-           
+
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
@@ -82,6 +77,7 @@ public class GameStartController : MonoBehaviour
                 // start do player
                 playerAnimator.SetTrigger("StartGame");
             }
+
             return;
         }
 
@@ -101,46 +97,25 @@ public class GameStartController : MonoBehaviour
                 musicManager.PlayGameplayMusic();
         }
     }
+
     // --- GAME OVER ---
     public void TriggerGameOver()
     {
         if (isGameOver) return;
-        
+
         isGameOver = true;
         canJump = false;
-        
+
         foreach (var p in allPlatforms)
         {
             p.SetMoveDirection(Vector3.zero);
         }
+
         StartCoroutine(GameOverSequence());
     }
 
     IEnumerator GameOverSequence()
     {
-        if (gameOverUI != null)
-        {
-            gameOverUI.gameObject.SetActive(true);
-            
-            Vector2 startPos = new Vector2(1500f, 0f); 
-            Vector2 endPos = Vector2.zero; // Centro do ecrã (assumindo âncora no centro)
-
-            float slideDuration = 1f; 
-            float timer = 0f;
-
-            while (timer < slideDuration)
-            {
-                timer += Time.deltaTime;
-                float percentage = timer / slideDuration;
-                
-                float smooth = Mathf.SmoothStep(0f, 1f, percentage);
-                gameOverUI.anchoredPosition = Vector2.Lerp(startPos, endPos, smooth);
-                yield return null;
-            }
-            gameOverUI.anchoredPosition = endPos;
-        }
-        yield return new WaitForSeconds(gameOverDisplayTime);
-        
         float fadeTimer = 0f;
         if (fadeOverlay != null)
         {
@@ -151,9 +126,35 @@ public class GameStartController : MonoBehaviour
                 fadeOverlay.alpha = Mathf.Lerp(0f, 1f, fadeTimer / fadeDuration);
                 yield return null;
             }
+
             fadeOverlay.alpha = 1f;
+            yield return new WaitForSeconds(0.2f);
+
+            if (gameOverUI != null)
+            {
+                gameOverUI.gameObject.SetActive(true);
+
+                Vector2 startPos = new Vector2(1500f, 0f);
+                Vector2 endPos = Vector2.zero;
+
+                float slideDuration = 0.8f;
+                float timer = 0f;
+
+                while (timer < slideDuration)
+                {
+                    timer += Time.deltaTime;
+                    float percentage = timer / slideDuration;
+
+                    float smooth = Mathf.SmoothStep(0f, 1f, percentage);
+                    gameOverUI.anchoredPosition = Vector2.Lerp(startPos, endPos, smooth);
+                    yield return null;
+                }
+
+                gameOverUI.anchoredPosition = endPos;
+            }
+
+            yield return new WaitForSeconds(gameOverDisplayTime);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
