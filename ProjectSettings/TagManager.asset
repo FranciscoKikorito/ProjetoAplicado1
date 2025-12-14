@@ -19,6 +19,7 @@ TagManager:
   - RightTurnTrigger
   - RotationTrigger
   - TubeTrigger
+  - FanTrigger
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Ground
   - Ramp
   - AimPoint
-  - 
+  - FanParts
   - 
   - 
   - 

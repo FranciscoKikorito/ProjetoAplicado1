@@ -298,4 +298,10 @@ public class SlopesAndJumping : MonoBehaviour
             }
         }
     }
+
+    //–––––– PUBLIC CALLS ––––––//
+    public bool dashCheck()
+    {
+        return isDashing;
+    }
 }
