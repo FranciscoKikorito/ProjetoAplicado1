@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/CameraFollowEyes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/CameraFollowEyes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLast.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/PlayerLives1.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SlopesAndJumping1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SlopesAndJumping1.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,6 +167,8 @@
       <workItem from="1765317266396" duration="9611000" />
       <workItem from="1765328087142" duration="70000" />
       <workItem from="1765328392309" duration="1434000" />
+      <workItem from="1765621514582" duration="6844000" />
+      <workItem from="1765724728823" duration="3741000" />
     </task>
     <servers />
   </component>
