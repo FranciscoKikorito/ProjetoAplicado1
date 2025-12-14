@@ -6,10 +6,12 @@ using UnityEngine.Rendering;
 
 public class GameStartController : MonoBehaviour
 {
-    [Header("Player")] public Animator playerAnimator;
+    [Header("Player")] 
+    public Animator playerAnimator;
     public static bool canJump = false;
 
-    [Header("Gameplay")] public MovePlatform[] allPlatforms;
+    [Header("Gameplay")] 
+    public MovePlatform[] allPlatforms;
     public float platformStartSpeed = -10f;
 
     [Header("Cameras")] 
@@ -19,7 +21,8 @@ public class GameStartController : MonoBehaviour
     [Header("UI")] 
     public GameObject pressStartUI;
     
-    [Header("Game Over / Fade")] public RectTransform gameOverUI;
+    [Header("Game Over / Fade")] 
+    public RectTransform gameOverUI;
     public float gameOverDisplayTime = 2.0f;
     public CanvasGroup fadeOverlay;
     public float fadeDuration = 1.5f;
@@ -29,7 +32,8 @@ public class GameStartController : MonoBehaviour
     public Volume glitchPostProcessVolume; 
     public float glitchRampUpTime = 0.5f; // Tempo para ativar os efeitos visuais
 
-    [Header("Audio")] public MusicManager musicManager;
+    [Header("Audio")] 
+    public MusicManager musicManager;
 
     private bool gameStarted = false;
     private bool animationPlayed = false;
@@ -106,6 +110,10 @@ public class GameStartController : MonoBehaviour
             foreach (var p in allPlatforms)
             {
                 p.SetMoveDirection(Vector3.forward * platformStartSpeed);
+                if (GameTimerManager.Instance != null)
+                {
+                    GameTimerManager.Instance.StartTimer();
+                }
             }
 
             if (musicManager != null)

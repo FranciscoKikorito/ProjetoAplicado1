@@ -44,12 +44,9 @@ public class PlayerLives : MonoBehaviour
 
     void Awake()
     {
-        // Se não arrastaste nada para o playerModel, usa o próprio transform
         if (playerModel == null) playerModel = transform;
 
         renderers = playerModel.GetComponentsInChildren<Renderer>();
-
-        // Guardamos a lista de materiais de cada renderer (alguns renderers têm mais de 1 material)
         originalMaterials = new Material[renderers.Length][];
 
         for (int i = 0; i < renderers.Length; i++)
@@ -70,7 +67,6 @@ public class PlayerLives : MonoBehaviour
         {
             livesUI.SetActive(false);
         }
-        
     }
     public void ApplyDamage(int amount)
     {
