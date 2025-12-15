@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338189781521331891}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.69840115, y: 0.11061577, z: 0.6984011, w: 0.11061587}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.15071522, y: 0.117881946, z: 0}
   m_LocalScale: {x: 0.030426448, y: 0.03228434, z: 0.030085351}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3928364275077559428}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &6952890435569505489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52,8 +52,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.19418025, y: 4.509078, z: 4.555086}
-  m_Center: {x: -2.0441442, y: 4.256414, z: 0}
+  m_Size: {x: 0.16352443, y: 4.343729, z: 4.9675236}
+  m_Center: {x: -0.59902024, y: -3.5270193, z: -4.9251556}
 --- !u!114 &3775076591218178561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +286,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2577548232221058511, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a681d09331cabe548a4b42fb917b0276, type: 3}
       propertyPath: m_Name
       value: FBX_Fan_New
@@ -480,8 +500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   BrokenPrefab: {fileID: 7907084550928796236, guid: 645c6b7e450654544abe983edd330d46, type: 3}
   DestructionClip: {fileID: 0}
-  ExplosiveForce: 100
-  ExplosiveRadius: 1
+  ExplosiveForce: 1000
+  ExplosiveRadius: 2
   PieceFadeSpeed: 0.25
   PieceDestroyDelay: 5
   PieceSleepCheckDelay: 0.1

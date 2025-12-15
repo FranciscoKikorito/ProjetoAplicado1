@@ -1,37 +1,38 @@
-// This script MUST be attached to your character's GameObject in the scene.
 using UnityEngine;
 
-public class FootstepVFXSpawner : MonoBehaviour
+public class FootVFXSpawner : MonoBehaviour
 {
-    public GameObject footstepVFXPrefab;
-    public Transform leftFootSpawnPoint;
-    public Transform rightFootSpawnPoint;
+    [Header("VFX")]
+    public GameObject footVFXPrefab;
 
-    public GameObject punchParticlePrefab;
+    [Header("Feet Transforms")]
+    public Transform leftFoot;
+    public Transform rightFoot;
 
-    // --- NEW PUBLIC VARIABLES to control spawning ---
-    public Vector3 spawnOffset = new Vector3(12f, -0.22f, 10f); // Adjust position
-    public Vector3 spawnRotation = new Vector3(90f, 0f, 0f);    // Adjust rotation (e.g., 90 for flat)
-    public Vector3 spawnScale = new Vector3(12f, 12f, 12f);  // Adjust size (e.g., 0.5 for half size)
-    // ---------------------------------------------------
+    //[Header("Optional Settings")]
+    //public bool matchFootRotation = false;
 
     public void SpawnLeftFootVFX()
     {
-        GameObject temp = Instantiate(
-            footstepVFXPrefab
-        );        temp.transform.position = leftFootSpawnPoint.position + spawnOffset;
+        SpawnVFX(leftFoot);
     }
 
     public void SpawnRightFootVFX()
     {
-
-        GameObject temp = Instantiate(
-            footstepVFXPrefab
-        ); temp.transform.position = leftFootSpawnPoint.position + spawnOffset;
+        SpawnVFX(rightFoot);
     }
 
-    public void PunchParticle()
+    private void SpawnVFX(Transform foot)
     {
+        if (footVFXPrefab == null || foot == null)
+            return;
 
+        //Quaternion rotation = matchFootRotation ? foot.rotation : Quaternion.identity;
+        Quaternion rotation = Quaternion.Euler(0f, 90f, 0f);
+        Instantiate(
+            footVFXPrefab,
+            foot.position,
+            rotation
+        );
     }
 }
