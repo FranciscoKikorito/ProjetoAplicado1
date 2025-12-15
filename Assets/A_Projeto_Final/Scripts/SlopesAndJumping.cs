@@ -67,59 +67,65 @@ public class SlopesAndJumping : MonoBehaviour
     }
 
     private void FixedUpdate()
+{
+    // SphereCast ground check
+    Vector3 origin = transform.position + Vector3.up * 0.5f;
+
+    isGrounded = Physics.SphereCast(
+        origin,
+        sphereRadius,
+        Vector3.down,
+        out hitInfo,
+        sphereCastDistance,
+        groundLayer
+    );
+
+    if (isGrounded)
+        canDash = true;
+
+    // Track air time
+    if (!isGrounded)
     {
-        // SphereCast ground check
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-
-        isGrounded = Physics.SphereCast(
-            origin,
-            sphereRadius,
-            Vector3.down,
-            out hitInfo,
-            sphereCastDistance,
-            groundLayer
-        );
-
-        if (isGrounded)
-            canDash = true;
-
-        // Track air time
-        if (!isGrounded)
+        airborneTimer += Time.fixedDeltaTime;
+    }
+    else
+    {
+        if (isJumping && airborneTimer >= minAirTime)
         {
-            airborneTimer += Time.fixedDeltaTime;
+            isJumping = false;
+            airborneTimer = 0f;
         }
-        else
+        else if (!isJumping)
         {
-            // –– OPTION A: Reset isJumping safely when touching ground
-            if (isJumping && airborneTimer >= minAirTime)
-            {
-                isJumping = false;
-                airborneTimer = 0f;
-            }
-            else if (!isJumping)
-            {
-                airborneTimer = 0f;
-            }
-        }
-
-        // –– OPTION B: Skip ground snapping while jumping or dashing
-        if (isJumping || isDashing)
-            return;
-
-        // Ground snapping
-        if (isGrounded)
-        {
-            float targetY = hitInfo.point.y + desiredHeight;
-            float diff = targetY - transform.position.y;
-
-            if (Mathf.Abs(diff) > deadZone)
-            {
-                Vector3 vel = rb.linearVelocity;
-                vel.y = diff * snapSpeed;
-                rb.linearVelocity = vel;
-            }
+            airborneTimer = 0f;
         }
     }
+
+    // Skip ground snapping and slope rotation while jumping or dashing
+    if (isJumping || isDashing)
+        return;
+
+    // Ground snapping
+    if (isGrounded)
+    {
+        float targetY = hitInfo.point.y + desiredHeight;
+        float diff = targetY - transform.position.y;
+
+        if (Mathf.Abs(diff) > deadZone)
+        {
+            Vector3 vel = rb.linearVelocity;
+            vel.y = diff * snapSpeed;
+            rb.linearVelocity = vel;
+        }
+
+        // Align rotation with slope
+        Vector3 groundNormal = hitInfo.normal;
+        Quaternion slopeRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+        transform.rotation = Quaternion.Slerp(transform.rotation, slopeRotation, Time.fixedDeltaTime * snapSpeed);
+    }
+}
+
+    
 
     //––––––––––– CLICK LOGIC –––––––––––––//
 
