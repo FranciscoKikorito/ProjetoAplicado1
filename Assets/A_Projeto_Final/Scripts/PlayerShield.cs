@@ -63,6 +63,9 @@ public class PlayerShield : MonoBehaviour
 
     private void HandleShieldInput()
     {
+        if (GameStartController.inputLocked)
+            return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             lmbDownTime = Time.time;
