@@ -9,7 +9,8 @@ public class GameStartController : MonoBehaviour
     [Header("Player")] 
     public Animator playerAnimator;
     public static bool canJump = false;
-
+    public static bool canShield = false;
+        
     [Header("Gameplay")] 
     public MovePlatform[] allPlatforms;
     public float platformStartSpeed = -10f;
@@ -28,6 +29,7 @@ public class GameStartController : MonoBehaviour
     public float fadeDuration = 1.5f;
     public bool isGameOver = false; // Impede inputs durante o fade
     private Vector2 originalGameOverPos;
+    public static bool inputLocked = false;
     
     [Header("Game Over - Post Processing")]
     public Volume glitchPostProcessVolume; 
@@ -55,7 +57,6 @@ public class GameStartController : MonoBehaviour
             fadeOverlay.alpha = 0f;
             fadeOverlay.blocksRaycasts = false;
         }
-        // Garante que o pós-processamento de glitch começa desligado
         if (glitchPostProcessVolume != null)
         {
             glitchPostProcessVolume.weight = 0f;
@@ -76,6 +77,7 @@ public class GameStartController : MonoBehaviour
         pressStartUI.SetActive(true);
 
         isGameOver = false;
+        inputLocked = false;
 
         if (musicManager != null)
             musicManager.PlayIntroMusic();
@@ -83,7 +85,7 @@ public class GameStartController : MonoBehaviour
 
     void Update()
     {
-        if (isGameOver) return;
+        if (isGameOver || inputLocked) return;
 
         if (!gameStarted)
         {
@@ -183,7 +185,6 @@ public class GameStartController : MonoBehaviour
             {
                 sfxSource.PlayOneShot(gameOverSFX);
             }
-            
             Vector3 startScale = new Vector3(4f, 4f, 4f); 
             Vector3 endScale = Vector3.one; // Escala normal (1x)
 

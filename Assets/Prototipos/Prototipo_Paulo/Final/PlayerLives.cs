@@ -109,10 +109,17 @@ public class PlayerLives : MonoBehaviour
     }
     void Die()
     {
+        if (isDead) return;
+        
         isDead = true;
+        isInvincible = true;
+        
+        GameStartController.inputLocked = true;
+        GameStartController.canJump = false;
+        
         if(animator != null) animator.SetTrigger("Die"); 
+        
         Debug.Log("Game Over!");
-
         if (gameController != null)
         {
             gameController.TriggerGameOver();
