@@ -9,7 +9,7 @@ public class SpatialTimerDisplay : MonoBehaviour
     [Header("Cores do Timer")]
     public Color normalColor = Color.white;
     public Color finalSecondsColor = Color.green;
-    [Range(0, 60)]
+    [Range(0, 180)]
     public float changeColorAtSeconds = 10f;
 
     [Header("Configurações de Rotação")]
