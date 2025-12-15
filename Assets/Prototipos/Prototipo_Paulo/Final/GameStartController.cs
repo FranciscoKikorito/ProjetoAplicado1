@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
-
+using Unity.Cinemachine;
 public class GameStartController : MonoBehaviour
 {
     [Header("Player")] 
@@ -13,11 +14,11 @@ public class GameStartController : MonoBehaviour
     [Header("Gameplay")] 
     public MovePlatform[] allPlatforms;
     public float platformStartSpeed = -10f;
-
-    [Header("Cameras")] 
-    public GameObject introCAM; // câmera da intro (ativa no início)
-    public GameObject gameplayCAM; // câmera da gameplay (ativa depois do clique)
-
+    
+    [Header("Cinemachine")]
+    public CinemachineCamera introCam;
+    public CinemachineCamera gameplayCam;
+    
     [Header("UI")] 
     public GameObject pressStartUI;
     
@@ -27,6 +28,7 @@ public class GameStartController : MonoBehaviour
     public CanvasGroup fadeOverlay;
     public float fadeDuration = 1.5f;
     public bool isGameOver = false; // Impede inputs durante o fade
+    private Vector2 originalGameOverPos;
     
     [Header("Game Over - Post Processing")]
     public Volume glitchPostProcessVolume; 
@@ -37,7 +39,7 @@ public class GameStartController : MonoBehaviour
 
     private bool gameStarted = false;
     private bool animationPlayed = false;
-    private Vector2 originalGameOverPos;
+    
     void Start()
     {
         if (gameOverUI != null) 
@@ -67,8 +69,8 @@ public class GameStartController : MonoBehaviour
         playerAnimator.Play("Idle_Start");
 
         // Ativa introCAM + UI
-        introCAM.SetActive(true);
-        gameplayCAM.SetActive(false);
+        introCam.Priority = 20;
+        gameplayCam.Priority = 10;
         pressStartUI.SetActive(true);
 
         isGameOver = false;
@@ -89,8 +91,8 @@ public class GameStartController : MonoBehaviour
                 gameStarted = true;
 
                 // troca de câmeras →
-                introCAM.SetActive(false);
-                gameplayCAM.SetActive(true);
+                introCam.Priority = 10;
+                gameplayCam.Priority = 20;
                 // esconde a UI
                 pressStartUI.SetActive(false);
                 // start do player

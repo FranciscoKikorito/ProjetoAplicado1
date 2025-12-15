@@ -23,6 +23,7 @@ public class Destructible : MonoBehaviour
         myParent = transform.parent != null ? transform.parent.gameObject : null;
         rootRb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
     }
 
     public void Explode()
@@ -56,6 +57,11 @@ public class Destructible : MonoBehaviour
 
         if (rootRb != null)
             Destroy(rootRb);
+
+        Transform target = transform.parent.Find("Cylinder.001");
+        //Debug.Log(target);
+        //Debug.Log(target.gameObject);
+        Destroy(target.gameObject);    
     }
 
     //efeito para seguir o mundo

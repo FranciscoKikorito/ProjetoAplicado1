@@ -7,7 +7,7 @@ public class GameTimerManager : MonoBehaviour
     public static GameTimerManager Instance; // Singleton para os prefabs encontrarem fácil
 
     [Header("Configuração")]
-    public float totalTimeInSeconds = 60f; // __ Segundos 
+    public float totalTimeInSeconds = 180f; // __ Segundos 
     public bool isTimerRunning = false;
 
     [Header("Referências")]
