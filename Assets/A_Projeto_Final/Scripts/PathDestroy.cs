@@ -16,11 +16,11 @@ public class PathDestroy : MonoBehaviour
             counter++;
         }
 
-        if (counter > 8)
+        if (counter > 0)
         {
             startRobots = true;
         }
-        if (counter > 16)
+        if (counter > 8)
         {
             startFans = true;
         }

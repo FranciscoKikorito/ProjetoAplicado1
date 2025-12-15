@@ -960,6 +960,7 @@ Transform:
   - {fileID: 1328565389208578635}
   - {fileID: 927776886149224916}
   - {fileID: 3108086816768293709}
+  - {fileID: 6096299570571501050}
   - {fileID: 3997963299085183996}
   m_Father: {fileID: 3645502947715658784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1350,7 +1351,7 @@ Transform:
   m_GameObject: {fileID: 5801261569415236425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: -0.28, z: 7.5}
+  m_LocalPosition: {x: -0, y: -0.32, z: 9.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1560,6 +1561,7 @@ MonoBehaviour:
   - {fileID: 1328565389208578635}
   - {fileID: 3108086816768293709}
   - {fileID: 3997963299085183996}
+  - {fileID: 6096299570571501050}
   robotPossibleSpawnsList:
   - {fileID: 8676004550086578585}
   - {fileID: 7923168437071563889}
@@ -1586,6 +1588,37 @@ MonoBehaviour:
   spawnPointsList:
   - {fileID: 706170339129786196}
   - {fileID: 7798716631576874105}
+--- !u!1 &6955561295427545180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6096299570571501050}
+  m_Layer: 0
+  m_Name: TubeMiddle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6096299570571501050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955561295427545180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.1, z: 7.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2048176551688110444}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6989069862524981059
 GameObject:
   m_ObjectHideFlags: 0

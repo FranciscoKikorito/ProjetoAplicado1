@@ -65,27 +65,33 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnObstacle()
     {
         float rand = Random.value;
+            if (rand < 0.60f)
+            {
+                if (canSpawnFan)
+                {
+                    SpawnTubeObstacle();
+                } 
+                else
+                {
+                    return;
+                }
+            }
+            else if (rand < 0.75f)
+            {
+                if (canSpawnRobot)
+                    SpawnRobotObstacle();
+                else
+                    SpawnTubeObstacle();
 
-        if (rand < 0.60f)
-        {
-            SpawnTubeObstacle();
-        }
-        else if (rand < 0.75f)
-        {
-            if (canSpawnRobot)
-                SpawnRobotObstacle();
+            }
             else
-                SpawnTubeObstacle();
+            {
 
-        }
-        else
-        {
-
-            if (canSpawnFan && iteratedEnough)
-                SpawnFanObstacle();
-            else
-                SpawnTubeObstacle();
-        }
+                if (canSpawnFan && iteratedEnough)
+                    SpawnFanObstacle();
+                else
+                    SpawnTubeObstacle();
+            }  
     }
 
     private void SpawnTubeObstacle()

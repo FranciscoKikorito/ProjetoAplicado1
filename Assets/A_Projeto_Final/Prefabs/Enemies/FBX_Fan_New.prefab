@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1338189781521331891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.15071522, y: 0.117881946, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.030426448, y: 0.03228434, z: 0.030085351}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,7 +53,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.16352443, y: 4.343729, z: 4.9675236}
-  m_Center: {x: -0.59902024, y: -3.5270193, z: -4.9251556}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3775076591218178561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   BrokenPrefab: {fileID: 7907084550928796236, guid: 645c6b7e450654544abe983edd330d46, type: 3}
   DestructionClip: {fileID: 8300000, guid: 471afc4232dd6dd408c9235588b20a5c, type: 3}
   ExplosiveForce: 1000
-  ExplosiveRadius: 2
+  ExplosiveRadius: 0.5
   PieceFadeSpeed: 0.25
   PieceDestroyDelay: 5
   PieceSleepCheckDelay: 0.1

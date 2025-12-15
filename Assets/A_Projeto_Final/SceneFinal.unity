@@ -14571,8 +14571,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.38706908, y: 0.97759247, z: 1.1390281}
-  m_Center: {x: 0.014899865, y: 0.46564674, z: 0.08707988}
+  m_Size: {x: 0.38706908, y: 0.97759247, z: 0.9639695}
+  m_Center: {x: 0.014899865, y: 0.46564674, z: 0.05454865}
 --- !u!4 &982675853704693351
 Transform:
   m_ObjectHideFlags: 0
@@ -15490,9 +15490,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::teste
   player: {fileID: 3160371879620789889}
   playerShield: {fileID: 3362056365086736948}
-  desiredHeight: 0.0001
-  sphereRadius: 0.25
-  sphereCastDistance: 1
+  desiredHeight: 0.1
+  sphereRadius: 0.2
+  sphereCastDistance: 0.7
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
