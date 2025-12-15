@@ -28,7 +28,6 @@ public class MusicManager : MonoBehaviour
 
         gameplaySource.Stop();
     }
-
     public void PlayGameplayMusic()
     {
         if (fadeCoroutine != null)
@@ -36,7 +35,15 @@ public class MusicManager : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(CrossFade(introSource, gameplaySource));
     }
-
+    
+    public void StopMusic()
+    {
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+        
+        introSource.Stop();
+        gameplaySource.Stop();
+    }
     IEnumerator CrossFade(AudioSource from, AudioSource to)
     {
         if (!to.isPlaying)

@@ -4,7 +4,6 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
-using Unity.Cinemachine;
 public class GameStartController : MonoBehaviour
 {
     [Header("Player")] 
@@ -36,7 +35,10 @@ public class GameStartController : MonoBehaviour
 
     [Header("Audio")] 
     public MusicManager musicManager;
-
+    public AudioSource sfxSource; 
+    public AudioClip gameOverSFX;
+    public AudioClip finalOuchPlayerSFX; 
+    
     private bool gameStarted = false;
     private bool animationPlayed = false;
     
@@ -130,7 +132,16 @@ public class GameStartController : MonoBehaviour
 
         isGameOver = true;
         canJump = false;
-
+        
+        if (musicManager != null)
+        {
+            musicManager.StopMusic(); 
+        }
+        if (sfxSource != null && finalOuchPlayerSFX != null)
+        {
+            sfxSource.PlayOneShot(finalOuchPlayerSFX);
+        }
+        
         foreach (var p in allPlatforms)
         {
             p.SetMoveDirection(Vector3.zero);
@@ -141,7 +152,9 @@ public class GameStartController : MonoBehaviour
 
     IEnumerator GameOverSequence()
     {
-       float timer = 0f;
+        
+        
+        float timer = 0f;
         if (fadeOverlay != null) fadeOverlay.blocksRaycasts = true;
 
         // Fazemos o fade do ecrã preto E o fade dos efeitos de glitch ao mesmo tempo
@@ -166,6 +179,10 @@ public class GameStartController : MonoBehaviour
         if (gameOverUI != null)
         {
             gameOverUI.gameObject.SetActive(true);
+            if (sfxSource != null && gameOverSFX != null)
+            {
+                sfxSource.PlayOneShot(gameOverSFX);
+            }
             
             Vector3 startScale = new Vector3(4f, 4f, 4f); 
             Vector3 endScale = Vector3.one; // Escala normal (1x)

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/FBX_Fan_New.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/FBX_Fan_New.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/Voices - Essentials/Voice_Female/Voice_Female_Pain/Voice_Female_V1_Pain_Mono_04.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/Voices - Essentials/Voice_Female/Voice_Female_Pain/Voice_Female_V1_Pain_Mono_04.wav.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +160,7 @@
       <workItem from="1765328392309" duration="1434000" />
       <workItem from="1765621514582" duration="6844000" />
       <workItem from="1765724728823" duration="31004000" />
-      <workItem from="1765814256327" duration="2571000" />
+      <workItem from="1765814256327" duration="5383000" />
     </task>
     <servers />
   </component>
