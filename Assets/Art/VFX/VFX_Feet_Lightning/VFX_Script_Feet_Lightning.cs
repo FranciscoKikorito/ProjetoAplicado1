@@ -27,12 +27,18 @@ public class FootVFXSpawner : MonoBehaviour
         if (footVFXPrefab == null || foot == null)
             return;
 
-        //Quaternion rotation = matchFootRotation ? foot.rotation : Quaternion.identity;
-        Quaternion rotation = Quaternion.Euler(0f, 90f, 0f);
-        Instantiate(
+        // Instantiate as child of the foot
+        GameObject vfxInstance = Instantiate(
             footVFXPrefab,
             foot.position,
-            rotation
+            foot.rotation, // start with foot's rotation
+            foot
         );
+
+        // Apply a rotation offset relative to the foot
+        vfxInstance.transform.localRotation *= Quaternion.Euler(0f, 90f, 0f);
     }
+
+
+
 }
