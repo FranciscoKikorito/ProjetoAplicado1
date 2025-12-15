@@ -402,7 +402,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   BrokenPrefab: {fileID: 7907084550928796236, guid: 645c6b7e450654544abe983edd330d46, type: 3}
-  DestructionClip: {fileID: 0}
+  DestructionClip: {fileID: 8300000, guid: 471afc4232dd6dd408c9235588b20a5c, type: 3}
   ExplosiveForce: 1000
   ExplosiveRadius: 2
   PieceFadeSpeed: 0.25
