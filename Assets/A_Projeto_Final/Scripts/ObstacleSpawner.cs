@@ -30,8 +30,6 @@ public class ObstacleSpawner : MonoBehaviour
 
         Transform platform = transform;
         //Debug.Log(platform);
-        if (Mathf.Abs(platform.rotation.eulerAngles.x) > 0.01f)
-            canSpawnFan = false;
 
         int myIndex = platform.GetSiblingIndex();
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
@@ -51,6 +49,11 @@ public class ObstacleSpawner : MonoBehaviour
 
         }
 
+        if (Mathf.Abs(platform.rotation.eulerAngles.x) == 15 || Mathf.Abs(platform.rotation.eulerAngles.x) == 345) {
+            //Debug.Log(platform.rotation.eulerAngles.x);
+            canSpawnFan = false;
+        }    
+
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
         PathDestroy checks = pathList.GetComponentInChildren<PathDestroy>();
 
@@ -65,34 +68,31 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnObstacle()
     {
         float rand = Random.value;
-            if (rand < 0.60f)
-            {
-                if (canSpawnFan)
-                {
-                    SpawnTubeObstacle();
-                } 
-                else
-                {
-                    return;
-                }
-            }
-            else if (rand < 0.75f)
-            {
-                if (canSpawnRobot)
-                    SpawnRobotObstacle();
-                else
-                    SpawnTubeObstacle();
 
-            }
+        if (rand < 0.50f)
+        {
+            if (canSpawnFan)
+                SpawnTubeObstacle();
             else
-            {
-
-                if (canSpawnFan && iteratedEnough)
-                    SpawnFanObstacle();
-                else
-                    SpawnTubeObstacle();
-            }  
+                return;
+        }
+        else if (rand < 0.70f)
+        {
+            if (canSpawnRobot)
+                SpawnRobotObstacle();
+            else
+                SpawnTubeObstacle();
+        }
+        else
+        {
+            if (canSpawnFan && iteratedEnough)
+                SpawnFanObstacle();
+            else
+                SpawnTubeObstacle();
+        }
     }
+
+
 
     private void SpawnTubeObstacle()
     {

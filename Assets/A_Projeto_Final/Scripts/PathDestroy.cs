@@ -20,7 +20,7 @@ public class PathDestroy : MonoBehaviour
         {
             startRobots = true;
         }
-        if (counter > 8)
+        if (counter > 4)
         {
             startFans = true;
         }
