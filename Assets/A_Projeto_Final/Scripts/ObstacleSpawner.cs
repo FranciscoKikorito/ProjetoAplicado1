@@ -31,6 +31,12 @@ public class ObstacleSpawner : MonoBehaviour
         Transform platform = transform;
         //Debug.Log(platform);
 
+        if (Mathf.Abs(platform.rotation.eulerAngles.x) == 15 || Mathf.Abs(platform.rotation.eulerAngles.x) == 345)
+        {
+            //Debug.Log(platform.rotation.eulerAngles.x);
+            canSpawnFan = false;
+        }
+
         int myIndex = platform.GetSiblingIndex();
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
 
@@ -49,10 +55,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         }
 
-        if (Mathf.Abs(platform.rotation.eulerAngles.x) == 15 || Mathf.Abs(platform.rotation.eulerAngles.x) == 345) {
-            //Debug.Log(platform.rotation.eulerAngles.x);
-            canSpawnFan = false;
-        }    
+
 
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
         PathDestroy checks = pathList.GetComponentInChildren<PathDestroy>();
