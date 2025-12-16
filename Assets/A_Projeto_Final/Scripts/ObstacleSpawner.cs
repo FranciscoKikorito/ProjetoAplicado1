@@ -18,6 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
     private int lastFanIndex = -1;
 
     public bool canSpawnFan = true;
+    public bool previousSpawnFan = true;
     public bool canSpawnRobot = true;
 
     public bool iteratedEnough = false;
@@ -47,15 +48,17 @@ public class ObstacleSpawner : MonoBehaviour
 
             //Debug.Log("prevPlatform: " + prevPlatform);
             //Debug.Log("prevSpwaner: " + prevSpawner);
-            if (prevSpawner != null)
+            if (prevSpawner == null)
             {
-                canSpawnFan = prevSpawner.checkIfPreviousWasFan();
-                //Debug.Log("CAN SPAWN FAN?: " + canSpawnFan);
+                previousSpawnFan = false;
             }
+            else
+            {
+                previousSpawnFan = prevSpawner.checkIfPreviousWasFan();
+            }
+            //Debug.Log("previous fan?: " + previousSpawnFan);
 
         }
-
-
 
         pathList = GameObject.Find("PathList").GetComponent<MovePlatform>();
         PathDestroy checks = pathList.GetComponentInChildren<PathDestroy>();
@@ -74,7 +77,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (rand < 0.50f)
         {
-            if (canSpawnFan)
+            if (!previousSpawnFan)
                 SpawnTubeObstacle();
             else
                 return;
@@ -88,9 +91,9 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else
         {
-            if (canSpawnFan && iteratedEnough)
+            if (canSpawnFan && iteratedEnough && !previousSpawnFan)
                 SpawnFanObstacle();
-            else
+            else if (!previousSpawnFan)
                 SpawnTubeObstacle();
         }
     }
