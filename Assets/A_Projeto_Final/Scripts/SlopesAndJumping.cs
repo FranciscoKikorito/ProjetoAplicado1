@@ -122,7 +122,6 @@ public class SlopesAndJumping : MonoBehaviour
     }
 
     //––––––––––– CLICK LOGIC –––––––––––––//
-
     void Clicks()
     {
         if (GameStartController.canJump && Input.GetMouseButtonDown(0))

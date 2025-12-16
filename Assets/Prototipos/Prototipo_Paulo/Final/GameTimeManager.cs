@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Precisas disto para textos se quiseres
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameTimerManager : MonoBehaviour
