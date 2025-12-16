@@ -50,7 +50,6 @@ public class GameTimerManager : MonoBehaviour
             }
         }
     }
-
     void TimeIsUp()
     {
             Debug.Log("O Tempo Acabou! — VITÓRIA");

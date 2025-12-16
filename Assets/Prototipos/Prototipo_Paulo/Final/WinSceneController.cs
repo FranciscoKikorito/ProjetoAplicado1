@@ -77,11 +77,8 @@ public class WinSceneController : MonoBehaviour
 
             winUI.localScale = endScale;
         }
-
-        // ⏳ Tempo de leitura / impacto emocional
+        
         yield return new WaitForSeconds(winDisplayTime);
-
-        // 🔁 Restart do jogo (igual ao Game Over)
         SceneManager.LoadScene(restartSceneName);
     }
 }

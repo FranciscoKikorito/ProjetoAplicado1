@@ -1959,7 +1959,7 @@ MonoBehaviour:
   winDisplayTime: 3
   restartSceneName: SceneFinal
   winSource: {fileID: 613310660}
-  winSfx: {fileID: 8300000, guid: b9cc7f7f60fb1d04295cff7d1a7e6cf6, type: 3}
+  winSfx: {fileID: 8300000, guid: 060caf401f0ab524493610c3d6344b0b, type: 3}
 --- !u!4 &613310659
 Transform:
   m_ObjectHideFlags: 0
@@ -1988,7 +1988,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b9cc7f7f60fb1d04295cff7d1a7e6cf6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.131
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 0
   Mute: 0
