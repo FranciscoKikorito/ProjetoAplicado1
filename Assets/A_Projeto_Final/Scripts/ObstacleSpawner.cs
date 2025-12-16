@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -18,10 +19,11 @@ public class ObstacleSpawner : MonoBehaviour
     private int lastFanIndex = -1;
 
     public bool canSpawnFan = true;
-    public bool previousSpawnFan = true;
+    public int previousSpawnFan;
     public bool canSpawnRobot = true;
 
     public bool iteratedEnough = false;
+    public int count = 1;
 
     private MovePlatform pathList;
 
@@ -50,11 +52,15 @@ public class ObstacleSpawner : MonoBehaviour
             //Debug.Log("prevSpwaner: " + prevSpawner);
             if (prevSpawner == null)
             {
-                previousSpawnFan = false;
+                previousSpawnFan = 1;
             }
             else
             {
                 previousSpawnFan = prevSpawner.checkIfPreviousWasFan();
+                if (previousSpawnFan == 1)
+                {
+                    count = 2;
+                }
             }
             //Debug.Log("previous fan?: " + previousSpawnFan);
 
@@ -77,7 +83,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (rand < 0.50f)
         {
-            if (!previousSpawnFan)
+            if (count == 1)
                 SpawnTubeObstacle();
             else
                 return;
@@ -91,9 +97,9 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else
         {
-            if (canSpawnFan && iteratedEnough && !previousSpawnFan)
+            if (canSpawnFan && iteratedEnough && count == 1)
                 SpawnFanObstacle();
-            else if (!previousSpawnFan)
+            else if (count != 2)
                 SpawnTubeObstacle();
         }
     }
@@ -191,9 +197,9 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(fan, spawnPoint.position, spawnPoint.rotation, spawnPoint);
     }
 
-    public bool checkIfPreviousWasFan()
+    public int checkIfPreviousWasFan()
     {
-        return canSpawnFan;
+        return count;
     }
 }
 
