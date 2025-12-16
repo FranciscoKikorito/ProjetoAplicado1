@@ -14,7 +14,11 @@ public class WinSceneController : MonoBehaviour
 
     [Header("Restart")] public float winDisplayTime = 3f;
     public string restartSceneName = "SceneFinal";
-
+    
+    [Header("Audio")] 
+    public AudioSource winSource; 
+    public AudioClip winSfx;
+    
     private Vector2 originalPos;
 
     void Start()
@@ -30,7 +34,12 @@ public class WinSceneController : MonoBehaviour
             fadeOverlay.alpha = 0f;
             fadeOverlay.blocksRaycasts = true;
         }
-
+        
+        if (winSource != null && winSfx != null)
+        {
+            winSource.PlayOneShot(winSfx);
+        }
+        
         StartCoroutine(WinFlow());
     }
 
