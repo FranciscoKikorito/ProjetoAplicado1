@@ -20,8 +20,6 @@ public class DestroyFan : MonoBehaviour
             Destructible destructible = GetComponentInParent<Destructible>();
             //Debug.Log("Fan Triggered");
             //Debug.Log(destructible);
-            destructible.Explode();
-            /*
             bool isDashing = playerJumpScript.dashCheck();
             if (isDashing)
             {
@@ -29,7 +27,7 @@ public class DestroyFan : MonoBehaviour
             } else if (!isDashing)
             {
                 playerLivesScript.ApplyDamage(1);
-            }*/
+            }
         }
     }
 
