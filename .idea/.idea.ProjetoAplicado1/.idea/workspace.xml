@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimatorOld.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Animators/BoyAnimatorOld.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Inutilizados/Matthew Guz/Hits Effects FREE/Materials/Love Hit/Love Hit.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/Inutilizados/Matthew Guz/Hits Effects FREE/Materials/Love Hit/Love Hit.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Plant Sway.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/OmniShade/Samples/Basic URP/Materials/Plant Sway.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameStartController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/MusicManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/Voices - Essentials/Voice_Female/Voice_Female_Pain/Voice_Female_V1_Pain_Mono_04.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/Voices - Essentials/Voice_Female/Voice_Female_Pain/Voice_Female_V1_Pain_Mono_04.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameTimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/GameTimeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SFX/FinalOuchPlayer.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/Timer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/Timer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +166,7 @@
       <workItem from="1765328392309" duration="1434000" />
       <workItem from="1765621514582" duration="6844000" />
       <workItem from="1765724728823" duration="31004000" />
-      <workItem from="1765814256327" duration="5383000" />
+      <workItem from="1765814256327" duration="13182000" />
     </task>
     <servers />
   </component>

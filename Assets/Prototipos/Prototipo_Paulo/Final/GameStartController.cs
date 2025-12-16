@@ -31,6 +31,9 @@ public class GameStartController : MonoBehaviour
     private Vector2 originalGameOverPos;
     public static bool inputLocked = false;
     
+    [Header("WIN")]
+    public string winSceneName = "WinScene";
+    
     [Header("Game Over - Post Processing")]
     public Volume glitchPostProcessVolume; 
     public float glitchRampUpTime = 0.5f; // Tempo para ativar os efeitos visuais
@@ -151,7 +154,50 @@ public class GameStartController : MonoBehaviour
 
         StartCoroutine(GameOverSequence());
     }
+    
+    public void TriggerWin()
+    {
+        if (isGameOver) return;
 
+        isGameOver = true;
+        inputLocked = true;
+
+        canJump = false;
+        canShield = false;
+
+        // Para música e gameplay
+        if (musicManager != null)
+            musicManager.StopMusic();
+
+        foreach (var p in allPlatforms)
+            p.SetMoveDirection(Vector3.zero);
+
+        StartCoroutine(WinSequence());
+    }
+    IEnumerator WinSequence()
+    {
+        float timer = 0f;
+
+        if (fadeOverlay != null)
+            fadeOverlay.blocksRaycasts = true;
+
+        // Fade to black
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float progress = timer / fadeDuration;
+
+            if (fadeOverlay != null)
+                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, progress);
+
+            yield return null;
+        }
+
+        if (fadeOverlay != null)
+            fadeOverlay.alpha = 1f;
+        
+        SceneManager.LoadScene(winSceneName);
+    }
     IEnumerator GameOverSequence()
     {
         

@@ -11464,12 +11464,13 @@ MonoBehaviour:
   fadeOverlay: {fileID: 1726278936}
   fadeDuration: 1.5
   isGameOver: 0
+  winSceneName: WinScene
   glitchPostProcessVolume: {fileID: 2108537070}
   glitchRampUpTime: 0.5
   musicManager: {fileID: 817113530}
   sfxSource: {fileID: 1743433787}
   gameOverSFX: {fileID: 8300000, guid: c2630bd11c2140448b407877981c52c9, type: 3}
-  finalOuchPlayerSFX: {fileID: 8300000, guid: 69aa65663e5f3d94aa4e9889baf787ce, type: 3}
+  finalOuchPlayerSFX: {fileID: 8300000, guid: d54314cf6d56cff4d88165b5f222986a, type: 3}
 --- !u!4 &1743433786
 Transform:
   m_ObjectHideFlags: 0

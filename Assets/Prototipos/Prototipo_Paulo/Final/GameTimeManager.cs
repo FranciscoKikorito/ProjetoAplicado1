@@ -35,6 +35,9 @@ public class GameTimerManager : MonoBehaviour
 
     void Update()
     {
+        if (!isTimerRunning || currentTime <= 0)
+            return;
+        
         if (isTimerRunning && currentTime > 0)
         {
             currentTime -= Time.deltaTime;
@@ -50,11 +53,11 @@ public class GameTimerManager : MonoBehaviour
 
     void TimeIsUp()
     {
-        Debug.Log("O Tempo Acabou!");
-        if (gameController != null)
-        {
-            gameController.TriggerGameOver();
-        }
+            Debug.Log("O Tempo Acabou! — VITÓRIA");
+            if (gameController != null)
+            {
+                gameController.TriggerWin();
+            }
     }
     public string GetFormattedTime()
     {
