@@ -26,7 +26,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - AMBIENT
-  - ANIME
   - ANIME_SOFT
   - BASE_SATURATION
   - DIFFUSE
@@ -187,7 +186,7 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientBrightness: 6.2
-    - _Anime: 1
+    - _Anime: 0
     - _AnimeSoftness: 0.027
     - _AnimeThreshold1: 1.55
     - _AnimeThreshold2: 1.44
