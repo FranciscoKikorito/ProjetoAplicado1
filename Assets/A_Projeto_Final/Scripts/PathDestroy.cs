@@ -11,7 +11,8 @@ public class PathDestroy : MonoBehaviour
     {
         if (transform.childCount > maxPlatforms)
         {
-            Transform firstChild = transform.GetChild(0);
+            //GetChild(1) because directional light is a child of the list so it follows the path
+            Transform firstChild = transform.GetChild(1);
             Destroy(firstChild.gameObject);
             counter++;
         }
