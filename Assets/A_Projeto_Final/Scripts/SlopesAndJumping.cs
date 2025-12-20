@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class SlopesAndJumping : MonoBehaviour
@@ -19,7 +20,7 @@ public class SlopesAndJumping : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpForce = 7f;
     public float minAirTime = 0.08f;
-   
+
     private Rigidbody rb;
     private RaycastHit hitInfo;
     private bool isGrounded = false;
@@ -30,17 +31,25 @@ public class SlopesAndJumping : MonoBehaviour
     [SerializeField] public float dashDuration = 0.2f;
     [SerializeField] public float clickThreshold = 0.25f;
 
+    [Header("Dash Camera Effect")]
+    [SerializeField] private CinemachineCamera dashCamera;
+    [SerializeField] private float dashFovBoost = 15f;
+    [SerializeField] private float dashFovInTime = 0.08f;
+    [SerializeField] private float dashFovOutTime = 0.12f;
+
     private Animator animator;
     private bool canDash = false;
     private bool isDashing = false;
     private float lastClickTime = -1f;
     private bool waitingForSecondClick = false;
     private bool pendingSingleClick = false;
-    
+
     [Header("SFX Mecanicas")]
     public AudioSource audioSource;
     public AudioClip jumpSFX;
     public AudioClip slashSFX;
+
+
 
     private void Awake()
     {
@@ -127,7 +136,7 @@ public class SlopesAndJumping : MonoBehaviour
         if (GameStartController.canJump && Input.GetMouseButtonDown(0))
         {
             if (playerShield != null && playerShield.IsShieldActive()) return;
-           
+
             if (!waitingForSecondClick)
             {
                 lastClickTime = Time.time;
@@ -186,7 +195,7 @@ public class SlopesAndJumping : MonoBehaviour
             // play jump SFX
             if (audioSource != null && jumpSFX != null)
                 audioSource.PlayOneShot(jumpSFX);
-            
+
             if (animator != null)
                 animator.SetTrigger("Jump");
         }
@@ -213,7 +222,13 @@ public class SlopesAndJumping : MonoBehaviour
         isDashing = true;
         canDash = false;
 
-        MovePlatform[] platforms = Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
+        float baseFov = dashCamera != null ? dashCamera.Lens.FieldOfView : 0f;
+
+        if (dashCamera != null)
+            StartCoroutine(FovDash(baseFov, baseFov + dashFovBoost));
+
+        MovePlatform[] platforms =
+            Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
 
         foreach (var p in platforms)
             p.SetMoveDirection(player.transform.forward * -30f);
@@ -223,8 +238,29 @@ public class SlopesAndJumping : MonoBehaviour
         foreach (var p in platforms)
             p.SetMoveDirection(player.transform.forward * -10f);
 
+        if (dashCamera != null)
+            StartCoroutine(FovDash(baseFov + dashFovBoost, baseFov));
+
         isDashing = false;
     }
+
+    IEnumerator FovDash(float from, float to)
+    {
+        float duration = from < to ? dashFovInTime : dashFovOutTime;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / duration;
+
+            dashCamera.Lens.FieldOfView = Mathf.Lerp(from, to, lerp);
+            yield return null;
+        }
+
+        dashCamera.Lens.FieldOfView = to;
+    }
+
 
     //–––––– ROTATION TRIGGER ––––––//
 

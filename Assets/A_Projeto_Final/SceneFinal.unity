@@ -15469,6 +15469,10 @@ MonoBehaviour:
   minAirTime: 0.08
   dashDuration: 0.3
   clickThreshold: 0.2
+  dashCamera: {fileID: 2014163169}
+  dashFovBoost: 15
+  dashFovInTime: 0.24
+  dashFovOutTime: 0.12
   audioSource: {fileID: 6477972271499301551}
   jumpSFX: {fileID: 8300000, guid: aa898be2c41a2794993d9132128b1172, type: 3}
   slashSFX: {fileID: 8300000, guid: c13c004cdc5cf4e43b25e4d88df203b2, type: 3}
