@@ -383,7 +383,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff5e6ffd2f077414cb298e2f30125579, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 4089648326004738379}
+      addedObject: {fileID: 5385523914815492273}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ff5e6ffd2f077414cb298e2f30125579, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4648587535767160150}
@@ -453,7 +453,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6416302070336371891, guid: ff5e6ffd2f077414cb298e2f30125579, type: 3}
---- !u!1001 &6083483009185939002
+--- !u!1001 &2742902849261053888
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -463,27 +463,59 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 235877935465190059, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_Name
-      value: Volumetric Fog Ground (1)
+      value: Volumetric Fog Ground
       objectReference: {fileID: 0}
-    - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.0086644
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411580646798765517, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.000577
+      value: 1.7946299
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.66441995
       objectReference: {fileID: 0}
     - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.17
+      value: 17.96
       objectReference: {fileID: 0}
     - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.72
+      value: -2.62
       objectReference: {fileID: 0}
     - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.16
+      value: 8.49
       objectReference: {fileID: 0}
     - target: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -518,8 +550,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
---- !u!4 &4089648326004738379 stripped
+--- !u!4 &5385523914815492273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7831063677929158513, guid: 065a707e381cdab43a6485167a0cc33a, type: 3}
-  m_PrefabInstance: {fileID: 6083483009185939002}
+  m_PrefabInstance: {fileID: 2742902849261053888}
   m_PrefabAsset: {fileID: 0}
