@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Ultimate 10 Plus Shaders/Materials/Unique/Force Field 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/Ultimate 10 Plus Shaders/Materials/Unique/Force Field 1.mat" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +19,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/SpatialTimerDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/ProjectileLightning.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectiles.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.formats.fbx@86d1698ebb13/Editor/FbxExporter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@1e1527b3a17b/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -159,7 +165,11 @@
       <workItem from="1765895013248" duration="3559000" />
       <workItem from="1765899495564" duration="3000" />
       <workItem from="1765902585523" duration="1462000" />
-      <workItem from="1766071699243" duration="824000" />
+      <workItem from="1766071699243" duration="2386000" />
+      <workItem from="1766074560498" duration="1667000" />
+      <workItem from="1766156181696" duration="7071000" />
+      <workItem from="1766330400419" duration="2568000" />
+      <workItem from="1766418630586" duration="3549000" />
     </task>
     <servers />
   </component>
