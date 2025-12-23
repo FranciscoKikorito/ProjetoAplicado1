@@ -15590,7 +15590,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -15724,7 +15724,7 @@ MonoBehaviour:
   dashDuration: 0.3
   clickThreshold: 0.2
   dashCamera: {fileID: 2014163169}
-  dashFovBoost: 10
+  dashFovBoost: 15
   dashFovInTime: 0.24
   dashFovOutTime: 0.12
   audioSource: {fileID: 6477972271499301551}

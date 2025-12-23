@@ -90,10 +90,12 @@ public class ObstacleSpawner : MonoBehaviour
         }
         else if (rand < 0.70f)
         {
-            if (canSpawnRobot)
+            if (canSpawnRobot && count == 1)
                 SpawnRobotObstacle();
-            else
+            else if (count == 1)
                 SpawnTubeObstacle();
+            else
+                return;    
         }
         else
         {
