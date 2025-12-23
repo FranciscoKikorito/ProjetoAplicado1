@@ -8688,9 +8688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477b6e825061c864ea6572a958a1f231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectiles
-  speed: 20
+  speed: 25
   hitPlayerEffect: {fileID: 6435671421234962307, guid: 2fed32db92d8f5444a09d58a83b5329e, type: 3}
   hitShieldEffect: {fileID: 6475003448301880652, guid: 7e39298e4a4df654098e0070d382fe7d, type: 3}
   soundHitPlayer: {fileID: 8300000, guid: c5b5f9d1e2023fa4e9ac7fb1d3600a4c, type: 3}
   soundHitShield: {fileID: 8300000, guid: 26df0fb476dcc1741aec61b93e059c97, type: 3}
-  volume: 0.124
+  volume: 0.11

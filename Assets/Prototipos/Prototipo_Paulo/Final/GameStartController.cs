@@ -41,7 +41,7 @@ public class GameStartController : MonoBehaviour
     [Header("Audio")] 
     public MusicManager musicManager;
     public AudioSource sfxSource; 
-    public AudioClip gameOverSFX;
+    //public AudioClip gameOverSFX;
     public AudioClip finalOuchPlayerSFX; 
     
     private bool gameStarted = false;
@@ -227,10 +227,10 @@ public class GameStartController : MonoBehaviour
         if (gameOverUI != null)
         {
             gameOverUI.gameObject.SetActive(true);
-            if (sfxSource != null && gameOverSFX != null)
-            {
-                sfxSource.PlayOneShot(gameOverSFX);
-            }
+            //if (sfxSource != null && gameOverSFX != null)
+            //{
+            //    sfxSource.PlayOneShot(gameOverSFX);
+            //}
             Vector3 startScale = new Vector3(4f, 4f, 4f); 
             Vector3 endScale = Vector3.one; // Escala normal (1x)
 
@@ -248,7 +248,7 @@ public class GameStartController : MonoBehaviour
         }
         
         float displayTimer = 0f;
-        float shakeIntensity = 0.5f; // Quão forte ele treme (em pixeis)
+        float shakeIntensity = 0.3f; // Quão forte ele treme (em pixeis)
 
         while (displayTimer < gameOverDisplayTime)
         {
