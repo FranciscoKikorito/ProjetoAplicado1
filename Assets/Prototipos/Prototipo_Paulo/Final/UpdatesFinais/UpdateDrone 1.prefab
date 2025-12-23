@@ -5001,9 +5001,13 @@ MonoBehaviour:
   detectionRange: 30
   warningParticles: {fileID: 2851772508355260150}
   warningDuration: 1.5
-  pathCenter: {fileID: 0}
+  chargingSound: {fileID: 8300000, guid: 05ca25a66985c544880ed15389612848, type: 3}
+  chargingVolume: 0.32
+  shootSounds:
+  - {fileID: 8300000, guid: b57242c266c64794c86f0ea0648cef5b, type: 3}
+  - {fileID: 8300000, guid: 5a4d3cb82737c2d4b9a97aa9eb73667e, type: 3}
+  shootingVolume: 0.166
   moveSpeed: 5
-  detectionSound: {fileID: 8300000, guid: 341ced6ac94721f44bfcbd7553a49de3, type: 3}
 --- !u!82 &2582882339050574541
 AudioSource:
   m_ObjectHideFlags: 0
