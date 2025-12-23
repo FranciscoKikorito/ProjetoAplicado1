@@ -9,20 +9,30 @@ public class FootVFXSpawner : MonoBehaviour
     public Transform leftFoot;
     public Transform rightFoot;
 
+    [Header("Feet SFX")]
+    private AudioSource audioSource;
+    public AudioClip footstepSoundLeft;
+    public AudioClip footstepSoundRight;  
     //[Header("Optional Settings")]
     //public bool matchFootRotation = false;
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();    
+    }
+
     public void SpawnLeftFootVFX()
     {
-        SpawnVFX(leftFoot);
+        
+        SpawnVFX(leftFoot, footstepSoundLeft);
     }
 
     public void SpawnRightFootVFX()
     {
-        SpawnVFX(rightFoot);
+        SpawnVFX(rightFoot, footstepSoundRight);
     }
 
-    private void SpawnVFX(Transform foot)
+    private void SpawnVFX(Transform foot, AudioClip footstepSound)
     {
         if (footVFXPrefab == null || foot == null)
             return;
@@ -35,10 +45,10 @@ public class FootVFXSpawner : MonoBehaviour
             foot
         );
 
+        audioSource.PlayOneShot(footstepSound);
+
         // Apply a rotation offset relative to the foot
         vfxInstance.transform.localRotation *= Quaternion.Euler(0f, 90f, 0f);
     }
-
-
 
 }
