@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(AudioSource))] // Garante que o objeto tem um AudioSource
+[RequireComponent(typeof(AudioSource))]
 public class Drones : MonoBehaviour
 {
     [Header("Ataque")]
@@ -14,9 +14,9 @@ public class Drones : MonoBehaviour
     public float warningDuration = 1.2f;
     
     [Header("Movimento e Som")]
-    public Transform pathCenter; // Arraste o objeto "Pai" ou o centro da rota aqui
-    public float moveSpeed = 5f; // Velocidade de retorno ao centro
-    public AudioClip detectionSound; // O som robótico
+    private Transform pathCenter; 
+    public float moveSpeed = 5f;
+    public AudioClip detectionSound;
     
     private Transform aimPoint;
     private AudioSource audioSource;
@@ -25,19 +25,18 @@ public class Drones : MonoBehaviour
 
     void Start()
     {
-        // Tenta encontrar o player/alvo
+        // Busca automática do TargetPathCenter
+        GameObject foundTarget = GameObject.Find("TargetPathCenter");
+        if (foundTarget != null) pathCenter = foundTarget.transform;
+        else Debug.LogError("ERRO: 'TargetPathCenter' não encontrado.");
+
+        // Busca automática do AimPoint (O alvo do tiro)
         GameObject target = GameObject.Find("AimPoint");
-        if (target != null)
-        {
-            aimPoint = target.transform;
-        }
-        else
-        {
-            Debug.LogError("AimPoint não encontrado na cena!");
-        }
+        if (target != null) aimPoint = target.transform;
+        else Debug.LogError("AimPoint não encontrado na cena!");
 
         audioSource = GetComponent<AudioSource>();
-        warningParticles.Stop();
+        if(warningParticles != null) warningParticles.Stop();
     }
 
     void Update()
@@ -55,59 +54,44 @@ public class Drones : MonoBehaviour
     IEnumerator WarningAndShoot()
     {
         isWarning = true;
+        if (warningParticles != null) warningParticles.Play();
+        if (detectionSound != null && audioSource != null) audioSource.PlayOneShot(detectionSound);
 
-        // 1. Começa as partículas
-        warningParticles.Play();
-
-        // 2. Toca o som (se houver)
-        if (detectionSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(detectionSound);
-        }
-
-        // 3. Move para o centro ENQUANTO espera o tempo do aviso
         float timer = 0f;
         while (timer < warningDuration)
         {
             timer += Time.deltaTime;
-
-            // Lógica de Movimento
             if (pathCenter != null)
             {
-                // Move o drone em direção ao centro da pathlist
                 transform.position = Vector3.MoveTowards(transform.position, pathCenter.position, moveSpeed * Time.deltaTime);
-                
-                // Opcional: Faz o drone olhar para o player enquanto recua (dá um efeito mais ameaçador)
                 transform.LookAt(aimPoint); 
             }
-
-            yield return null; // Espera o próximo frame
+            yield return null;
         }
 
-        warningParticles.Stop();
-
-        Shoot();
+        if (warningParticles != null) warningParticles.Stop();
+        
+        Shoot(); // Dispara
         hasShot = true;
     }
 
     void Shoot()
     {
-        if (projectilePrefab == null || firePoint == null) return;
+        if (projectilePrefab == null || firePoint == null || aimPoint == null) return;
 
+        // 1. Cria o projétil no bico do drone
         GameObject projectile = Instantiate(
             projectilePrefab,
             firePoint.position,
             Quaternion.identity
         );
 
-        Vector3 direction = (aimPoint.position - firePoint.position).normalized;
-        
-        // Verifica se o projétil é do tipo Projectiles ou LightningProjectile e ajusta
-        // Assumindo que usa o script Projectiles anterior:
+        // 2. Passa o AimPoint como ALVO para o projétil perseguir
         Projectiles projScript = projectile.GetComponent<Projectiles>();
         if (projScript != null)
         {
-            projScript.SetDirection(direction);
+            // MUDANÇA AQUI: Usamos SetTarget em vez de SetDirection
+            projScript.SetTarget(aimPoint);
         }
     }
 }
