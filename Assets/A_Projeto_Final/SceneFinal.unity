@@ -11564,7 +11564,6 @@ MonoBehaviour:
   glitchRampUpTime: 0.5
   musicManager: {fileID: 817113530}
   sfxSource: {fileID: 1743433787}
-  gameOverSFX: {fileID: 0}
   finalOuchPlayerSFX: {fileID: 8300000, guid: d54314cf6d56cff4d88165b5f222986a, type: 3}
 --- !u!4 &1743433786
 Transform:
