@@ -19511,8 +19511,8 @@ MonoBehaviour:
   footVFXPrefab: {fileID: 5627696518775099638, guid: 3080c759db530704a8f03001836d8c76, type: 3}
   leftFoot: {fileID: 756857852}
   rightFoot: {fileID: 1896910347}
-  footstepSoundLeft: {fileID: 8300000, guid: 9364813ef613255428ccd313575c75c8, type: 3}
-  footstepSoundRight: {fileID: 8300000, guid: a4d554f217bdda7459857c4e18e0f070, type: 3}
+  footstepSoundLeft: {fileID: 8300000, guid: ef752c0da194e924892996e1836852fd, type: 3}
+  footstepSoundRight: {fileID: 8300000, guid: f53d8d0fd3ccac849a353a29bdb2d8c7, type: 3}
 --- !u!114 &8665263501656923935
 MonoBehaviour:
   m_ObjectHideFlags: 0
