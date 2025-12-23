@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Force Field
+  m_Name: MAT_Fog_
   m_Shader: {fileID: -6465566751694194690, guid: 318a974cf1cd4214396cf97215b25845, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
