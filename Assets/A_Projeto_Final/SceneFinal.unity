@@ -9371,7 +9371,7 @@ Transform:
   m_GameObject: {fileID: 1285779698}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 3.4, z: 9.26}
+  m_LocalPosition: {x: -0.08, y: 1.85, z: 10.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16448,7 +16448,7 @@ MonoBehaviour:
   shieldObject: {fileID: 1816308350}
   shieldCollider: {fileID: 1816308349}
   shieldRotationOffset: {x: -103, y: -6.3, z: 1.57}
-  holdThreshold: 0.25
+  holdThreshold: 0.1
   shieldOffset: {x: 0, y: 0.76, z: 0.88}
   shieldLoopSource: {fileID: 2251360738343716316}
   shieldOneShotSource: {fileID: 2251360738343716316}
