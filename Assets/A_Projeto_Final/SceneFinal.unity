@@ -16456,6 +16456,7 @@ MonoBehaviour:
   shieldOffSFX: {fileID: 8300000, guid: 4ba0e3ad5f76fc942af5cc89d74dcc2b, type: 3}
   shieldFadeOutTime: 0.2
   shieldFadeInTime: 0.1
+  colorPropertyName: _Emissive_Color
   blockedAnimations:
   - StandUp
   - Idle_Start
