@@ -7,7 +7,7 @@ public class PlayerShield : MonoBehaviour
     public Transform shieldObject;
     public Collider shieldCollider;
     private Renderer shieldRenderer;
-    private Material shieldMaterial; // FIX: store material instance
+    private Material shieldMaterial; // store material instance
     private Color baseShieldColor;
 
     [Header("Rotação do Shield")]
@@ -18,7 +18,6 @@ public class PlayerShield : MonoBehaviour
     public Vector3 shieldOffset = new Vector3(0, 1.0f, 1.0f);
 
     [Header("SFX Shield")]
-    public AudioSource shieldLoopSource;
     public AudioSource shieldOneShotSource;
     public AudioClip shieldOnSFX;
     public AudioClip shieldOffSFX;
@@ -29,9 +28,7 @@ public class PlayerShield : MonoBehaviour
 
     [SerializeField] private string colorPropertyName = "_Emissive_Color";
 
-    private Coroutine shieldAudioFadeCoroutine;
     private Coroutine shieldVisualFadeCoroutine;
-    private float shieldBaseVolume;
 
     [Header("Animações Bloqueantes")]
     public string[] blockedAnimations = { "StandUp", "Idle_Start" };
@@ -44,13 +41,11 @@ public class PlayerShield : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        if (shieldLoopSource != null)
-            shieldBaseVolume = shieldLoopSource.volume;
 
         if (shieldObject != null)
         {
             shieldRenderer = shieldObject.GetComponent<Renderer>();
-            shieldMaterial = shieldRenderer.material; // FIX: store instance
+            shieldMaterial = shieldRenderer.material; // store instance
             shieldObject.gameObject.SetActive(false);
             shieldObject.gameObject.layer = LayerMask.NameToLayer("Shield");
 
@@ -121,28 +116,17 @@ public class PlayerShield : MonoBehaviour
         if (animator != null)
             animator.SetBool("isShielding", state);
 
-        // AUDIO (ignore if not needed)
+        // AUDIO - just play one-shot for shield on
         if (state)
         {
-            if (shieldAudioFadeCoroutine != null) StopCoroutine(shieldAudioFadeCoroutine);
-
-            if (shieldLoopSource != null && shieldOnSFX != null)
+            if (shieldOneShotSource != null && shieldOnSFX != null)
             {
-                shieldLoopSource.clip = shieldOnSFX;
-                shieldLoopSource.loop = true;
-                shieldLoopSource.volume = 0f;
-                shieldLoopSource.Play();
-                shieldAudioFadeCoroutine = StartCoroutine(FadeAudio(shieldLoopSource, 0f, shieldBaseVolume, shieldFadeInTime));
+                shieldOneShotSource.PlayOneShot(shieldOnSFX);
             }
         }
         else
         {
-            if (shieldAudioFadeCoroutine != null) StopCoroutine(shieldAudioFadeCoroutine);
-
-            if (shieldLoopSource != null && shieldLoopSource.isPlaying)
-                shieldAudioFadeCoroutine = StartCoroutine(FadeOutAndStopAudio(shieldLoopSource, shieldFadeOutTime));
-
-            if (shieldOffSFX != null && shieldOneShotSource != null)
+            if (shieldOneShotSource != null && shieldOffSFX != null)
                 shieldOneShotSource.PlayOneShot(shieldOffSFX);
         }
 
@@ -189,32 +173,6 @@ public class PlayerShield : MonoBehaviour
     }
 
     // --- COROUTINES ---
-    IEnumerator FadeAudio(AudioSource source, float from, float to, float duration)
-    {
-        float t = 0f;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            source.volume = Mathf.Lerp(from, to, t / duration);
-            yield return null;
-        }
-        source.volume = to;
-    }
-
-    IEnumerator FadeOutAndStopAudio(AudioSource source, float duration)
-    {
-        float startVolume = source.volume;
-        float t = 0f;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
-            yield return null;
-        }
-        source.Stop();
-        source.volume = startVolume;
-    }
-
     IEnumerator FadeVisuals(float targetAlpha, float duration, bool disableObjectAtEnd = false)
     {
         if (shieldMaterial == null) yield break;

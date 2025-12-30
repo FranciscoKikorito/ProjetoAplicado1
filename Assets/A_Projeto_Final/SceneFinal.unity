@@ -14856,7 +14856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3da44ef8f5133c4d81a5329f2c073a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RightTurnTrigger
-  player: {fileID: 8291297771362868932}
 --- !u!4 &1064873116393573653
 Transform:
   m_ObjectHideFlags: 0
@@ -15546,7 +15545,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.024
+  m_Volume: 0.042
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15590,7 +15589,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -16451,7 +16450,6 @@ MonoBehaviour:
   shieldRotationOffset: {x: -103, y: -6.3, z: 1.57}
   holdThreshold: 0.1
   shieldOffset: {x: 0, y: 0.76, z: 0.88}
-  shieldLoopSource: {fileID: 6477972271499301551}
   shieldOneShotSource: {fileID: 2251360738343716316}
   shieldOnSFX: {fileID: 8300000, guid: b0192d091c804be4cab285d1bfff4cfe, type: 3}
   shieldOffSFX: {fileID: 8300000, guid: 4ba0e3ad5f76fc942af5cc89d74dcc2b, type: 3}
