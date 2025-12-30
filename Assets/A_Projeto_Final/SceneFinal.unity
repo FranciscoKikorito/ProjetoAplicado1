@@ -11899,32 +11899,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 352.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 138.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0000034735963
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76
+      value: -8.502182
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.88
+      value: -0.7756869
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.61746013
+      value: -0.02779833
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.78549194
+      value: 0.031122407
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.023192057
+      value: -0.5147345
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.034750436
+      value: -0.8563335
       objectReference: {fileID: 0}
     - target: {fileID: 6280562911735337190, guid: 35844c6e357392c4b884504a48c72fd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15545,7 +15557,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.042
+  m_Volume: 0.079
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16449,8 +16461,7 @@ MonoBehaviour:
   shieldCollider: {fileID: 1816308349}
   shieldRotationOffset: {x: -103, y: -6.3, z: 1.57}
   holdThreshold: 0.1
-  shieldOffset: {x: 0, y: 0.76, z: 0.88}
-  shieldOneShotSource: {fileID: 2251360738343716316}
+  shieldOffset: {x: 0, y: 0.81, z: 0.88}
   shieldOnSFX: {fileID: 8300000, guid: b0192d091c804be4cab285d1bfff4cfe, type: 3}
   shieldOffSFX: {fileID: 8300000, guid: 4ba0e3ad5f76fc942af5cc89d74dcc2b, type: 3}
   shieldFadeOutTime: 0.2
@@ -19511,6 +19522,7 @@ MonoBehaviour:
   footVFXPrefab: {fileID: 5627696518775099638, guid: 3080c759db530704a8f03001836d8c76, type: 3}
   leftFoot: {fileID: 756857852}
   rightFoot: {fileID: 1896910347}
+  audioSource: {fileID: 0}
   footstepSoundLeft: {fileID: 8300000, guid: ef752c0da194e924892996e1836852fd, type: 3}
   footstepSoundRight: {fileID: 8300000, guid: f53d8d0fd3ccac849a353a29bdb2d8c7, type: 3}
 --- !u!114 &8665263501656923935

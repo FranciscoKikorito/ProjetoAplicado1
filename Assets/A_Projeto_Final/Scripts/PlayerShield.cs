@@ -7,7 +7,7 @@ public class PlayerShield : MonoBehaviour
     public Transform shieldObject;
     public Collider shieldCollider;
     private Renderer shieldRenderer;
-    private Material shieldMaterial; // store material instance
+    private Material shieldMaterial;
     private Color baseShieldColor;
 
     [Header("Rotação do Shield")]
@@ -18,14 +18,12 @@ public class PlayerShield : MonoBehaviour
     public Vector3 shieldOffset = new Vector3(0, 1.0f, 1.0f);
 
     [Header("SFX Shield")]
-    public AudioSource shieldOneShotSource;
     public AudioClip shieldOnSFX;
     public AudioClip shieldOffSFX;
 
     [Header("Configurações de Fade")]
     [SerializeField] private float shieldFadeOutTime = 0.2f;
     [SerializeField] private float shieldFadeInTime = 0.2f;
-
     [SerializeField] private string colorPropertyName = "_Emissive_Color";
 
     private Coroutine shieldVisualFadeCoroutine;
@@ -38,6 +36,9 @@ public class PlayerShield : MonoBehaviour
     private bool isHolding = false;
     private Animator animator;
 
+    // Runtime AudioSource for shield-on sound
+    private AudioSource shieldOnAudioSource;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -45,7 +46,7 @@ public class PlayerShield : MonoBehaviour
         if (shieldObject != null)
         {
             shieldRenderer = shieldObject.GetComponent<Renderer>();
-            shieldMaterial = shieldRenderer.material; // store instance
+            shieldMaterial = shieldRenderer.material;
             shieldObject.gameObject.SetActive(false);
             shieldObject.gameObject.layer = LayerMask.NameToLayer("Shield");
 
@@ -64,6 +65,15 @@ public class PlayerShield : MonoBehaviour
                 if (col != shieldCollider)
                     Physics.IgnoreCollision(shieldCollider, col);
             }
+        }
+
+        // Create a dedicated AudioSource at runtime for shield-on
+        if (shieldOnSFX != null)
+        {
+            shieldOnAudioSource = gameObject.AddComponent<AudioSource>();
+            shieldOnAudioSource.playOnAwake = false;
+            shieldOnAudioSource.loop = false;
+            shieldOnAudioSource.volume = 0.2f; // lower volume
         }
     }
 
@@ -116,18 +126,23 @@ public class PlayerShield : MonoBehaviour
         if (animator != null)
             animator.SetBool("isShielding", state);
 
-        // AUDIO - just play one-shot for shield on
-        if (state)
+        // AUDIO
+        if (state) // Shield ON
         {
-            if (shieldOneShotSource != null && shieldOnSFX != null)
+            if (shieldOnAudioSource != null)
             {
-                shieldOneShotSource.PlayOneShot(shieldOnSFX);
+                shieldOnAudioSource.Stop();
+                shieldOnAudioSource.clip = shieldOnSFX;
+                shieldOnAudioSource.Play();
             }
         }
-        else
+        else // Shield OFF
         {
-            if (shieldOneShotSource != null && shieldOffSFX != null)
-                shieldOneShotSource.PlayOneShot(shieldOffSFX);
+            if (shieldOnAudioSource != null)
+                shieldOnAudioSource.Stop(); // stop shield-on sound immediately
+
+            if (shieldOffSFX != null)
+                AudioSource.PlayClipAtPoint(shieldOffSFX, transform.position, 0.2f); // lower volume
         }
 
         // VISUALS
@@ -172,7 +187,6 @@ public class PlayerShield : MonoBehaviour
         return false;
     }
 
-    // --- COROUTINES ---
     IEnumerator FadeVisuals(float targetAlpha, float duration, bool disableObjectAtEnd = false)
     {
         if (shieldMaterial == null) yield break;
