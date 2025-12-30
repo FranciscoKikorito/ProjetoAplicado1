@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProjetoAplicado1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/SceneFinal.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Scripts/PlayerShield.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/VFX/VFX_Feet_Lightning/VFX_Script_Feet_Lightning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/VFX/VFX_Feet_Lightning/VFX_Script_Feet_Lightning.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Drones.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Drones.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/FBX_Drone_Alforreca.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/FBX_Drone_Alforreca.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/hitShield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/hitShield.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +175,7 @@
       <workItem from="1766844400227" duration="992000" />
       <workItem from="1766937468744" duration="3122000" />
       <workItem from="1767115625773" duration="718000" />
-      <workItem from="1767133540565" duration="2881000" />
+      <workItem from="1767133540565" duration="4532000" />
     </task>
     <servers />
   </component>
