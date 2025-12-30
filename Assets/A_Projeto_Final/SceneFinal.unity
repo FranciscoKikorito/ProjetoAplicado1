@@ -15721,6 +15721,7 @@ MonoBehaviour:
   deadZone: 0.001
   jumpForce: 7
   minAirTime: 0.08
+  jumpBufferTime: 0.12
   dashDuration: 0.3
   doubleClickThreshold: 0.25
   dashCamera: {fileID: 2014163169}
@@ -16450,7 +16451,7 @@ MonoBehaviour:
   shieldRotationOffset: {x: -103, y: -6.3, z: 1.57}
   holdThreshold: 0.1
   shieldOffset: {x: 0, y: 0.76, z: 0.88}
-  shieldLoopSource: {fileID: 2251360738343716316}
+  shieldLoopSource: {fileID: 6477972271499301551}
   shieldOneShotSource: {fileID: 2251360738343716316}
   shieldOnSFX: {fileID: 8300000, guid: b0192d091c804be4cab285d1bfff4cfe, type: 3}
   shieldOffSFX: {fileID: 8300000, guid: 4ba0e3ad5f76fc942af5cc89d74dcc2b, type: 3}
@@ -18037,7 +18038,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.074
+  m_Volume: 0.09
   m_Pitch: 1
   Loop: 0
   Mute: 0
