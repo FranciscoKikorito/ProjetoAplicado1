@@ -5,27 +5,17 @@ public class Projectiles : MonoBehaviour
     public float speed = 20f;
 
     [Header("Efeitos Visuais")]
-    public GameObject hitPlayerEffect; // vermelho
-    public GameObject hitShieldEffect; // azul
-
+    public GameObject hitPlayerEffect; 
+    public GameObject hitShieldEffect; 
+    
     [Header("Efeitos Sonoros")]
     public AudioClip soundHitPlayer;   
     public AudioClip soundHitShield;   
     [Range(0f, 1f)] public float volume = 1f; 
 
     private Vector3 direction;
-    private Transform targetToFollow; // O alvo para perseguir
-    private bool isHoming = false;    // Se é teleguiado ou não
-
-    // 1. Configuração para tiro reto (antigo)
-    public void SetDirection(Vector3 dir)
-    {
-        direction = dir.normalized;
-        isHoming = false;
-        Destroy(gameObject, 5f); 
-    }
-
-    // 2. Configuração para tiro teleguiado (NOVO)
+    private Transform targetToFollow; 
+    private bool isHoming = false;    
     public void SetTarget(Transform target)
     {
         targetToFollow = target;
@@ -41,11 +31,8 @@ public class Projectiles : MonoBehaviour
             // Calcula a direção atualizada para o centro do alvo
             direction = (targetToFollow.position - transform.position).normalized;
             
-            // Opcional: Faz o projétil rodar fisicamente para olhar para o alvo
             transform.LookAt(targetToFollow);
         }
-
-        // Move na direção (seja ela fixa ou atualizada pelo alvo)
         transform.position += direction * speed * Time.deltaTime;
     }
 

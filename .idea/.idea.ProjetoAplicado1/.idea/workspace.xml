@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="" />
+    <list default="true" id="1779ceb7-157d-42a5-b4ba-03f181728cb1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/DroneInimigo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/Enemies/DroneInimigo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineObstacles.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/A_Projeto_Final/Prefabs/PathLineObstacles.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Drones.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Drones.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/HitPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/HitPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectiles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/Projectiles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/UpdateDrone 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/UpdateDrone 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/hitShield.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prototipos/Prototipo_Paulo/Final/UpdatesFinais/hitShield.prefab" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,6 +179,7 @@
       <workItem from="1766759722140" duration="6288000" />
       <workItem from="1766844400227" duration="992000" />
       <workItem from="1766937468744" duration="3122000" />
+      <workItem from="1767115625773" duration="370000" />
     </task>
     <servers />
   </component>

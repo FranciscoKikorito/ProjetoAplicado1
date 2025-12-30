@@ -46,9 +46,8 @@ public class Drones : MonoBehaviour
         // Configurações extra para 3D (para o som diminuir com a distância)
         ConfigureAudio3D(chargingSource);
         ConfigureAudio3D(shootingSource);
-        // ----------------------------------------------------
 
-        // Busca TargetPathCenter e AimPoint
+        //TargetPathCenter e AimPoint
         GameObject foundTarget = GameObject.Find("TargetPathCenter");
         if (foundTarget != null) pathCenter = foundTarget.transform;
         else Debug.LogError("ERRO: 'TargetPathCenter' não encontrado.");
@@ -59,13 +58,11 @@ public class Drones : MonoBehaviour
 
         if (warningParticles != null) warningParticles.Stop();
     }
-
-    // Função auxiliar para configurar som 3D rapidamente
     void ConfigureAudio3D(AudioSource source)
     {
-        source.spatialBlend = 1f; // Torna o som 3D
-        source.minDistance = 2f;
-        source.maxDistance = detectionRange * 1.5f;
+        source.spatialBlend = 1f;
+        source.minDistance = 1f;
+        source.maxDistance = detectionRange * 3.5f;
     }
 
     void Update()
@@ -85,12 +82,11 @@ public class Drones : MonoBehaviour
         isWarning = true;
 
         if (warningParticles != null) warningParticles.Play();
-
-        // USANDO O AUDIO SOURCE 1: CHARGING
+        
         if (chargingSound != null && chargingSource != null)
         {
             chargingSource.clip = chargingSound;
-            chargingSource.volume = chargingVolume; // Garante o volume certo
+            chargingSource.volume = chargingVolume;
             chargingSource.Play();
         }
 
@@ -108,7 +104,6 @@ public class Drones : MonoBehaviour
 
         if (warningParticles != null) warningParticles.Stop();
         
-        // Para o som de charging
         if (chargingSource != null) chargingSource.Stop();
 
         Shoot();

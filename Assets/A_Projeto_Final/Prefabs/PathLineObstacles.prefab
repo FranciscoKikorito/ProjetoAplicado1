@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleSpawner
   tube: {fileID: 7916793836536980085, guid: a4462e6dbce7d9e448946f641c835b92, type: 3}
-  robot: {fileID: 5875585863068969290, guid: 2401529b3cd76434eb8dbf62286b2f6c, type: 3}
+  robot: {fileID: 2856394304957361275, guid: 73b2c612d966dfd4daacc187d130da79, type: 3}
   fan: {fileID: 7385769408513119204, guid: 1be67ff8b119f22448899a557a87f5a9, type: 3}
   tubePossibleSpawnsList:
   - {fileID: 1328565389208578635}
