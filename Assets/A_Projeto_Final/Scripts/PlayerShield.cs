@@ -7,7 +7,7 @@ public class PlayerShield : MonoBehaviour
     public Transform shieldObject;
     public Collider shieldCollider;
     private Renderer shieldRenderer;
-    private Material shieldMaterial;
+    private Material shieldMaterial; // FIX: store material instance
     private Color baseShieldColor;
 
     [Header("Rotação do Shield")]
@@ -23,9 +23,9 @@ public class PlayerShield : MonoBehaviour
     public AudioClip shieldOnSFX;
     public AudioClip shieldOffSFX;
 
-    [Header("Fade")]
+    [Header("Configurações de Fade")]
     [SerializeField] private float shieldFadeOutTime = 0.2f;
-    [SerializeField] private float shieldFadeInTime = 0.1f;
+    [SerializeField] private float shieldFadeInTime = 0.2f;
 
     [SerializeField] private string colorPropertyName = "_Emissive_Color";
 
@@ -36,22 +36,26 @@ public class PlayerShield : MonoBehaviour
     [Header("Animações Bloqueantes")]
     public string[] blockedAnimations = { "StandUp", "Idle_Start" };
 
-    private bool shieldActive;
-    private bool isHolding;
+    private bool shieldActive = false;
     private float lmbDownTime;
+    private bool isHolding = false;
     private Animator animator;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        shieldBaseVolume = shieldLoopSource.volume;
+        if (shieldLoopSource != null)
+            shieldBaseVolume = shieldLoopSource.volume;
 
         if (shieldObject != null)
         {
             shieldRenderer = shieldObject.GetComponent<Renderer>();
-            shieldMaterial = shieldRenderer.material;
+            shieldMaterial = shieldRenderer.material; // FIX: store instance
             shieldObject.gameObject.SetActive(false);
             shieldObject.gameObject.layer = LayerMask.NameToLayer("Shield");
+
+            if (shieldMaterial.HasProperty(colorPropertyName))
+                baseShieldColor = shieldMaterial.GetColor(colorPropertyName);
         }
 
         if (shieldCollider == null && shieldObject != null)
@@ -61,12 +65,11 @@ public class PlayerShield : MonoBehaviour
         {
             Collider[] playerColliders = GetComponentsInChildren<Collider>(true);
             foreach (Collider col in playerColliders)
+            {
                 if (col != shieldCollider)
                     Physics.IgnoreCollision(shieldCollider, col);
+            }
         }
-
-        if (shieldMaterial != null && shieldMaterial.HasProperty(colorPropertyName))
-            baseShieldColor = shieldMaterial.GetColor(colorPropertyName);
     }
 
     void Update()
@@ -77,7 +80,7 @@ public class PlayerShield : MonoBehaviour
             UpdateShieldPosition();
     }
 
-    void HandleShieldInput()
+    private void HandleShieldInput()
     {
         if (GameStartController.inputLocked) return;
 
@@ -89,12 +92,8 @@ public class PlayerShield : MonoBehaviour
 
         if (isHolding && Input.GetMouseButton(0))
         {
-            if (!shieldActive &&
-                Time.time - lmbDownTime > holdThreshold &&
-                !IsInBlockedAnimation())
-            {
+            if (!shieldActive && Time.time - lmbDownTime > holdThreshold && !IsInBlockedAnimation())
                 ToggleShield(true);
-            }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -105,13 +104,12 @@ public class PlayerShield : MonoBehaviour
         }
     }
 
-    void UpdateShieldPosition()
+    private void UpdateShieldPosition()
     {
-        shieldObject.position =
-            transform.position + transform.TransformDirection(shieldOffset);
+        if (shieldObject == null) return;
 
-        shieldObject.rotation =
-            transform.rotation * Quaternion.Euler(shieldRotationOffset);
+        shieldObject.position = transform.position + transform.TransformDirection(shieldOffset);
+        shieldObject.rotation = transform.rotation * Quaternion.Euler(shieldRotationOffset);
     }
 
     public void ToggleShield(bool state)
@@ -120,72 +118,77 @@ public class PlayerShield : MonoBehaviour
 
         shieldActive = state;
 
-        if (animator)
+        if (animator != null)
             animator.SetBool("isShielding", state);
 
-        // AUDIO
+        // AUDIO (ignore if not needed)
         if (state)
         {
-            if (shieldAudioFadeCoroutine != null)
-                StopCoroutine(shieldAudioFadeCoroutine);
+            if (shieldAudioFadeCoroutine != null) StopCoroutine(shieldAudioFadeCoroutine);
 
-            shieldLoopSource.clip = shieldOnSFX;
-            shieldLoopSource.loop = true;
-            shieldLoopSource.volume = 0f;
-            shieldLoopSource.Play();
-
-            shieldAudioFadeCoroutine =
-                StartCoroutine(FadeAudio(shieldLoopSource, 0f, shieldBaseVolume, shieldFadeInTime));
+            if (shieldLoopSource != null && shieldOnSFX != null)
+            {
+                shieldLoopSource.clip = shieldOnSFX;
+                shieldLoopSource.loop = true;
+                shieldLoopSource.volume = 0f;
+                shieldLoopSource.Play();
+                shieldAudioFadeCoroutine = StartCoroutine(FadeAudio(shieldLoopSource, 0f, shieldBaseVolume, shieldFadeInTime));
+            }
         }
         else
         {
-            if (shieldAudioFadeCoroutine != null)
-                StopCoroutine(shieldAudioFadeCoroutine);
+            if (shieldAudioFadeCoroutine != null) StopCoroutine(shieldAudioFadeCoroutine);
 
-            shieldAudioFadeCoroutine =
-                StartCoroutine(FadeOutAndStopAudio(shieldLoopSource, shieldFadeOutTime));
+            if (shieldLoopSource != null && shieldLoopSource.isPlaying)
+                shieldAudioFadeCoroutine = StartCoroutine(FadeOutAndStopAudio(shieldLoopSource, shieldFadeOutTime));
 
-            if (shieldOffSFX)
+            if (shieldOffSFX != null && shieldOneShotSource != null)
                 shieldOneShotSource.PlayOneShot(shieldOffSFX);
         }
 
         // VISUALS
-        if (shieldVisualFadeCoroutine != null)
-            StopCoroutine(shieldVisualFadeCoroutine);
+        if (shieldVisualFadeCoroutine != null) StopCoroutine(shieldVisualFadeCoroutine);
 
-        if (state)
+        if (state) // Fade In
         {
-            shieldObject.gameObject.SetActive(true);
-            shieldCollider.enabled = true;
+            if (shieldObject != null)
+            {
+                bool wasInactive = !shieldObject.gameObject.activeSelf;
+                shieldObject.gameObject.SetActive(true);
 
-            Color invisible = Color.black;
-            invisible.a = 0f;
-            shieldMaterial.SetColor(colorPropertyName, invisible);
+                if (wasInactive && shieldMaterial != null)
+                {
+                    Color invisibleColor = Color.black;
+                    invisibleColor.a = 0f;
+                    shieldMaterial.SetColor(colorPropertyName, invisibleColor);
+                }
+            }
 
-            shieldVisualFadeCoroutine =
-                StartCoroutine(FadeVisuals(1f, shieldFadeInTime));
+            if (shieldCollider != null) shieldCollider.enabled = true;
+
+            shieldVisualFadeCoroutine = StartCoroutine(FadeVisuals(1f, shieldFadeInTime));
         }
-        else
+        else // Fade Out
         {
-            shieldCollider.enabled = false;
-            shieldVisualFadeCoroutine =
-                StartCoroutine(FadeVisuals(0f, shieldFadeOutTime, true));
+            if (shieldCollider != null) shieldCollider.enabled = false;
+            shieldVisualFadeCoroutine = StartCoroutine(FadeVisuals(0f, shieldFadeOutTime, true));
         }
     }
 
     public bool IsShieldActive() => shieldActive;
 
-    bool IsInBlockedAnimation()
+    private bool IsInBlockedAnimation()
     {
-        if (!animator) return false;
+        if (animator == null) return false;
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        foreach (string anim in blockedAnimations)
-            if (info.IsName(anim)) return true;
+        foreach (var anim in blockedAnimations)
+            if (stateInfo.IsName(anim)) return true;
 
         return false;
     }
 
+    // --- COROUTINES ---
     IEnumerator FadeAudio(AudioSource source, float from, float to, float duration)
     {
         float t = 0f;
@@ -200,37 +203,47 @@ public class PlayerShield : MonoBehaviour
 
     IEnumerator FadeOutAndStopAudio(AudioSource source, float duration)
     {
-        float start = source.volume;
+        float startVolume = source.volume;
         float t = 0f;
         while (t < duration)
         {
             t += Time.deltaTime;
-            source.volume = Mathf.Lerp(start, 0f, t / duration);
+            source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
             yield return null;
         }
         source.Stop();
-        source.volume = start;
+        source.volume = startVolume;
     }
 
-    IEnumerator FadeVisuals(float targetAlpha, float duration, bool disableAtEnd = false)
+    IEnumerator FadeVisuals(float targetAlpha, float duration, bool disableObjectAtEnd = false)
     {
+        if (shieldMaterial == null) yield break;
+
         float t = 0f;
-        Color start = shieldMaterial.GetColor(colorPropertyName);
-        Color end = baseShieldColor;
-        end.a = targetAlpha;
+        Color startColor = shieldMaterial.GetColor(colorPropertyName);
+        Color endColor = baseShieldColor;
+
+        if (targetAlpha < 0.01f)
+        {
+            endColor = Color.black;
+            endColor.a = 0f;
+        }
+        else
+        {
+            endColor.a = targetAlpha;
+        }
 
         while (t < duration)
         {
             t += Time.deltaTime;
-            shieldMaterial.SetColor(
-                colorPropertyName,
-                Color.Lerp(start, end, t / duration));
+            Color currentColor = Color.Lerp(startColor, endColor, t / duration);
+            shieldMaterial.SetColor(colorPropertyName, currentColor);
             yield return null;
         }
 
-        shieldMaterial.SetColor(colorPropertyName, end);
+        shieldMaterial.SetColor(colorPropertyName, endColor);
 
-        if (disableAtEnd)
+        if (disableObjectAtEnd && shieldObject != null)
             shieldObject.gameObject.SetActive(false);
     }
 }

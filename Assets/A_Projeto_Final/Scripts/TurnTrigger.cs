@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TurnTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
     private MovePlatform parentMover;
 
     void Start()
@@ -19,7 +18,7 @@ public class TurnTrigger : MonoBehaviour
             parentMover.SetMoveDirection(-newDirection);
 
             Quaternion newRotation = Quaternion.LookRotation(newDirection, Vector3.up);
-            player.transform.rotation = newRotation;
+            transform.rotation = newRotation;
         }
     }
 
