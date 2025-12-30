@@ -15722,7 +15722,7 @@ MonoBehaviour:
   jumpForce: 7
   minAirTime: 0.08
   dashDuration: 0.3
-  clickThreshold: 0.2
+  doubleClickThreshold: 0.25
   dashCamera: {fileID: 2014163169}
   dashFovBoost: 15
   dashFovInTime: 0.24

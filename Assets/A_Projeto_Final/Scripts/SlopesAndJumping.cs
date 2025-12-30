@@ -20,10 +20,11 @@ public class SlopesAndJumping : MonoBehaviour
     [Header("Jump Settings")]
     public float jumpForce = 7f;
     public float minAirTime = 0.08f;
+    [SerializeField] private float jumpBufferTime = 0.12f;
 
     [Header("Dash Settings")]
-    [SerializeField] public float dashDuration = 0.2f;
-    [SerializeField] public float clickThreshold = 0.25f;
+    public float dashDuration = 0.2f;
+    public float doubleClickThreshold = 0.25f;
 
     [Header("Dash Camera Effect")]
     [SerializeField] private CinemachineCamera dashCamera;
@@ -39,22 +40,26 @@ public class SlopesAndJumping : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
 
-    private RaycastHit hitInfo;
     private bool isGrounded;
     private bool isJumping;
     private float airborneTimer;
 
+    // Jump buffer
+    private bool jumpBuffered;
+    private float jumpBufferStart;
+
+    // Dash
     private bool canDash;
     private bool isDashing;
-
     private float lastClickTime;
-    private bool waitingForSecondClick;
-    private bool pendingSingleClick;
 
-    //–––––––– ROTATION STATE (PHYSICS SAFE) ––––––––
+    // Ground hit
+    private RaycastHit hitInfo;
+
+    // Rotation system
     private bool isRotating;
     private Quaternion targetRotation;
-    [SerializeField] private float rotationSpeed = 360f; // degrees per second
+    [SerializeField] private float rotationSpeed = 360f;
 
     private void Awake()
     {
@@ -64,15 +69,16 @@ public class SlopesAndJumping : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
-        if (playerShield == null)
+        if (!playerShield)
             playerShield = GetComponent<PlayerShield>();
     }
 
     private void Update()
     {
-        Clicks();
+        HandleInput();
+        ResolveBufferedJump();
 
-        if (animator != null)
+        if (animator)
         {
             animator.SetBool("isGrounded", isGrounded);
             animator.SetBool("isRunning", isGrounded);
@@ -81,26 +87,15 @@ public class SlopesAndJumping : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //––––– GROUND CHECK –––––//
+        // Ground check
         Vector3 origin = transform.position + Vector3.up * 0.5f;
-
-        isGrounded = Physics.SphereCast(
-            origin,
-            sphereRadius,
-            Vector3.down,
-            out hitInfo,
-            sphereCastDistance,
-            groundLayer
-        );
+        isGrounded = Physics.SphereCast(origin, sphereRadius, Vector3.down, out hitInfo, sphereCastDistance, groundLayer);
 
         if (isGrounded)
             canDash = true;
 
-        //––––– AIR TIMER –––––//
         if (!isGrounded)
-        {
             airborneTimer += Time.fixedDeltaTime;
-        }
         else
         {
             if (isJumping && airborneTimer >= minAirTime)
@@ -108,13 +103,9 @@ public class SlopesAndJumping : MonoBehaviour
                 isJumping = false;
                 airborneTimer = 0f;
             }
-            else if (!isJumping)
-            {
-                airborneTimer = 0f;
-            }
         }
 
-        // Skip snapping during jump / dash
+        // Ground snap
         if (!isJumping && !isDashing && isGrounded)
         {
             float targetY = hitInfo.point.y + desiredHeight;
@@ -122,22 +113,16 @@ public class SlopesAndJumping : MonoBehaviour
 
             if (Mathf.Abs(diff) > deadZone)
             {
-                Vector3 vel = rb.linearVelocity;
-                vel.y = diff * snapSpeed;
-                rb.linearVelocity = vel;
+                Vector3 v = rb.linearVelocity;
+                v.y = diff * snapSpeed;
+                rb.linearVelocity = v;
             }
         }
 
-        //––––– PHYSICS-SAFE ROTATION –––––//
+        // Rotation
         if (isRotating)
         {
-            rb.MoveRotation(
-                Quaternion.RotateTowards(
-                    rb.rotation,
-                    targetRotation,
-                    rotationSpeed * Time.fixedDeltaTime
-                )
-            );
+            rb.MoveRotation(Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
 
             if (Quaternion.Angle(rb.rotation, targetRotation) < 0.1f)
             {
@@ -147,89 +132,94 @@ public class SlopesAndJumping : MonoBehaviour
         }
     }
 
-    //–––––––– CLICK LOGIC ––––––––//
-    void Clicks()
+    // Input handling
+    private void HandleInput()
     {
         if (!GameStartController.canJump) return;
-        if (!Input.GetMouseButtonDown(0)) return;
-        if (playerShield != null && playerShield.IsShieldActive()) return;
 
-        if (!waitingForSecondClick)
+        if (Input.GetMouseButtonDown(0))
         {
+            // Double click -> dash
+            if (Time.time - lastClickTime <= doubleClickThreshold)
+            {
+                TryDash();
+                lastClickTime = 0f;
+                return;
+            }
+
             lastClickTime = Time.time;
-            waitingForSecondClick = true;
-            pendingSingleClick = true;
-            StartCoroutine(ClickDelay());
-        }
-        else if (Time.time - lastClickTime <= clickThreshold)
-        {
-            waitingForSecondClick = false;
-            pendingSingleClick = false;
-            DoDoubleClickAction();
+
+            // Buffer jump
+            BufferJump();
         }
     }
 
-    IEnumerator ClickDelay()
+    private void BufferJump()
     {
-        yield return new WaitForSeconds(clickThreshold);
+        if (!isGrounded || isJumping) return;
 
-        if (waitingForSecondClick)
-        {
-            waitingForSecondClick = false;
+        jumpBuffered = true;
+        jumpBufferStart = Time.time;
 
-            if (pendingSingleClick && !Input.GetMouseButton(0))
-                DoSingleClickAction();
-
-            pendingSingleClick = false;
-        }
+        if (animator)
+            animator.SetTrigger("Jump");
     }
 
-    //–––––––– JUMP ––––––––//
-    void DoSingleClickAction()
+    private void ResolveBufferedJump()
     {
-        if (isGrounded && !isJumping)
+        if (!jumpBuffered) return;
+
+        // Shield cancels jump
+        if (playerShield && playerShield.IsShieldActive())
         {
-            isJumping = true;
-            airborneTimer = 0f;
+            jumpBuffered = false;
+            return;
+        }
 
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-
-            if (audioSource && jumpSFX)
-                audioSource.PlayOneShot(jumpSFX);
-
-            if (animator)
-                animator.SetTrigger("Jump");
+        // Jump on release or timeout
+        if (!Input.GetMouseButton(0) || Time.time - jumpBufferStart >= jumpBufferTime)
+        {
+            ExecuteJump();
+            jumpBuffered = false;
         }
     }
 
-    //–––––––– DASH ––––––––//
-    void DoDoubleClickAction()
+    private void ExecuteJump()
     {
-        if (!isGrounded && canDash && !isDashing)
-        {
-            if (audioSource && slashSFX)
-                audioSource.PlayOneShot(slashSFX);
+        isJumping = true;
+        airborneTimer = 0f;
 
-            if (animator)
-                animator.SetTrigger("Slash");
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-            StartCoroutine(DoDash());
-        }
+        if (audioSource && jumpSFX)
+            audioSource.PlayOneShot(jumpSFX);
     }
 
-    IEnumerator DoDash()
+    // Dash
+    private void TryDash()
+    {
+        if (isGrounded || !canDash || isDashing) return;
+
+        if (audioSource && slashSFX)
+            audioSource.PlayOneShot(slashSFX);
+
+        if (animator)
+            animator.SetTrigger("Slash");
+
+        StartCoroutine(DoDash());
+    }
+
+    private IEnumerator DoDash()
     {
         isDashing = true;
         canDash = false;
 
-        float baseFov = dashCamera != null ? dashCamera.Lens.FieldOfView : 0f;
+        float baseFov = dashCamera ? dashCamera.Lens.FieldOfView : 0f;
 
         if (dashCamera)
             StartCoroutine(FovDash(baseFov, baseFov + dashFovBoost));
 
-        MovePlatform[] platforms =
-            Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
-
+        MovePlatform[] platforms = Object.FindObjectsByType<MovePlatform>(FindObjectsSortMode.None);
         foreach (var p in platforms)
             p.SetMoveDirection(player.transform.forward * -30f);
 
@@ -244,7 +234,7 @@ public class SlopesAndJumping : MonoBehaviour
         isDashing = false;
     }
 
-    IEnumerator FovDash(float from, float to)
+    private IEnumerator FovDash(float from, float to)
     {
         float duration = from < to ? dashFovInTime : dashFovOutTime;
         float t = 0f;
@@ -259,7 +249,7 @@ public class SlopesAndJumping : MonoBehaviour
         dashCamera.Lens.FieldOfView = to;
     }
 
-    //–––––– ROTATION TRIGGER ––––––//
+    // Rotation triggers
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("RotationTrigger")) return;
@@ -274,17 +264,6 @@ public class SlopesAndJumping : MonoBehaviour
         isRotating = true;
     }
 
-    //–––––– GIZMOS ––––––//
-    private void OnDrawGizmos()
-    {
-        Vector3 origin = transform.position + Vector3.up * 0.5f;
-        Gizmos.color = isGrounded ? Color.green : Color.red;
-        Gizmos.DrawLine(origin, origin + Vector3.down * sphereCastDistance);
-    }
-
-    //–––––– PUBLIC ––––––//
-    public bool dashCheck()
-    {
-        return isDashing;
-    }
+    // Dash check
+    public bool dashCheck() => isDashing;
 }
