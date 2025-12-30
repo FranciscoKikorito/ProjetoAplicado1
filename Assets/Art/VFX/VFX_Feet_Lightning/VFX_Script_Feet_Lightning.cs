@@ -10,7 +10,7 @@ public class FootVFXSpawner : MonoBehaviour
     public Transform rightFoot;
 
     [Header("Feet SFX")]
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip footstepSoundLeft;
     public AudioClip footstepSoundRight;  
     //[Header("Optional Settings")]

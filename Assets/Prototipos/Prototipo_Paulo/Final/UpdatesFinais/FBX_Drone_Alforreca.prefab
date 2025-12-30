@@ -1341,13 +1341,14 @@ MonoBehaviour:
   detectionRange: 20
   warningParticles: {fileID: 6021808699926424943}
   warningDuration: 1.2
+  modelRotationOffset: {x: 0, y: -260, z: 0}
   chargingSound: {fileID: 8300000, guid: 05ca25a66985c544880ed15389612848, type: 3}
-  chargingVolume: 0.142
+  chargingVolume: 0.414
   shootSounds:
   - {fileID: 8300000, guid: 5a4d3cb82737c2d4b9a97aa9eb73667e, type: 3}
   - {fileID: 8300000, guid: b57242c266c64794c86f0ea0648cef5b, type: 3}
-  shootingVolume: 0.136
-  moveSpeed: 5
+  shootingVolume: 0.254
+  moveSpeed: 4
 --- !u!1 &3496836580928752363
 GameObject:
   m_ObjectHideFlags: 0

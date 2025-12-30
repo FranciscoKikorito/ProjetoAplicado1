@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+
 public class Drones : MonoBehaviour
 {
     [Header("Ataque")]
@@ -10,6 +11,9 @@ public class Drones : MonoBehaviour
     [Header("Efeitos Visuais")]
     public ParticleSystem warningParticles;
     public float warningDuration = 1.2f;
+    
+    [Header("Ajustes de Rotação")]
+    public Vector3 modelRotationOffset = new Vector3(0, 0, 0);
 
     [Header("--- ÁUDIO & VOLUMES ---")]
     [Header("1. Som de Carregar (Charging)")]
@@ -26,7 +30,6 @@ public class Drones : MonoBehaviour
 
     private Transform aimPoint;
     
-    // TRÊS AUDIOSOURCES DISTINTOS
     private AudioSource chargingSource;
     private AudioSource shootingSource;
 
@@ -35,17 +38,14 @@ public class Drones : MonoBehaviour
 
     void Start()
     {
-        // Cria os componentes no objeto automaticamente ao iniciar o jogo
         chargingSource = gameObject.AddComponent<AudioSource>();
         shootingSource = gameObject.AddComponent<AudioSource>();
-
-        // Configura volumes iniciais
+        
         chargingSource.volume = chargingVolume;
         shootingSource.volume = shootingVolume;
         
-        // Configurações extra para 3D (para o som diminuir com a distância)
-        ConfigureAudio3D(chargingSource);
-        ConfigureAudio3D(shootingSource);
+        chargingSource.spatialBlend = 0f;
+        shootingSource.spatialBlend = 0f;
 
         //TargetPathCenter e AimPoint
         GameObject foundTarget = GameObject.Find("TargetPathCenter");
@@ -58,13 +58,6 @@ public class Drones : MonoBehaviour
 
         if (warningParticles != null) warningParticles.Stop();
     }
-    void ConfigureAudio3D(AudioSource source)
-    {
-        source.spatialBlend = 1f;
-        source.minDistance = 1f;
-        source.maxDistance = detectionRange * 3.5f;
-    }
-
     void Update()
     {
         if (aimPoint == null || hasShot || isWarning) return;
@@ -86,7 +79,7 @@ public class Drones : MonoBehaviour
         if (chargingSound != null && chargingSource != null)
         {
             chargingSource.clip = chargingSound;
-            chargingSource.volume = chargingVolume;
+            chargingSource.volume = chargingVolume; 
             chargingSource.Play();
         }
 
@@ -97,7 +90,10 @@ public class Drones : MonoBehaviour
             if (pathCenter != null)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pathCenter.position, moveSpeed * Time.deltaTime);
+                
+                // Rotação com o teu ajuste
                 transform.LookAt(aimPoint);
+                transform.Rotate(modelRotationOffset);
             }
             yield return null;
         }
@@ -117,7 +113,8 @@ public class Drones : MonoBehaviour
         if (shootSounds != null && shootSounds.Length > 0 && shootingSource != null)
         {
             int randomIndex = Random.Range(0, shootSounds.Length);
-            shootingSource.PlayOneShot(shootSounds[randomIndex], shootingVolume);
+            
+            shootingSource.PlayOneShot(shootSounds[randomIndex], 1f);
         }
 
         GameObject projectile = Instantiate(
