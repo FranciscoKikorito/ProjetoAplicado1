@@ -128,6 +128,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5088938061522363998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &653428618790129473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4598697476795551031}
+  m_Layer: 0
+  m_Name: TubeCross1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598697476795551031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653428618790129473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalPosition: {x: -0.1, y: 2.82, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843871209886490908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!1 &923605455587924848
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 923605455587924848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 3, z: 7.499999}
+  m_LocalPosition: {x: 0.92, y: 3.276, z: 7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1127,6 +1158,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7573093403487441161}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &5000819056426516913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6218823221508299655}
+  m_Layer: 0
+  m_Name: TubeMiddle (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6218823221508299655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000819056426516913}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.3, z: 6.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843871209886490908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5170906035105826494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1854,37 @@ MonoBehaviour:
   spawnPointsList:
   - {fileID: 706170339129786196}
   - {fileID: 7798716631576874105}
+--- !u!1 &6832433718069831039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552084235956007}
+  m_Layer: 0
+  m_Name: TubeCross2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552084235956007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832433718069831039}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.953717, w: -0.30070576}
+  m_LocalPosition: {x: 0.85, y: 4.01, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843871209886490908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -215}
 --- !u!1 &6851898176889816759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +2064,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9145875183763349758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7443199705216096034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3224842982991702001}
+  m_Layer: 0
+  m_Name: TubeCross3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3224842982991702001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7443199705216096034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0, z: -0.953717, w: -0.30070576}
+  m_LocalPosition: {x: 10.47, y: 4.01, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843871209886490908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -215}
 --- !u!1 &7713285682882392672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2161,37 @@ Transform:
   - {fileID: 171085128774183317}
   m_Father: {fileID: 1127655755123346458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7818362939788183461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6084284737185764662}
+  m_Layer: 0
+  m_Name: TubeCross4 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6084284737185764662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818362939788183461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.2588191, w: 0.9659258}
+  m_LocalPosition: {x: -9.71, y: 2.82, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8843871209886490908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
 --- !u!1 &8061838138141000386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,9 +2287,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9169694869081984083}
+  - {fileID: 4598697476795551031}
   - {fileID: 4924854557039570412}
+  - {fileID: 1552084235956007}
   - {fileID: 6589611666246084958}
+  - {fileID: 3224842982991702001}
   - {fileID: 2016227965575910992}
+  - {fileID: 6084284737185764662}
+  - {fileID: 6218823221508299655}
   m_Father: {fileID: 2048176551688110444}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8779164157278975588
