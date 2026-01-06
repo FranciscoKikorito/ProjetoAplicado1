@@ -73,8 +73,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0.5
-  m_ExitTime: 0.8285714
+  m_TransitionOffset: 0.09669096
+  m_ExitTime: 0.8285713
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -382,7 +382,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rig|Slash
-  m_Speed: 1
+  m_Speed: 1.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 9140320650084464853}
@@ -459,7 +459,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rig|Jump
-  m_Speed: 0.9
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6743552206393677135}
@@ -572,9 +572,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.5451385
-  m_TransitionOffset: 0
-  m_ExitTime: 0.89442104
+  m_TransitionDuration: 0.36554325
+  m_TransitionOffset: 0.009926561
+  m_ExitTime: 0.94679266
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
