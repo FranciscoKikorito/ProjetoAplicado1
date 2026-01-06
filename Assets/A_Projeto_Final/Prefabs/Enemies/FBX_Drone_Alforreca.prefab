@@ -1341,7 +1341,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2971570814959572832, guid: 1526759d6b242cd4d8118149a0f0e0ba, type: 3}
   firePoint: {fileID: 6576459278223970178}
   detectionRange: 20
-  warningParticles: {fileID: 5493346448237557601}
+  warningParticles: {fileID: 6021808699926424943}
   warningDuration: 1.2
   modelRotationOffset: {x: 0, y: -260, z: 0}
   chargingSound: {fileID: 8300000, guid: 05ca25a66985c544880ed15389612848, type: 3}
@@ -3275,7 +3275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3946026433176937232
 Transform:
   m_ObjectHideFlags: 0
@@ -8854,7 +8854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4881086296863675705
 Transform:
   m_ObjectHideFlags: 0
