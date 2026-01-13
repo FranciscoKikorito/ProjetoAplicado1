@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Playables;
 
 public class GameTimerManager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class GameTimerManager : MonoBehaviour
     [Header("Configuração")]
     public float totalTimeInSeconds = 180f; // __ Segundos 
     public bool isTimerRunning = false;
+
+    [Header("Cinematic Settings")]
+    public PlayableDirector winCinematic; // 2. ADD THIS VARIABLE
+    public GameObject gameplayUI;         // Optional: to hide the timer during the movie
+
+    private bool _hasWon = false;
 
     [Header("Referências")]
     public GameStartController gameController; // Para chamar o Game Over
@@ -49,6 +56,10 @@ public class GameTimerManager : MonoBehaviour
                 TimeIsUp();
             }
         }
+        if (totalTimeInSeconds <= 0 && !_hasWon)
+        {
+            TriggerWin();
+        }
     }
     void TimeIsUp()
     {
@@ -65,5 +76,23 @@ public class GameTimerManager : MonoBehaviour
         
         // Retorna formato "02:45"
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void TriggerWin()
+    {
+        _hasWon = true;
+        totalTimeInSeconds = 0;
+
+        // 4. STOP THE GAMEPLAY
+        // You can use your 'Game Controller' reference here to stop player movement
+        // example: gameController.StopRunner();
+
+        if (gameplayUI != null) gameplayUI.SetActive(false);
+
+        // 5. PLAY THE CINEMATIC
+        if (winCinematic != null)
+        {
+            winCinematic.Play();
+        }
     }
 }
