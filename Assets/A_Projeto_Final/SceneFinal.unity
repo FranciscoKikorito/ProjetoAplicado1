@@ -605,7 +605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a80e2a892b96b1c43a4a8e2c8aa9968b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e7b826add2183a46a9ec5fb752ff281, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a80e2a892b96b1c43a4a8e2c8aa9968b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e7b826add2183a46a9ec5fb752ff281, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2749,7 +2749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a80e2a892b96b1c43a4a8e2c8aa9968b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e7b826add2183a46a9ec5fb752ff281, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5268,7 +5268,7 @@ RectTransform:
   m_GameObject: {fileID: 808278280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.471491, y: 0.471491, z: 0.471491}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 325802662}
@@ -5278,7 +5278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -126.29, y: 74.084}
+  m_AnchoredPosition: {x: -355, y: 121}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808278282
@@ -18889,23 +18889,22 @@ MonoBehaviour:
   - {fileID: 69768369}
   - {fileID: 147034179}
   livesUI: {fileID: 1645515146}
-  heartFlashDuration: 0.1
-  heartFlashCount: 4
   uiVisibleAfterHitTime: 1.5
   runStateName: Rig|Run
+  explosionParticlePrefab: {fileID: 9046285505191661058, guid: 736fb4f3a0c7b5646816bb1d77b1a5df, type: 3}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  shakeIntensity: 3
   flashDuration: 0.1
   flashCount: 15
   flashMaterial: {fileID: 2100000, guid: b7db8eb45ab9170458bc2a96d475e938, type: 2}
   playerModel: {fileID: 3160371879620789889}
   animator: {fileID: 1803803402425597187}
-  allPlatforms:
-  - {fileID: 42264113}
-  platformStartSpeed: -10
   gameController: {fileID: 1743433785}
   invincibilityDuration: 3
   isInvincible: 0
   audioSource: {fileID: 6477972271499301551}
   hitByLaserSFX: {fileID: 8300000, guid: c5b5f9d1e2023fa4e9ac7fb1d3600a4c, type: 3}
+  heartBreakSFX: {fileID: 8300000, guid: fcb7fa8cf5a2152428e61197ada9e8dc, type: 3}
 --- !u!4 &7529831365819514440
 Transform:
   m_ObjectHideFlags: 0
