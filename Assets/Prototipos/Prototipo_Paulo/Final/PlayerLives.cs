@@ -13,9 +13,9 @@ public class PlayerLives : MonoBehaviour
     public string runStateName = "Rig|Run";
 
     [Header("Efeito de Explosão do Coração")]
-    public GameObject explosionParticlePrefab; // Arraste um Prefab de partículas aqui
-    public Color damageColor = Color.red;      // Cor antes de explodir
-    public float shakeIntensity = 5f;          // Força do tremor da UI
+    public GameObject explosionParticlePrefab;
+    public Color damageColor = Color.red;    
+    public float shakeIntensity = 5f;        
     
     [Header("Flash Effect (Player)")]
     public float flashDuration = 0.1f;
@@ -178,8 +178,6 @@ public class PlayerLives : MonoBehaviour
         {
             yield return null;
         }
-
-        // Assim que entrar na animação de corrida, mostra a UI
         yield return StartCoroutine(ShowLivesAtStart());
     }
 
