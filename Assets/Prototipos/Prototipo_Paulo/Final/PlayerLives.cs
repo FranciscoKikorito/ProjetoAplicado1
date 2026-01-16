@@ -42,6 +42,11 @@ public class PlayerLives : MonoBehaviour
     public AudioClip heartBreakSFX;
 
     private Vector3 originalUIPos; 
+
+    [Header("Platform")]
+    [SerializeField ]private MovePlatform movePlatform;
+    [SerializeField ]private SlopesAndJumping jump;
+
     void Awake()
     {
         if (playerModel == null) playerModel = transform;
@@ -164,6 +169,8 @@ public class PlayerLives : MonoBehaviour
 
         if (animator != null) animator.SetTrigger("Die");
 
+        movePlatform.enabled = false;
+        jump.enabled = false;
         Debug.Log("Game Over!");
         if (gameController != null)
         {

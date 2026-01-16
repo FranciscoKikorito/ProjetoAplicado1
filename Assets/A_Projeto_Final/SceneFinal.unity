@@ -13242,7 +13242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: field of view
-      value: 33.39849
+      value: 26.991467
       objectReference: {fileID: 0}
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: far clip plane
@@ -19251,6 +19251,8 @@ MonoBehaviour:
   audioSource: {fileID: 6477972271499301551}
   hitByLaserSFX: {fileID: 8300000, guid: c5b5f9d1e2023fa4e9ac7fb1d3600a4c, type: 3}
   heartBreakSFX: {fileID: 8300000, guid: fcb7fa8cf5a2152428e61197ada9e8dc, type: 3}
+  movePlatform: {fileID: 42264113}
+  jump: {fileID: 2324760312691196666}
 --- !u!4 &7529831365819514440
 Transform:
   m_ObjectHideFlags: 0
