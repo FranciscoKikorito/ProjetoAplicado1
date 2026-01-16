@@ -13238,11 +13238,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: field of view
-      value: 34.740868
+      value: 33.39849
+      objectReference: {fileID: 0}
+    - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: far clip plane
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 99.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 99.99999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13283,6 +13299,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_Name
@@ -13366,6 +13386,10 @@ PlayableDirector:
     value: {fileID: 1440901983}
   - key: {fileID: -3164496140265378803, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
     value: {fileID: 1913922528}
+  - key: {fileID: -586325385577466444, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
+    value: {fileID: 1913922528}
+  - key: {fileID: -5289316454995526552, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
+    value: {fileID: 1440901983}
   m_ExposedReferences:
     m_References:
     - 8411d83bdb9e4f540a49dab9f24ba6e9: {fileID: 1440901980}
