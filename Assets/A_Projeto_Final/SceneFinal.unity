@@ -9940,9 +9940,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 904fb4cc027f5c34aa1362e0c83cb3f4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1440901982}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 904fb4cc027f5c34aa1362e0c83cb3f4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1440901983}
   m_SourcePrefab: {fileID: 100100000, guid: 904fb4cc027f5c34aa1362e0c83cb3f4, type: 3}
 --- !u!1 &1440901980 stripped
@@ -9955,29 +9952,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 904fb4cc027f5c34aa1362e0c83cb3f4, type: 3}
   m_PrefabInstance: {fileID: 1440901979}
   m_PrefabAsset: {fileID: 0}
---- !u!320 &1440901982
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440901980}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 7353677396929385062, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
-    value: {fileID: 1440901983}
-  - key: {fileID: 0}
-    value: {fileID: 0}
-  - key: {fileID: -3164496140265378803, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
 --- !u!95 &1440901983
 Animator:
   serializedVersion: 7
@@ -13263,8 +13237,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1472270382}
     m_Modifications:
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: field of view
-      value: 77.307915
+      value: 34.740868
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13377,7 +13355,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -15210,6 +15188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3da44ef8f5133c4d81a5329f2c073a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RightTurnTrigger
+  vfxPrefab: {fileID: 115234, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+  slopesAndJumping: {fileID: 0}
 --- !u!4 &1064873116393573653
 Transform:
   m_ObjectHideFlags: 0

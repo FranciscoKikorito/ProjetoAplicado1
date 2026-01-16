@@ -266,4 +266,10 @@ public class SlopesAndJumping : MonoBehaviour
 
     // Dash check
     public bool dashCheck() => isDashing;
+
+
+    public bool checkGrounded()
+    {
+        return isGrounded;
+    }
 }
