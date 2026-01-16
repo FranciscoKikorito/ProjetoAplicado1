@@ -32,8 +32,9 @@ public class GameStartController : MonoBehaviour
     public static bool inputLocked = false;
     
     [Header("WIN")]
-    public string winSceneName = "WinScene";
-    
+    public Camera winCamera;
+    public UnityEngine.Playables.PlayableDirector winDirector;
+
     [Header("Game Over - Post Processing")]
     public Volume glitchPostProcessVolume; 
     public float glitchRampUpTime = 0.5f; // Tempo para ativar os efeitos visuais
@@ -178,26 +179,53 @@ public class GameStartController : MonoBehaviour
     {
         float timer = 0f;
 
+
         if (fadeOverlay != null)
             fadeOverlay.blocksRaycasts = true;
 
-        // Fade to black
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            float progress = timer / fadeDuration;
+            float t = timer / fadeDuration;
 
             if (fadeOverlay != null)
-                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, progress);
+                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, t);
 
             yield return null;
         }
 
         if (fadeOverlay != null)
             fadeOverlay.alpha = 1f;
-        
-        SceneManager.LoadScene(winSceneName);
+
+        if (introCam) introCam.gameObject.SetActive(false);
+        if (gameplayCam) gameplayCam.gameObject.SetActive(false);
+        if (winCamera) winCamera.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.1f);
+
+        timer = 0f;
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / fadeDuration;
+
+            if (fadeOverlay != null)
+                fadeOverlay.alpha = Mathf.Lerp(1f, 0f, t);
+
+            yield return null;
+        }
+
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.alpha = 0f;
+            fadeOverlay.blocksRaycasts = false;
+        }
+
+        if (winDirector) 
+            winDirector.Play();
     }
+
+
     IEnumerator GameOverSequence()
     {
         
