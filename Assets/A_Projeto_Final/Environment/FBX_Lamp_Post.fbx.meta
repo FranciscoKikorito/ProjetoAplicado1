@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lamp_Metal
-    second: {fileID: 2100000, guid: fb35e555c7289144eab909bec64c6c18, type: 2}
+    second: {fileID: 2100000, guid: 12c9dcc523286f144a274a029cd2d1b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
