@@ -4,6 +4,8 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
 
 public class GameStartController : MonoBehaviour
 {
