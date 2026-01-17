@@ -113,7 +113,7 @@ public class GameStartController : MonoBehaviour
             skyCam.gameObject.SetActive(false);
         }
         if (pressStartUI != null) pressStartUI.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
         inputLocked = false;
     }
 
@@ -183,7 +183,12 @@ public class GameStartController : MonoBehaviour
     {
         if (player != null && vfxPrefab != null)
         {
-            GameObject vfxInstance = Instantiate(vfxPrefab, player.transform.position, player.transform.rotation);
+            GameObject vfxInstance = Instantiate(
+                vfxPrefab, 
+                player.transform.position + Vector3.up * 0.5f, 
+                player.transform.rotation
+            );
+
             audioSource.PlayOneShot(winSFX);
             Destroy(vfxInstance, 3f);
         }
