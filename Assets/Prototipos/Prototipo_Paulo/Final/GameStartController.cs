@@ -26,12 +26,16 @@ public class GameStartController : MonoBehaviour
     public RectTransform gameOverUI;
     public float gameOverDisplayTime = 2.0f;
     public CanvasGroup fadeOverlay;
-    public float fadeDuration = 1.5f;
+    public float fadeDuration = 3f;
     public bool isGameOver = false; // Impede inputs durante o fade
     private Vector2 originalGameOverPos;
     public static bool inputLocked = false;
     
     [Header("WIN")]
+    public GameObject vfxPrefab;
+    public GameObject player;
+    public SlopesAndJumping sap;
+    public MovePlatform mp;
     public Camera winCamera;
     public UnityEngine.Playables.PlayableDirector winDirector;
 
@@ -166,19 +170,29 @@ public class GameStartController : MonoBehaviour
         canJump = false;
         canShield = false;
 
-        // Para música e gameplay
         if (musicManager != null)
             musicManager.StopMusic();
 
         foreach (var p in allPlatforms)
             p.SetMoveDirection(Vector3.zero);
+            mp.enabled = false;
+            sap.enabled = false;
 
         StartCoroutine(WinSequence());
     }
     IEnumerator WinSequence()
     {
-        float timer = 0f;
+        if (player != null && vfxPrefab != null)
+        {
+            GameObject vfxInstance = Instantiate(vfxPrefab, player.transform.position, player.transform.rotation);
+            Destroy(vfxInstance, 3f);
+        }
 
+        if (player != null)
+            player.gameObject.SetActive(false);
+        
+
+        float timer = 0f;
 
         if (fadeOverlay != null)
             fadeOverlay.blocksRaycasts = true;
@@ -201,9 +215,12 @@ public class GameStartController : MonoBehaviour
         if (gameplayCam) gameplayCam.gameObject.SetActive(false);
         if (winCamera) winCamera.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(2f);
 
         timer = 0f;
+        if (winDirector)
+            winDirector.Play();
+
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
@@ -221,8 +238,6 @@ public class GameStartController : MonoBehaviour
             fadeOverlay.blocksRaycasts = false;
         }
 
-        if (winDirector) 
-            winDirector.Play();
     }
 
 
