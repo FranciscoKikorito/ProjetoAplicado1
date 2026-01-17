@@ -35,9 +35,15 @@ public class GameStartController : MonoBehaviour
     private Vector2 originalGameOverPos;
     public static bool inputLocked = false;
 
-    [Header("WIN")] 
+    [Header("WIN")]
+    public GameObject vfxPrefab;
+    public GameObject player;
+    public SlopesAndJumping sap;
+    public MovePlatform mp;
     public Camera winCamera;
     public UnityEngine.Playables.PlayableDirector winDirector;
+    public AudioClip winSFX;        
+    public AudioSource audioSource;
 
     [Header("Audio")] 
     public MusicManager musicManager;
@@ -175,32 +181,64 @@ public class GameStartController : MonoBehaviour
 
     IEnumerator WinSequence()
     {
+        if (player != null && vfxPrefab != null)
+        {
+            GameObject vfxInstance = Instantiate(vfxPrefab, player.transform.position, player.transform.rotation);
+            audioSource.PlayOneShot(winSFX);
+            Destroy(vfxInstance, 3f);
+        }
+
+        if (player != null)
+            player.gameObject.SetActive(false);
+        
+
         float timer = 0f;
-        if (fadeOverlay != null) fadeOverlay.blocksRaycasts = true;
+
+        if (fadeOverlay != null)
+            fadeOverlay.blocksRaycasts = true;
+
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            fadeOverlay.alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+            float t = timer / fadeDuration;
+
+            if (fadeOverlay != null)
+                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, t);
+
             yield return null;
         }
 
-        fadeOverlay.alpha = 1f;
+        if (fadeOverlay != null)
+            fadeOverlay.alpha = 1f;
+
         if (introCam) introCam.gameObject.SetActive(false);
         if (gameplayCam) gameplayCam.gameObject.SetActive(false);
-        if (skyCam) skyCam.gameObject.SetActive(false);
         if (winCamera) winCamera.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+        if (skyCam) skyCam.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(2f);
+
         timer = 0f;
+        if (winDirector)
+            winDirector.Play();
+
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            fadeOverlay.alpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+            float t = timer / fadeDuration;
+
+            if (fadeOverlay != null)
+                fadeOverlay.alpha = Mathf.Lerp(1f, 0f, t);
+
             yield return null;
         }
 
-        fadeOverlay.alpha = 0f;
-        fadeOverlay.blocksRaycasts = false;
-        if (winDirector) winDirector.Play();
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.alpha = 0f;
+            fadeOverlay.blocksRaycasts = false;
+        }
+
     }
 
     IEnumerator GameOverSequence()
