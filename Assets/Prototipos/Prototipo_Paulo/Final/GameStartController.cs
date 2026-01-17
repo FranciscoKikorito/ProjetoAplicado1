@@ -100,8 +100,6 @@ public class GameStartController : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         if (skyIntroUI != null) skyIntroUI.SetActive(false);
-
-        yield return new WaitForSeconds(1.0f);
         
         if (skyCam != null)
         {
