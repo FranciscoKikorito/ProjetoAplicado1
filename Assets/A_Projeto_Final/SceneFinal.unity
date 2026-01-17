@@ -2149,8 +2149,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e3fd3f1fed427854aa8c308505e299ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 170426342}
   m_SourcePrefab: {fileID: 100100000, guid: e3fd3f1fed427854aa8c308505e299ea, type: 3}
+--- !u!1 &170426341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e3fd3f1fed427854aa8c308505e299ea, type: 3}
+  m_PrefabInstance: {fileID: 170426340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &170426342
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170426341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &178424423
 Mesh:
   m_ObjectHideFlags: 0
@@ -3651,7 +3681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904019309209629262, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 3.1
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 904019309209629262, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: ShapeModule.m_Scale.y
@@ -3659,7 +3689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904019309209629262, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: ShapeModule.m_Scale.z
-      value: 6.67
+      value: 22.3
       objectReference: {fileID: 0}
     - target: {fileID: 904019309209629262, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: InitialModule.rotation3D
@@ -11660,7 +11690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2791665147241531619, guid: acd5109bafae4c747b8f01e2e45283b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4537294
+      value: -8.33
       objectReference: {fileID: 0}
     - target: {fileID: 2791665147241531619, guid: acd5109bafae4c747b8f01e2e45283b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11668,7 +11698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2791665147241531619, guid: acd5109bafae4c747b8f01e2e45283b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.68073
+      value: -36.33
       objectReference: {fileID: 0}
     - target: {fileID: 2791665147241531619, guid: acd5109bafae4c747b8f01e2e45283b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22566,7 +22596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: field of view
-      value: 26.991467
+      value: 61.927517
       objectReference: {fileID: 0}
     - target: {fileID: -8737204920524100739, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_FocalLength
@@ -22640,13 +22670,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 72734918379966255, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_Antialiasing
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 72734918379966255, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72734918379966255, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
+      propertyPath: m_TaaSettings.m_ContrastAdaptiveSharpening
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23121,6 +23163,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -2195523899979539920, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 2730760189743458320, guid: 9f26cbf0a5839fb4b9995bae39f72c20, type: 2}
+    value: {fileID: 170426342}
   m_ExposedReferences:
     m_References:
     - 8411d83bdb9e4f540a49dab9f24ba6e9: {fileID: 1440901980}
