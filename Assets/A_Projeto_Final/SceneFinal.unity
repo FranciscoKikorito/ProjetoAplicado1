@@ -2151,11 +2151,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3fd3f1fed427854aa8c308505e299ea, type: 3}
---- !u!4 &170426341 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e3fd3f1fed427854aa8c308505e299ea, type: 3}
-  m_PrefabInstance: {fileID: 170426340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &178424423
 Mesh:
   m_ObjectHideFlags: 0
@@ -20301,7 +20296,7 @@ MonoBehaviour:
   fadeOverlay: {fileID: 1726278936}
   fadeDuration: 3
   isGameOver: 0
-  destination: {fileID: 170426341}
+  vfxPrefab: {fileID: 0}
   player: {fileID: 8291297771362868932}
   sap: {fileID: 2324760312691196666}
   mp: {fileID: 42264113}
@@ -22548,7 +22543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 32343ba814931f34cbf6feca30ef52f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
