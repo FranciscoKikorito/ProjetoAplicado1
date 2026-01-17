@@ -112,8 +112,8 @@ public class GameStartController : MonoBehaviour
             skyCam.Priority = 0;
             skyCam.gameObject.SetActive(false);
         }
-        
         if (pressStartUI != null) pressStartUI.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
         inputLocked = false;
     }
 
