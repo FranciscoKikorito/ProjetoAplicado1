@@ -46,6 +46,7 @@ public class GameStartController : MonoBehaviour
     public UnityEngine.Playables.PlayableDirector winDirector;
     public AudioClip winSFX;        
     public AudioSource audioSource;
+    public GameObject ui;
 
     [Header("Audio")] 
     public MusicManager musicManager;
@@ -183,7 +184,7 @@ public class GameStartController : MonoBehaviour
     }
 
     IEnumerator WinSequence()
-    {
+    {   
         if (player != null && vfxPrefab != null)
         {
             GameObject vfxInstance = Instantiate(
@@ -223,6 +224,7 @@ public class GameStartController : MonoBehaviour
         if (gameplayCam) gameplayCam.gameObject.SetActive(false);
         if (winCamera) winCamera.gameObject.SetActive(true);
         if (skyCam) skyCam.gameObject.SetActive(false);
+        if (ui) ui.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(2f);
 

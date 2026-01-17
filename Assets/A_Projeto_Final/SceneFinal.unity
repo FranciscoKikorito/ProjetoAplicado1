@@ -3767,6 +3767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Godray
       objectReference: {fileID: 0}
+    - target: {fileID: 2656157466291953453, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4950264928146307761, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: m_RenderAlignment
       value: 2
@@ -8008,6 +8012,10 @@ PrefabInstance:
     - target: {fileID: 2656157466291953453, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: m_Name
       value: Godray (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2656157466291953453, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4950264928146307761, guid: c2c0f7e847663cd4ab21fa018515b422, type: 3}
       propertyPath: m_RenderAlignment
@@ -20541,6 +20549,7 @@ MonoBehaviour:
   winDirector: {fileID: 1961539435}
   winSFX: {fileID: 8300000, guid: e691d360e9a520e44a840e3f67325e89, type: 3}
   audioSource: {fileID: 1743433788}
+  ui: {fileID: 1645515146}
   musicManager: {fileID: 817113530}
   sfxSource: {fileID: 1743433787}
   finalOuchPlayerSFX: {fileID: 8300000, guid: d54314cf6d56cff4d88165b5f222986a, type: 3}
