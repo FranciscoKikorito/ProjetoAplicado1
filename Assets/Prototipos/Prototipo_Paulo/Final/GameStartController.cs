@@ -37,6 +37,9 @@ public class GameStartController : MonoBehaviour
     private Vector2 originalGameOverPos;
     public static bool inputLocked = false;
 
+    public AudioClip loseSFX;        
+    public AudioSource loseSource;
+
     [Header("WIN")]
     public GameObject vfxPrefab;
     public GameObject player;
@@ -292,6 +295,7 @@ public class GameStartController : MonoBehaviour
         fadeOverlay.alpha = 1f;
         if (glitchPostProcessVolume) glitchPostProcessVolume.weight = 1f;
         yield return new WaitForSeconds(0.3f);
+        loseSource.PlayOneShot(loseSFX);
         if (gameOverUI != null) gameOverUI.gameObject.SetActive(true);
         yield return new WaitForSeconds(gameOverDisplayTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
