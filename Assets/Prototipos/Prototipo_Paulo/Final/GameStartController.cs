@@ -116,7 +116,6 @@ public class GameStartController : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         inputLocked = false;
     }
-
     void Update()
     {
         if (isGameOver || inputLocked) return;
