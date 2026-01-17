@@ -27590,7 +27590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b189b9cbb90dee4abfa2e4b32df87e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimerManager
-  totalTimeInSeconds: 140
+  totalTimeInSeconds: 5
   isTimerRunning: 0
   gameController: {fileID: 1743433785}
 --- !u!114 &3330701530202332617

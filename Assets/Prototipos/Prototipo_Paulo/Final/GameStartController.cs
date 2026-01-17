@@ -113,9 +113,10 @@ public class GameStartController : MonoBehaviour
             skyCam.gameObject.SetActive(false);
         }
         if (pressStartUI != null) pressStartUI.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         inputLocked = false;
     }
+
     void Update()
     {
         if (isGameOver || inputLocked) return;
@@ -155,6 +156,7 @@ public class GameStartController : MonoBehaviour
             }
         }
     }
+
     public void TriggerGameOver()
     {
         if (isGameOver) return;
@@ -243,6 +245,31 @@ public class GameStartController : MonoBehaviour
             fadeOverlay.blocksRaycasts = false;
         }
 
+        yield return new WaitForSeconds(45f);
+
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.alpha = 0f;
+            fadeOverlay.blocksRaycasts = true;
+            fadeOverlay.GetComponent<Image>().color = Color.white; 
+        }
+
+        timer = 0f;
+        float fadeOutDuration = 10f;
+        while (timer < fadeOutDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / fadeOutDuration;
+            if (fadeOverlay != null)
+                fadeOverlay.alpha = Mathf.Lerp(0f, 1f, t);
+            yield return null;
+        }
+
+        if (fadeOverlay != null)
+            fadeOverlay.alpha = 1f;
+
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator GameOverSequence()
