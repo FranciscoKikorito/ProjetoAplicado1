@@ -14,6 +14,13 @@ public class IntroScene : MonoBehaviour
 
     void Start()
     {
+        MusicManager music = FindObjectOfType<MusicManager>();
+        
+        if (music != null)
+        {
+            music.StopMusic();
+        }
+        
         if (fadeOverlay != null) 
             fadeOverlay.alpha = 0f;
 

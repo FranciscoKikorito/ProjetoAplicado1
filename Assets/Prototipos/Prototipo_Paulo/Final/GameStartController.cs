@@ -102,7 +102,7 @@ public class GameStartController : MonoBehaviour
         isGameOver = false;
         inputLocked = true;
 
-        if (musicManager != null) musicManager.PlayIntroMusic();
+        //if (musicManager != null) musicManager.PlayIntroMusic();
         
         StartCoroutine(PlaySkyIntroSequence());
     }
@@ -118,6 +118,7 @@ public class GameStartController : MonoBehaviour
             skyCam.Priority = 0;
             skyCam.gameObject.SetActive(false);
         }
+        if (musicManager != null) musicManager.PlayIntroMusic();
         if (pressStartUI != null) pressStartUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         inputLocked = false;
