@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-
 public class GameStartController : MonoBehaviour
 {
     [Header("Player")] 
@@ -27,14 +26,12 @@ public class GameStartController : MonoBehaviour
     public GameObject pressStartUI;
     public GameObject skyIntroUI;
     
-    
     [Header("Game Over / Fade")] 
     public RectTransform gameOverUI;
     public float gameOverDisplayTime = 2.0f;
     public CanvasGroup fadeOverlay;
     public float fadeDuration = 1.5f;
     public bool isGameOver = false;
-    private Vector2 originalGameOverPos;
     public static bool inputLocked = false;
 
     public AudioClip loseSFX;        
@@ -43,8 +40,6 @@ public class GameStartController : MonoBehaviour
     [Header("WIN")]
     public GameObject vfxPrefab;
     public GameObject player;
-    public SlopesAndJumping sap;
-    public MovePlatform mp;
     public Camera winCamera;
     public UnityEngine.Playables.PlayableDirector winDirector;
     public AudioClip winSFX;        
@@ -58,7 +53,6 @@ public class GameStartController : MonoBehaviour
 
     [Header("Game Over - Post Processing")]
     public Volume glitchPostProcessVolume;
-
     public float glitchRampUpTime = 0.5f;
 
     private bool gameStarted = false;
@@ -66,13 +60,13 @@ public class GameStartController : MonoBehaviour
 
     void Start()
     {
-        if (gameOverUI != null) gameOverUI.gameObject.SetActive(false);
-        if (fadeOverlay != null)
+        if (musicManager != null) 
         {
-            fadeOverlay.alpha = 0f;
-            fadeOverlay.blocksRaycasts = false;
+            musicManager.StopMusic(); 
         }
-        
+
+        if (gameOverUI != null) gameOverUI.gameObject.SetActive(false);
+        if (fadeOverlay != null) { fadeOverlay.alpha = 0f; fadeOverlay.blocksRaycasts = false; }
         if (glitchPostProcessVolume != null) glitchPostProcessVolume.weight = 0f;
 
         foreach (var p in allPlatforms) p.SetMoveDirection(Vector3.zero);
@@ -80,47 +74,32 @@ public class GameStartController : MonoBehaviour
         
         if (skyIntroUI != null) skyIntroUI.SetActive(true);
 
-        if (skyCam != null)
-        {
-            skyCam.gameObject.SetActive(true);
-            skyCam.Priority = 100; 
-        }
-        
-        if (introCam != null)
-        {
-            introCam.gameObject.SetActive(true);
-            introCam.Priority = 50; 
-        }
-
-        if (gameplayCam != null)
-        {
-            gameplayCam.gameObject.SetActive(true);
-            gameplayCam.Priority = 10;
-        }
+        if (skyCam != null) { skyCam.gameObject.SetActive(true); skyCam.Priority = 100; }
+        if (introCam != null) { introCam.gameObject.SetActive(true); introCam.Priority = 50; }
+        if (gameplayCam != null) { gameplayCam.gameObject.SetActive(true); gameplayCam.Priority = 10; }
         
         if (pressStartUI != null) pressStartUI.SetActive(false);
         isGameOver = false;
         inputLocked = true;
-
-        //if (musicManager != null) musicManager.PlayIntroMusic();
         
         StartCoroutine(PlaySkyIntroSequence());
     }
 
     IEnumerator PlaySkyIntroSequence()
     {
+   
         yield return new WaitForSeconds(3.0f);
 
         if (skyIntroUI != null) skyIntroUI.SetActive(false);
+        if (skyCam != null) skyCam.Priority = 0; 
         
-        if (skyCam != null)
-        {
-            skyCam.Priority = 0;
-            skyCam.gameObject.SetActive(false);
-        }
-        if (musicManager != null) musicManager.PlayIntroMusic();
-        if (pressStartUI != null) pressStartUI.SetActive(true);
         yield return new WaitForSeconds(2f);
+        
+        if (musicManager != null) musicManager.PlayIntroMusic();
+        
+        if (pressStartUI != null) pressStartUI.SetActive(true);
+        if (skyCam != null) skyCam.gameObject.SetActive(false);
+        
         inputLocked = false;
     }
 
@@ -133,8 +112,9 @@ public class GameStartController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameStarted = true;
+                
                 if (skyIntroUI != null) skyIntroUI.SetActive(false);
-                if (skyCam != null) skyCam.gameObject.SetActive(false);
+                if (skyCam != null) skyCam.gameObject.SetActive(false); 
                 
                 if (introCam != null) introCam.Priority = 0;
                 if (gameplayCam != null) gameplayCam.Priority = 200;
@@ -142,7 +122,6 @@ public class GameStartController : MonoBehaviour
                 if (pressStartUI != null) pressStartUI.SetActive(false);
                 if (playerAnimator != null) playerAnimator.SetTrigger("StartGame");
             }
-
             return;
         }
         
@@ -163,7 +142,6 @@ public class GameStartController : MonoBehaviour
             }
         }
     }
-
     public void TriggerGameOver()
     {
         if (isGameOver) return;

@@ -9318,7 +9318,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -20546,8 +20546,6 @@ MonoBehaviour:
   loseSource: {fileID: 1743433789}
   vfxPrefab: {fileID: 136674, guid: 8d3a7fbc62f810c43b8c42fdb2978ef4, type: 3}
   player: {fileID: 8291297771362868932}
-  sap: {fileID: 2324760312691196666}
-  mp: {fileID: 42264113}
   winCamera: {fileID: 1913922529}
   winDirector: {fileID: 1961539435}
   winSFX: {fileID: 8300000, guid: e691d360e9a520e44a840e3f67325e89, type: 3}
