@@ -31412,7 +31412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b77862c1ecc1648a5b48b641c5b182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  footVFXPrefab: {fileID: 4021103657954561961, guid: 0deb1176eec348a41a96c412b91b9c68, type: 3}
+  footVFXPrefab: {fileID: 5627696518775099638, guid: 3080c759db530704a8f03001836d8c76, type: 3}
   leftFoot: {fileID: 756857852}
   rightFoot: {fileID: 1896910347}
   audioSource: {fileID: 2251360738343716316}
